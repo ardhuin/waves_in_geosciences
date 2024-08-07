@@ -141,20 +141,16 @@ monographs by \cite{Phillips1977}, \cite{Dingemans1997a}, \cite{Young1999}, \cit
 So why another one? 
 
 First of all, scientific developments never stop, making these previous works not obsolete but less up to date 
-and complete. This will happen with the present book, even if I am trying to update it on a regular basis. The parts 1 and 2 
-and the associated teaching material (jupyter notebooks ...)  is designed to be at the level of Master students in oceanography. 
-
+and complete. This will happen with the present book, even if I am trying to update it on a regular basis. 
 Second, and more important, all these books, except possibly the jewel by \cite{Phillips1977} have a rather narrow 
-scope, and do not cover aspects for which no recent monograph exist. I particularly think about microseisms, infragravity waves or 
-measurement techniques including satellite remote sensing. Some of these topics are only treated in part 3.
-
+scope, and do not cover aspects for which no monograph exist. I particularly think about microseisms or infragravity waves. 
 Working with coastal engineers, geomorphologists and seismologists, has motivated me to bring to 
 the forefront those results that are often obscure or very hard to follow. My point of view is that 
 ocean waves play a very particular role in the Earth System, both as an important element of air-sea or land-ocean exchanges, and also as a deforming mirror that 
 modifies our measurements of ocean properties using remote sensing and even in situ techniques. As a result, much insight and cross-fertilization 
 can come from the integration of many geoscientifc fields, from 
 microseisms to remote sensing, as well as applied disciplines such as marine meteorology or coastal and ocean engineering.
-At the very least, these different disciplines are providing new data, tools, and different points of view that complement each other 
+At the very least, these different disciplines are providing new data and different points of view that complement each other 
 in constraining  our physical understanding of wave processes, and the parameterizations used in numerical models or remote sensing algorithms. 
 
 On these topics, I have tried to be clear without compromising the 
@@ -175,74 +171,50 @@ and towards outside sources, such as the cited references. It is designed as a t
 at University of Brest and ENSTA-Paris Tech. Because the present document is trying to follow the latest 
 advances in research -- and my imperfect understanding of these. The permanent evolution unfortunately leads to the presence of errors, more so in part III. 
 I thank 
-Nicolas Rascle, Nadine Paugam, Clément Gandon, Nobuhiro Suzuki, Sophia Brumer, Marine De Carlo and Oyvind Brevik for many corrections, Jean-Fran{\c c}ois Filipot for contributions and help in translating chapter 3, and 
-Philippe Bonneton for discussions and help on the structure and contents of chapter \ref{ch_surf}.  
-%This version is still not finished and some (old) parts in chapter 22-26 are still in French and will be translated in the coming months. OK, months may be years as I've been writing this for about ten years, but I'm not giving up hope.
+Nicolas Rascle, Nadine Paugam, ClÃ©ment Gandon, Nobuhiro Suzuki, Sophia Brumer and Marine De Carlo  for many corrections, Jean-Fran{\c c}ois Filipot for contributions and help in translating chapter 3, and 
+Philippe Bonneton for discussions and help on the structure and contents of chapter 14.  
+This version is still not finished and some (old) parts in chapter 22-26 are still in French and will be translated in the coming months. OK, months may be years as I've been writing this for about ten years, but I'm not giving up hope.
 I thank you in advance for finding any dubious or strange contents, or broken links.
 
-\part{Waves in deep water} 
-\cleardoublepage
-\chapter{Introduction}\label{ch1}
-\input{ch_intro}
-\cleardoublepage
-\chapter{Main properties of linear waves}\label{ch1b}
-\input{ch_Airy}
-\cleardoublepage
-\chapter{Wave heights and spectra: theory and measurement}\label{ch2}
-\input{ch3_en}
-\cleardoublepage
-\chapter{Wave groups and fluctuations of wave parameters}\label{ch_groups}
-\input{ch_groups_en}
-\cleardoublepage
-\chapter{Measured wave evolution: main parameters and wave spectra}\label{ch3}
-\input{ch4_en}
-\cleardoublepage
-\chapter{Measuring waves with satellite altimeters: from Skylab (1975) to SWOT (2025)}\label{ch3}
-\input{ch_alti}
-\cleardoublepage
-\chapter{Physics of spectral wave evolution: deep water}\label{ch_evol_profond}
-\input{ch5_en}
-\cleardoublepage
-\chapter{Waves and momentum}\label{ch_momentum}
-\input{ch_qdm_en}
-\cleardoublepage
-\chapter{Wave-current interactions}\label{ch_courant}
-\input{ch_courant_en}
-\cleardoublepage
-\chapter{Interactions of waves and sea ice}\label{ch_ice}
-\input{ch_ice_en}
-\cleardoublepage
-\chapter{Numerical modeling in deep water}\label{ch_model}
-\input{ch_model_global_en}
-\cleardoublepage
-\chapter{Extreme waves and historical storms}\label{ch_histo}
-\input{ch_histo_en}
-\cleardoublepage
-\chapter{Air-sea interactions: \\ wind stress and mixing}\label{ch_ioa}
-\input{ch_airsea}
-\cleardoublepage
-\chapter{Waves and ocean remote sensing}\label{ch_tele}
-\input{ch_tele}
-\cleardoublepage
 
 
-\part{Waves in coastal and nearshore environments}
-\chapter{Linear shoaling, refraction and reflection}\label{ch5}
-\input{ch12_en}
+\part{Advanced wave topics}
+\chapter*{Foreword}\label{foreword2}
+This third part details some of the topics briefly discussed in the first two parts, 
+such as wave non-linearities, wave generation by the wind
+and wave-current interactions. It also adresses other topics that have just been mentionned, such as the generation of 
+seismic and acoustic noise by the waves.  
 \cleardoublepage
-\chapter{Nonlinear wave shoaling}\label{ch_surf}
-\input{ch_surf_en}
+\chapter{Practical estimation of the wave spectrum}\label{ch_anaspec}
+\input{ch_anaspec_en}
 \cleardoublepage
-\chapter{Bottom boundary layer: processes and parameterizations}\label{ch_wbbl}
-\input{ch_wbbl_en}
+\chapter{Nonlinear waves over a flat bottom}\label{ch_nonlin}
+\input{ch_nonlin_en} 
 \cleardoublepage
-\chapter{Wave-driven nearshore flows: water levels and currents}\label{ch_littoral}
-\input{ch_nearshore_en}
+\chapter{Waves at second order}\label{chnl2}
+\input{ch_nonlin2_en}
 \cleardoublepage
-\chapter{Numerical wave modelling at regional to beach scales}\label{ch_model_coastal}
-\input{ch_model_coastal_en}
+%\chapter{Wave-wave interactions: \\ general properties of random wave scattering}\label{chwwscat}
+%\input{ch_interactions_en}
+%\cleardoublepage
+\chapter{Ocean waves and microseisms}\label{chsismo}
+\input{ch_sismo_en}
 \cleardoublepage
-
+%\chapter{Microbaroms}\label{chbaroms}
+%\input{ch_microbaroms}
+%\cleardoublepage
+% \chapter{Generation of waves by the wind}\label{ch_Satm}
+% \input{ch_Satm_en}
+%\cleardoublepage
+%\chapter{Wave breaking and dissipation}\label{ch_sds}
+%\input{ch_sds_en}
+%\cleardoublepage
+%\chapter{Waves in non-homogeneous media}\label{ch_nonhom}
+%\input{ch_nonhom}
+%\cleardoublepage
+%\chapter{Wave-current interactions in three dimensions}\label{ch_vaguescourant3D}
+%\input{ch_3Dcur}
+%\cleardoublepage
 
 \appendix
 \chapter{Some useful tables}
