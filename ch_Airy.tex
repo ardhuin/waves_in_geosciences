@@ -73,7 +73,7 @@ breaking in the surf zone.
 
 Let us make two final remarks before we get into the equations. 
 First, the linear waves exist only on paper, as all monochromatic waves are unstable, with a development of this instability 
-that is faster for higher waves. This aspect is discussed in more details in chapters \ref{ch_evol_profond} and \ref{ch_nonlin}. 
+that is faster for higher waves. This aspect is discussed in more details in chapters \ref{ch_sourceterms} and Part 3. 
 Monochromatic waves are an acceptable solution for short evolution times, at least a few periods, possibly much more. Second, 
 the choice of the Eulerian framework for the equations of motion
 is not a very good choice for the accuracy, as the linear Lagrangian theory 
@@ -210,7 +210,7 @@ irrotational motion (A3), a flat bottom (A4).
 %(H5). 
 
 We shall now linearize the momentum equations (\ref{eq:NStoBer}), assuming that the wave amplitude is small enough to 
-neglect the non-linear terms. This is verified in chapter \ref{ch_nonlin}, provided that 
+neglect the non-linear terms. This is verified in chapter Part 3, provided that 
 the wave amplitude $a$ is much less than the wavelength $L$ and $a$ is much less than the mean water depth $D$. 
 
 
@@ -252,7 +252,7 @@ wave equation
 
 Equations (\ref{bottom})--(\ref{surface 1}) are the bottom and top boundary conditions for Laplace's equation. The 
 set of equation  (\ref{Laplace})--(\ref{surface 1}) is
-usually called the Euler equation. Its full non-linear form is given by (\ref{surface comb}). 
+usually called the Euler equation. Its full non-linear form is given in Part 3. 
  
 \subsection{Solution: Laplace equation and vertical profiles}
 Since we have a linear wave equation, it is natural to solve it 
@@ -396,14 +396,13 @@ drift is an intrinsic quadratic property
 of the wave field. This aspect is discussed in more details in chapter \ref{ch_momentum}. 
 
 Eq. (\ref{dispersion})--(\ref{potentielcos}) are all approximate solutions corresponding to the Airy waves. \cite{Stokes1849} extended this Airy solution 
-to take into account the non-linear terms of eq. 
-(\ref{surface comb}), which improves the agreement with observations.
+to take into account the non-linear terms of the full equation (see Part 3), which improves the agreement with observations.
 In the deep ocean, all measurements confirm that waves are very nearly irrotational and well described
 by the theories of Airy and Stokes
 \citep[see for example ][]{Thornton&Kraphol1974,Herbers&al.1992}. The general solution can be expressed as a 
 series in powers of 
 $\varepsilon_1=ka$, which was shown to converge by \cite{Levi-Civita1925}. Many methods have been developed to 
-obtain various numerical approximations of the exact solution (see \S\ref{ch_nonlin_per}).
+obtain various numerical approximations of the exact solution.
 
 \subsection{Physical interpretation}
 The wave motion is maintained by the restoring force of gravity, which acts in quadrature to the velocity field, 
@@ -456,7 +455,7 @@ Right: trajectories of water particles.}
   \caption{Velocity field in water for a wave train of period 10~s, and amplitude 18~cm in 3~m of water. Snapshots are shown for 
 (a) $T=0$, (b) 1.25 and (c) 2.5~s. 
 The trajectories of water parcels are integrated over two Eulerian periods  (20~s) for (d) linear waves, and (e) nonlinear waves with the 
-same period and height, using streamfunction theory (see chapter \ref{ch_nonlin}). For the height chosen here, $H/D=0.12$ and $H/L=0.0067$, so that 
+same period and height, using streamfunction theory (see part 3). For the height chosen here, $H/D=0.12$ and $H/L=0.0067$, so that 
 linear theory gives a  fairly good approximation. }
 \label{fig:uv2}
 \end{figure}
@@ -577,11 +576,11 @@ $L=3.5$~m, and a non-dimensional water depth $kD=3.4$. }
 These results were confirmed by the measurements of \cite{Elliott1972a}, who 
 found a vertical decay that is slightly faster than $\mathrm{e}^{-kz}$, due to 
 the effect of the mean shear in the wind speed. When this shear is taken into account, the
-Laplace equation is replaced by the Orr-Sommerfeld equation, as detailed in chapter \ref{ch_Satm}.
+Laplace equation is replaced by the Orr-Sommerfeld equation, as detailed in Part 3.
 Besides, the velocity jump at the air-sea interface, gives rise to a boundary layer 
 that is laminar for low wave heights and wind speeds \citep{Dore1978}, but becomes turbulent 
 otherwise \citep{Perignon&al.2014}, probably leading to an important dissipation of long waves traveling across oceans that is 
-discussed in chapter \ref{ch_Satm}.
+discussed in Part 3.
 
 \subsection{Dispersion}
 The velocity at which the wave crests or trough propagate 
@@ -718,7 +717,7 @@ We note that for $kD\rightarrow\infty$, equation (\ref{Cg}) gives
 $C_g={\sigma}/({2k})=C/2$. Thus, in deep water the groups of waves travel at a speed that is half of the phase speed. 
 Things are very different in shallow water ($kD
 \ll 1$), where $C_g=C$. In that shallow water limit, waves of all frequencies travel at the same speed (they are not dispersive)
-hence the groups also travel at that same speed. This is only true for linear waves. In chapter \ref{ch_nonlin}, we will see that  phase and group speeds 
+hence the groups also travel at that same speed. This is only true for linear waves. In part 3you may see that  phase and group speeds 
 are also a function of the wave amplitude. 
 
 
@@ -810,7 +809,7 @@ curvature $R_1$ et $R_2$, counted positive for a surface that is convex on the a
 \subsection{Extending Airy wave theory}
 What happens when we do not make one of the assumptions A1 to A13? In which conditions should we do this? 
 \begin{itemize}
-  \item A1. Except when considering acoustic and seismic noise generated by ocean waves, as in chapter \ref{chsismo}, we can 
+  \item A1. Except when considering acoustic and seismic noise generated by ocean waves, as in part 3, we can 
 safely ignore compressibility effects. \vspace{0.3cm}
   \item A2. Bottom deformations are relevant when considering acoustic and seismic noise generation. In fact, the bottom 
 deformation should be considered for all acoustic wave propagation in the ocean.  \vspace{0.3cm}
@@ -842,21 +841,21 @@ variables $\xb$ and $z$ becomes meaningless. The velocity potential can be obtai
 are a complete basis. For small bottom slopes, the wave train is only \emph{locally} equivalent to a sine wave. 
 For steep slopes, the wave train can suffer strong distortions at the scale of one wavelength \citep[e.g.][]{Magne&al.2007}.\vspace{0.3cm}
   \item A7. An atmospheric pressure oscillation on the scale of the wavelength can produce an amplification or attenuation of the waves, depending 
-on its phase relative to the waves. This aspect is discussed in detail in chapters \ref{ch_evol_profond} and \ref{ch_Satm}. \vspace{0.3cm}
+on its phase relative to the waves. This aspect is discussed in detail in chapters \ref{ch_sourceterms} and Part 3. \vspace{0.3cm}
   \item A8. Due to surface tension, the pressure under the surface is increased by  $-\gamma \left(\partial^2 \zeta/\partial x^2+\partial^2 \zeta/\partial
   y^2\right)$. This added pressure modifies the dispersion relation to give $\sigma^2=\left(gk+\gamma k^3\right) \tanh(kD)$. 
   This modification is negligible for wavelengths larger than a few centimeters. The presence of a layer of ice at the sea surface 
 has a similar effect on the waves, with added terms due to bending and inertia, and is significant for periods of 10~s and 
 less \citep{Liu&MolloChristensen1988} in the case of an ice layer thickness of one meter or more, and  thicker layers have an influence on longer waves.
   \item A9. Non-linear effects associated to $\varepsilon_1 \neq 0$ are fairly complex and will be 
-discussed in chapters \ref{ch_evol_profond}, \ref{ch_nonlin} and \ref{chnl2}. 
+discussed in chapters \ref{ch_sourceterms} and part 3. 
 One particular consequence is that a monochromatic wave train is generally 
 unstable \citep{Benjamin&Feir1967}. For waves in one dimension, as produced in the laboratory, 
 this can create very high (freak) waves. Another consequence is that different wave trains interact, 
 exchanging energy an momentum.\vspace{0.3cm}
  \item A10. Non-linear effects associated to  $\varepsilon_2 \neq 0$ are important for $kD<1$ even if the wave height is small. 
 This is particularly true near the shoreline, and the shape of waves can be strongly modified, as discussed in chapters \ref{ch_surf} and 
-\ref{ch_nonlin}.\vspace{0.3cm}
+part 3.\vspace{0.3cm}
  \item A11. Since the laws of physics are unchanged by a change of Galilean reference frame, 
 a uniform current $\Ub$ in the absence of bottom friction only introduces a Doppler frequency shift, 
 and all results established here remain valid, replacing 

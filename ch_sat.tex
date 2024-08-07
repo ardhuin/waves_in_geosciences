@@ -1,0 +1,353 @@
+
+ \section{Radar remote sensing}
+Since the invention of radar, the sea was found to be an important source of echoes, at all radar frequencies (from decametric to micro waves). 
+This is due to the dielectric properties of sea water. An active radar measures the electromagnetic power received by its antenna. Using the radar equation, this power (in Watts)
+is normalized by the antenna-target distance, the antenna size, and the emitted power. This gives the normalized radar cross section (NRCS), often represented 
+by the symbol $\sigma_0$. 
+$\sigma_0$ depends on the surface geometry but it alsy varies with the radar frequency and polarization,  and observation direciton (azimuth and incidence angles). %In particular, $\sigma_0$ highly depends on the radar wavelength and of the wave radar incidence angle relative to the surface.
+The phase properties of the signal can alsl be used to estimate velocities at the ocean surface: current and wave velocities. 
+
+%A down-looking (nadir) radar will measure a high $\sigma_0$ for a smooth sea surface. If waves are present, the surface echoes may be considered as the incoherent superposition of the facet echoes. 
+
+
+%\subsection{Satellite radar altimeters}
+Radar altimeter data are, the source of measurements of $H_s$  available at global scale and used for operational wave forecasting
+through data assimilation. Contrary to other observation systems, $H_s$ is directly determined, without the use of a spectral analysis. The usual 
+arrangement is a radar antenna looking straight down - at the nadir - on the the sea surface. The choice of the radar frequency is dictated by 
+a number of considerations, including atmospheric absorption -- we want to be able to measure a returning echo from the sea surface -- and the 
+size of the antenna -- low frequencies give large wavelength that require a proportionally large antenna to have a narrow beam. The radar wavelength 
+and frequency are related by the speed of light $c$, namely $f_r = c / \lambda_r$.
+
+Ocean waves have been monitored from space continuously since the lauch of ERS-1 using altimeters and SARs, as summarized in figure \ref{fig:satellite}
+%%%%%%%%%%%%% figure
+\begin{figure}[htb]
+\centerline{\includegraphics[width=\textwidth]{FIGURES/CH3/missions.pdf}}
+%\vspace{3.64in}
+  \caption{Satellite missions with sea state monitoring objectives.}
+    {Time coverage of satellite missions from 1985 to 2030, including nadir and near-nadir altimeters (solid bars), and missions monitoring ocean wave spectra (open boxes) using C-band Synthetic Aperture Radars (red), and real aperture radars in Ku-band (black) or Ka-band (blue). The lighter color (grey and blue) bars correspond to altimeters using Delay-Doppler processing. Source: CEOS database
+    \url{http://database.eohandbook.com/}). (B) example of 1-day coverage for Hs measurements with 4 satellite altimeters 
+    (C) snapshot of a 'fireworks' plot, the showing the height (size of symbols) peak periods (colors), and directions (barbs) of 
+    swell partitions derived from Sentinel-1A and Sentinel-1B wave mode data. Such plots are produced routinely by CMEMS.}\label{fig:satellite}
+\end{figure}
+%%%%%%%%%%%%% end of figure
+
+
+\subsection{Conventional or `delay' altimetry}\label{delay}
+%%%%%%%%%%%%% figure
+\begin{figure}[htb]
+\centerline{\includegraphics[width=0.9\textwidth]{FIGURES/CH3/dessin_footprint.pdf}}
+%\vspace{3.64in}
+  \caption{Altimeter waveforms and footprints}
+    {Example of altimeter waveforms for different wave heights.}
+    {(a) These waveforms were selected along the ascending track of SARAL/AltiKa on February 5, 2014, 
+    beteen 05:29:49 and 06:20:07 UTC. Each waveform shows the the power measured by the radar as a function of time: 
+    time is discretized with intervals of $2 \times 10^{-9}$~s corresponding to 
+30~cm range intervals usually called `range gates'. The corresponding wave heights are 0.8, 3.2, 4.6, 9.7, 10.7, 13.2, and 14.8 m. 
+Data is available from CNES/Aviso ftp. Each waveform shown here was obtained for 1~s of data, 
+ as the median of 40 conscutive waveforms. (b) Similar waveforms from Sentinel 3 using delay-only (dashed) and delay-doppler (solid) for Hs = 3,5,7,9,11,13
+and 15 m, for cycle 23 orbit 349, on 25 October 2017 in the Pacific. (c) Spatial coverage of footprints corresponding to the 3-dB antenna lobe pattern, for an 
+unrealistic flat sea surface with a uniform roughness, with the first 11 range gates painted alternatively blue and white, 
+starting from center. (d) Footprint for Sentinel 3, with the 7 seven range gates colored blue and white, with the azimuth resolution of the Doppler processing indicated by the grey stripes.
+} \label{waveform}
+\end{figure}
+%%%%%%%%%%%%% end of figure
+The first main principle of the analysis of the radar echoes is the determination  of the distance, usually called range, based on 
+the delay of a radar pulse 
+to travel from the transmitting antenna to the target and back to the receiving antenna. Usually the two antennas are the same piece of hardware 
+and this is called a `monostatic system'. Because the radar pulse has a finite duration which limits the resolution of the time measurement, 
+it is customary to use a varying transmitted carrier frequency $f_t$ that is modulated as chirps: $f_t$ is increased linearly between $f_0$ and $f_0$+$B$ during a radar pulse. As a result, the carrier frequency of the received signal $f_r$ can be used to determine the precise travel time of the received pulse, with each frequency associated to a different range $r$, with a resolution in range $dr$ that is determined by the frequency bandwidth $B$, with $dr=c /(2B)$. The actual signal at frequency $f_r$ combines echos from all ranges convoluted by the point target response \citep[e.g.][]{Halimi2013}.  
+
+for all types of radars, it is thus better to use a larger bandwidth, 
+but this is usually limited by atmospheric absorption windows or telecommunication regulations. Hence, for satellite altimeters, $B$ for the Jason altimeters is 320~MHz  
+giving $dr=48$~cm. SARAL/Altika used a wider bandwidth of  
+500~MHz  giving $dr=30$~cm. Because of issues with rain attenuation, all altimeters since GEOS-3 (1975-1979) have used Ku-band, except for the ongoing SARAL/AltiKa mission which uses only Ka-band.
+
+Each radar pulse emitted by the radar antenna is reflected by an ocean area that expands with time, starting from the blue disk in the middle of figure \ref{waveform}.c, and 
+expanding to the outer rings. The shape of the blue disk is only correct for a flat sea surface, and is distorted by waves as the crests give a shorter range and the troughs give a higher range. 
+the radar receives echoes from wave crests firsts and wave troughs later: this difference in travel time between crests and troughs  
+spreads the echoes over time. \cite{Brown1977} showed how the shape of the `waveform',  i.e. the received power return, under a number 
+of simplfiying assumptions, is a convolution 
+of the radar antenna pattern and the distribution of the surface elevation $\zeta$. As a result, 
+the slope of the `wave form leading edge' is proportional to  $H_s$.  Because 
+the rise-time typically spans a few range gates, the wave height typically comes from a region of the ocean that is between 4 and 7~km in diameter. 
+In the case of the largest sea state in figure \ref{waveform}.a, the return 
+power spreads over about 35 range gates, from number 26 to number 61, i.e. a distance of 10.5~m, close to the root mean square wave height
+ $H_{\mathrm{rms}} \approx  H_{s}/1.4$. The power in range gates beyond 50 comes from the sea surface that is not directly 
+ under the satellite but on a circle around it, and is still illuminated by the radar beam.  
+
+Classical altimeter estimates of $H_s$ are fairly noisy when the wave height is low becase in that case $H_s$ is determined by only very few range gates, and the power in each rage gate as a random noise, also called speckle noise, caused by Rayleigh fading of ocean echoes that are coming from ranges spread over a distance much greater than the electromagnetic wavelength hence with random phases that randomy cancel \citep{Quartly&al.2001}. 
+\cite{DeCarlo&al.2023} showed that wave groups introduce fluctuations in the estimated values $\widehat{H}_s$ that are proportional to $H_s$ and the spectral peakedness parameter $Q_{kk}$, these fluctuations can be dominant for the largest wave heights. 
+
+
+
+Another interesting parameter that can be derived from the waveforms is the mean square slope (mss). Indeed, 
+the backscattered power $\sigma_0$ is nearly inversely proportional to the mss \citep{Vandemark&al.2002}. 
+For display purposes the waveforms shown in figure \ref{waveform} have been scaled: you can see that the noise level (power in gates 11 to 21) which should be nearly the same for 
+all sea states is scaled to lower values for lower sea states that generally have low values of both $H_s$ and mss.  
+Because the mss is not a very common parameter in applications, many authors have derived empirical estimates of peak or mean  periods from $H_s$ and $\sigma_0$. Also, the mss is a good proxy for the wind speed \citep{Cox&Munk1954}.
+
+
+
+It should be noted that the main application of the altimeters was the mapping of the sea surface height (SSH) for the determination of the geoid, tides and dynamical topography. The measured
+ SSH can be much more precise than $dr$, thanks to averaging. Waves play an important role in the estimation of the SSH because of a range bias induced by wave non-linearities that induce a correlation between the surface slope (and this its brightness for the radar) and the surface elevation. This is known as 
+ the sea state bias, and on average it is of the order of
+ 3~\% of Hs \citep[e.g.][]{Minster&al.1992}. 
+ 
+ Also, because $H_s$ and SSH are estimated jointly using a parametric fit to the waveform, there are important correlated errors in the two parameters \citep[e.g.][]{Dibarboure&al.2014,DeCarlo&al.2023}. 
+ As a result, without any particular editing or fitting of the waveforms, the variability of $H_s$ at scales shorter than 80~km is 
+ expected to be mostly due to the error in the fitting procedure that can be associated to non-uniform radar backscatter and other effects. Recent methods have been developed to reduce that noise and filter it \citep{Passaro&al.2015,Quilfen&Chapron2019}.
+ %%%%%%%%%%%%% figure
+\begin{figure}[htb]
+\centerline{\includegraphics[width=\textwidth]{FIGURES/CH3/altimetre_cartes2011.pdf}}
+%\vspace{3.64in}
+  \caption{Global coverage of satellite altimeters}
+    {Over one day, the 3 satellites Jason 2, Cryosat 2 and SARAL/AltiKa covered all the oceans and seas with a density high enough to capture all the 
+important storms. In a year, the full ocean is covered at a resolution of 1 degree in latitude and longitude.  
+ Data provided by ESA and CNES and processed by Ifremer. The spatial 
+cover depends on the orbits shape. The number of tracks per 1 degree x 1 degree box (bottom panel) varies
+from 20 to 160 over a year: the coverage is less frequent close to the pole because Jason 2 has a more oblique orbit that does not cover the 
+latitudes beyond 66 degrees. Also, sea ice  produces echoes that differ from those of water and prevent the estimation of the wave height.} 
+\label{fig:altimeter_coverage}
+\end{figure}
+%%%%%%%%%%%%% end of figure
+
+\subsection{delay-Doppler altimetry}\label{section:delay-Doppler}
+Another principle that can be used to refine the position and/or to measure the velocity of targets along the satellite flight path is the Doppler effect: fixed targets ahead of the radar are moving towards it, and hence have a higher frequency, while fixed targets that are behind along the satellite path 
+are moving away, giving a lower radar frequency. Typical low Earth orbits give a satellite velocity around $V=7$~km/s. Hence, a Ka-band system at 36~GHz frequency will see a Doppler shift
+of the order of $V f_r/c = 840$~kHz, which is further reduced by the incidence angle $\theta_r$. For a 0.5$^\circ$  antenna aperture, $\theta_r$ will 
+normally vary between 0 and 0.5$^\circ$,  and the Doppler will be limited to 7.3~kHz.  
+
+The main benefit of Delay-Doppler altimetry is the increase of the number of "independent looks" of the sea surface, which helps reduce Speckle noise, but cannot do anything about the true geophysical variability induced by wave groups. Delay-Doppler altimetry has also been developed to separate echoes along the track, which is particularly useful for measuring sea ice freeboard at the edges of sea ice leads, hence its first implementation on Cryosat-2. 
+
+
+A slicing of the radar echoes according to their Doppler shift allows a high-resolution mapping of the surface along the satellite track. 
+This principle is used on  Cryosat-2, Sentinel-3, and Sentinel-6 (Mike Freilich) with a standard processing giving 300~m resolution along the track, as shown on figure \ref{waveform}.d. In that case the basic 
+data has now one extra dimension, making a `stack' of waveforms. For practical purposes, this stack is converted to a single `SAR mode' waveform, such as the solid lines 
+shown in figure \ref{waveform}.b. 
+At such a  resolution, the surface elevation due to  very long swells propagating along the track can be resolved. 
+A natural limit to this along-track resolving power is the fact that the sea surface is moving up and down with the waves. Indeed, an orbital velocity 
+of $w=2$~m/s gives a $u f_r / c=$ Doppler shift that can be mis-interpreted as a difference in incidence angle $\theta_r$ such that  
+$(u f_r / c)=(V \sin\theta_r  f_r/c)$, this corresponds to a horizontal displacement $u H_r/V \simeq 200$~m for a radar altitude 
+$H_r = 800$~km. 
+
+
+%\subsubsection{Interferometric systems}
+
+
+
+ \subsection{Synthetic Aperture Radars (SARs)}
+As  explained, in section \ref{delay}, the separation of echoes in the range direction is easily achieved by combining the delay and frequency modulation of 
+the chirped radar signal, with a resolution in distance that is thus controled by the frequency bandwidth. 
+In the other direction (azimuth), the simultaneous echoes can be separated by their Doppler shift. 
+This is perfect if targets are fixed relative to the ground, and a 
+very good resolution can be obtained, both in the range and azimuth directions (about 10~m for Envisat, 5~m for Sentinel 1 in wave mode and 1~m in spotlight mode for TerraSAR-X). This processing 
+produces a  map of the surface 
+backscatter in delay-Doppler coordinates. Unfortunately these positions are distorted from  true geographic positions when the surface is moving toward the 
+radar. With a vertical velocity $w$, targets are displaced by $\delta=w \cos \theta_i  R/V$ along the azimuth direction. With a Sentinel-1 altitude $H_r = 693$~km  and a typical speed over ground $V=7.5$~km/s, when looking at an incidence angle of 23$^\circ$ the distance $R$ is close to\footnote{That approximation assumes a locally flat Earth. The exact value is obtained from the law of cosines in the triangle made of the satellite position, the target position and the center of the Earth, i.e. $R^2 + 2 R R_e \cos \theta_i +R_e^2 - (H_r +R_e)^2=0$, where $R_e$ is the radius of the Earth.} $H_r/\cos \theta_i$ and the 
+factor $H_r/V$ is about 92~s$^{-1}$, i.e. a very small velocity  $w= 10$~cm/s gives a displacement in azimuth of $\delta=9.2$~m. 
+A high speed train traveling at 100 m/s along tracks at $45^\circ$ with the range direction at an azimuth angle of 23$^\circ$ has a radial velocity of 28~m/s, would be displaced 2.7~km in the azimuth direction, at a location that is 2~km \textit{away} from the tracks!
+%Figure \ref{fig:SAR_cars} shows an example of targets displaced from their true locations according to their azimutal speed. 
+%
+%
+%%%%%%%%%%%%% figure
+%\begin{figure}[htb]
+%\centerline{\includegraphics[width=0.7\textwidth]{FIGURES/SAR_cars.pdf}}
+%  \caption{Where is the fast car? it is in the optical picture, but out of the SAR `image'!}
+%    {Images of cars with different velocities along an airport runway in a nominally processed radar image (left) and 
+%a reference optical image (right), adapted from \cite{Palubinskas&al.2005}. The SAR acquisition was made from a Do-228 aircraft 
+%flying at only 88 m/s and altitude 3.94~km, giving a ratio $H_r/V=44$~s$^{-1}$.} 
+%\label{fig:SAR_cars}
+%\end{figure}
+%%%%%%%%%%%%%% end of figure
+
+
+%%%%%%%%%%%%% figure
+\begin{figure}[htb]
+\centerline{\includegraphics[width=0.8\textwidth]{FIGURES/dessin_fig1_landscape.pdf}}
+%\vspace{3.64in}
+  \caption{Patterns in SAR images}
+    {Analogy between (a,b) light patterns at the bottom of a shallow pool, and (c,d,e) velocity bunching effects
+in SAR images of ocean waves. (d) and (e) are taken from a wave mode Sentinel 1A image, acquired on 9 September 2014 at 04:48:16 UTC, 
+at 10 and 35~km inside of the sea ice. In (d), almost all crests are doubled, for example in the region within the dashed circle. 
+In (e) the lines are less bright and not doubled (for example within the dotted circle). This is easily simulated, as shown in (f), with the variations of image intensity
+expected from a sinusoidal monochromatic wave of wavelength 156~m \citep[Adapted from ][]{Ardhuin&al.2017}.} 
+\label{fig:SAR_pool}
+\end{figure}
+%%%%%%%%%%%%% end of figure
+In the case of  waves motion a velocity bunching effect appears, the echoes on the image are shifted from their actual
+position depending on the surface velocity towards the satellite creating a pattern of brighter areas, where the displaced targets are `bunched 
+together', and darker regions. This mechanism is often the main cause of the wave-induced $\sigma_0$ modulation in the open ocean. 
+In ice-covered water, this is probably the only mechanism present that creates wave patterns in SAR images. This bunching in the azimuth direction is very 
+similar to the light patterns at the bottom of a shallow pool that are caused by light refraction, as illustrated in figure \ref{fig:SAR_pool}. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\begin{figure}[htb]
+%\centering
+%\includegraphics[width=\linewidth]{FIGURES/Nov1_for_book.pdf}
+%\caption{Context of the  Sentinel-1A image acquired on November 1st, 2015, at 17:23 UTC, and available in situ data. The full image at 
+%full resolution can be viewed at \href{http://bit.ly/22JFruo}{http://bit.ly/22JFruo}. (a) SAR-derived
+%roughness (gray scale) showing open water between the Alaska shoreline, to the West of Barrow, and the measurement locations in the red box. 
+%(b) Location of the R/V Sikuliaq and some of the measurement buoys. Note that buoy S15 is in open water. 
+%(c) piece of the SAR image around the buoys S13 to W3. (d)  Directional spectrum estimated from S15 data using the Maximum Entropy Method.
+%(e) Comparison of spectra derived from in situ data and the SAR image around buoy S13 and buoy W3. In each panel the spectrum at the offshore buoy S15 is 
+%indicated for reference. The 'cut-off' effect is the reduction of wave spectrum according to eq. (\ref{eq:cutoff}). Adapted from \cite{Ardhuin&al.2017}.}
+%\label{fig:nov1}
+%\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+In the case of a monochromatic wave train propagating in the azimuth ($y$) direction, with wavenumber $k_y$, and not located right under the satellite but at an icidence angle $\theta_i$, 
+the target displacement in the SAR image due to the velocity towards the satellite is 
+\begin{equation}
+ \delta = \left ( W \cos (k_y  y - \sigma t) \cos \theta_i  + U \sin (k_y  y - \sigma t) \sin  \theta_i  \right) H_r/(V \cos \theta). \label{eq:delA}
+\end{equation}
+where $U$ and $W$ are the amplitudes of the horizontal and vertical velocities given by eqs. (\ref{vitesse})-(\ref{eq:w}). 
+
+Assuming a uniform radar power scattered from the sea surface $\sigma_0$, and taking the $y$ dimension  along the azimuth, 
+the SAR image intensity is the incoherent sum at the displaced positions $y'$ of the power coming from the true pixe positions $y$, it is thus given by the inverse of Jacobian of the SAR displacements 
+$y \rightarrow y'=y+\delta$, \citep[see eq. 21  in][]{Hasselmann&Hasselmann1991}, 
+\begin{equation}
+ J = \left|dy'/dy\right|,
+\end{equation}
+for a monochromatic wave of amplitude $a$ it is, 
+\begin{equation}
+I'_{SAR}(y) = \sigma_0/J = \sigma_0 / \left|1 -  C_{AR}  \sin( k_y y- \sigma t) \right|\label{ISAR}.
+\end{equation}
+The important parameter for image patterns is the coefficient $c$ in \cite{Alpers&Rufenach1979}, 
+\begin{equation}
+  C_{AR}=k_y (W + U \tan \theta_i) H_r/V.\label{eq:CAR_def}
+\end{equation}
+
+
+ For $C_{AR} << 1$, eq. (\ref{ISAR}) can be linearized, but as $C_{AR}$ increases, the SAR displacements become strongly nonlinear and for $C_{AR}= 1$, 
+ the Jacobian is zero and $I'_{SAR}$ becomes infinite just like the light intensity at the focal point of a lens. 
+In our figure 1.f, with a wave period of 10~s traveling in the azimuth direction, $C_{AR}= 1$  corresponds to an amplitude of the elevation $a=0.42$~m, 
+which, for random waves of the same energy would be a significant wave height $H_s=4\sqrt(a^2/2)=1.2$~m. 
+For $C_{AR} > 1$, each bright line becomes a doublet. The two lines of the doublet progressively drift apart as the amplitude increases, pulling 
+the minimum intensity to lower and lower values, up to the point where lines 
+from different doublets meet, at $ C_{AR} \simeq 4.6$. Beyond this value there is no region of very low intensity anymore. 
+%For waves  in  sea ice, this can be inverted for  $C_{AR}$ less than about 2 to give a map of orbital velocities and from that the wave spectra \citep{Ardhuin&al.2016b}.
+
+In practice, except far inside the  sea ice cover, there are also short wave components in the wave spectrum $E(\kb)$. From a SAR processing point of view, 
+these short waves are equivalent to Gaussian random vertical oscillations 
+of $<v^2>$ leading to random displacements in the SAR image that are larger than their wavelengths and that do not produce any pattern. These short 
+waves also reduce the contrast of longer components. \cite{Hasselmann&Hasselmann1991} gave a theoretical derivation of the impact of random waves on a SAR image spectrum $E_S(\kb)$,
+their eq. (55), with a simplified derivation by \cite{Krogstad1992}. In practice the short wave effect is a reduction in the image spectrum by an exponential factor,  
+\begin{eqnarray}
+ E_S(\kb)&\simeq& \exp(-k_y^2 <v^2> H_r^2/V^2) E_l (\kb) = \exp(-k_y^2 \lambda_c^2/(2 \pi)^2 ) |M_S|^2 \left(E(\kb)+E(-\kb)\right)/2 , \label{eq:cutoff}
+\end{eqnarray}
+in which $E_l(\kb)$ is a linearized spectrum, based on a modulation transfer function $M_S$ that includes a linearized velocity bunching term, a hydrodynamic term due to the short scattering waves modified by 
+longer waves, and a tilt term due to the change in local slope along long waves \citep{Hasselmann&al.1985,Hasselmann&Hasselmann1991}. All terms depend on the incidence angle, 
+and these last two terms depend on the polarization of radar waves, horizontal or vertical, and on wind speed and wave age. 
+The image is 
+completely blurred at the scale of the random displacements and the resolution of 1 or 5~m is useless.
+
+
+The azimuthal cut-off wavelength is $\lambda_c =  2 \pi \sqrt{<v^2>} H_r/V$, in which $<v^2>$ is the orbital velocity variance.  This cut-off effect is so dominant that it can 
+actually be used to measure the surface orbital velocity variance from SAR images \citep{Stopa&al.2016}. A minor difficulty is the separation of the part of the wave spectrum that 
+produces patterns in the SAR image and the shorter part that only introduces blurring. Looking at many ERS SAR data, \cite{Kerbaol1997} concluded that, in the case 
+of a wind sea, the velocity variance $<v^2>$  should be restricted to waves shorter than a factor $f_L$ times the peak wavelength, with $f_L \simeq 0.33$ for a mean short wave direction 
+in the range direction and  $f_L \simeq 0.15$ in the azimuth direction.  
+
+Combining all these effects with some empirically derived MTFs, it was possible to estimate the heights of swells within 25\% of buoy measurements using 
+wave mode data from Envisat \citep{Collard&al.2009}. The full significant wave height, including the waves shorter than $\lambda_c$ that are not resolved in the 
+SAR image, can also be estimated by combining all image parameters \citep{Li&al.2011}. 
+
+
+
+
+
+
+Several aspects of SAR processing are the subject of active research, including the measurement of high winds or currents, and improvements in the estimates of wave 
+parameters in particular in ice-covered regions. 
+
+%Figure \ref{fig:nov1} shows an example of waves around the ice edge: in the water (buoy S15), the waves cannot be seen by the SAR 
+%because, with a peak wavelength of 100~m, they are much shorter than the 290~m cut-off wavelength. Waves only appear in the ice with an %increasing SAR spectral 
+%density which is not due to an increase in wave height, but a reduction in the cutoff wavelength from $\lambda_c = 114$~m at S13 to  $\lambda_c = 87$~m at W3. Hence a correct estimation 
+%of $\lambda_c$ is critical for a proper estimation of wave heights either in the open ocean or in ice-covered water. Another important practical problem, especially in ice-covered 
+%region, is the presence of non-wave features in the image: boats, slicks, variations in wind speed, leads in ice... these usually show up in the low frequency part of the spectrum, 
+%and, in figure \ref{fig:nov1} they probably are the reason for the spurious bump at $f=0.1$~Hz. 
+ 
+Since SAR images are characterized by high resolution (5~m in the Sentinel-1 wave mode, 10~m in Interferometric Wide swath mode), and large coverage, they provide a unique opportunity 
+to measure the spatial patterns in the wave field, as shown on figure \ref{SAR_exemple}.
+
+%%%%%%%%%%%%% figure
+\begin{figure}[!h]
+\centerline{\includegraphics[width=0.8\textwidth]{FIGURES/CH3/Image_SAR_Cancale2.png}}
+\caption{Left: Sample of a SAR image, recorded by Envisat  on March 9 2003, over French coast. The grey level is a function of the radar cross section that is modulated by waves. 
+Right: Full image processed into wave spectra, with significant wave height and peak direction. AWA et SA1 are positions of in-situ instruments, 
+used for validation \citep{Collard&al.2005}.}
+\label{SAR_exemple}
+\end{figure}
+%%%%%%%%%%%%% end of figure
+
+
+
+\subsection{SAR Across-track Interferometry: SWOT and near-nadir range bunching effects}
+Compared to the SAR systems on Envisat and Sentinel-1 described above, the KaRIN instrument on SWOT has two very different features: first it measures at incidences very close to the vertical (nadir), and second it actually has 2 SAR systems forming a cross-track interferometric baseline. This means that in addition to the usual SAR imagery (a little unusual with KaRIN due to their incidence angles) we also get interferograms from the two SAR receivers on KaRIN, which provide a wealth of information: 
+\begin{itemize}
+\item the mean phase of the interferogram is related to the distance between the radar and the reflecting target, hence the sea surface elevation, which contains the geoid, the dynamic height, tides, internal waves... but also those wind-generated waves that are longer than the SAR pixel, as shown on Fig. \ref{fig:SWOTswell}. 
+\item the noise of the interferometric phase is related to the distribution of these distances within a resolution pixel, hence the significant wave height of the waves that are not resolved by the image. 
+\end{itemize}
+
+When trying to analyse SWOT data at small scales, it is thus really important to understand what is resolved, what is not, and how the unresolved surface elevations give spurious signals in the resolved part: indeed the imaging of the surface at near-nadir angles meas that all targets that have the same range will fall in the same pixel, even though they are not at the same $(x,y)$ position. This leads to a fairly nonlinear image-blurring or image-enhancing effect called "range-bunching": just like velocity bunching, which distorts or enhances the image in the azimuth direction, range bunching leads to distotions and blurring in range. Figure \ref{fig:SWOTswell} shows some example of wave signatures in SWOT surface elevation maps, that still have to be analyzed quantitatively.
+%%%%%%%%%%%%% figure
+\begin{figure}[htb]
+\centerline{\includegraphics[width=\textwidth]{FIGURES/SWOTSWELL.pdf}}
+\caption{Following swells with SWOT, from storm to the antipodes}{Top: small pieces (20 by 20 km) of SWOT data, bottom: corresponding surface elevation spectra $E(k_x,k_y)$, these are double-sided spectra. Left: in the storm on June 6 2023, south of Kergulen islands with strong range bunching effect. Next: large swells South of Australia, June 8. Next: refraction and diffraction over Antigonia seamount, south-east of New Caledonia, June 11. Right: small amplitude swells at ocean station Papa, Gulf of Alaska, on June 18, after 17,000~km of propagation.}
+\label{fig:SWOTswell}
+\end{figure}
+%%%%%%%%%%%%% end of figure
+You may look at the work by \cite{Peral&al.2015} before a more detailed summary appears in this section or a new chapter. 
+
+\subsection{The wave spectrometer and the matching wavefront technique}
+Whereas a SAR resolves the wave patterns in an image to produce a wave spectrum, 
+it is possible to measure the 2D wave spectrum from a combination of 1D wave spectra. 
+%%%%%%%%%%%%% figure
+\begin{figure}[htb]
+\centerline{\includegraphics[width=0.4\textwidth]{FIGURES/CFOSAT_v2.pdf}}
+\caption{Measurement principle  the SWIM radar that on CFOSAT. (a) geometry of the measurements for one cycle 
+in direction $\theta_0$. The resolution in range $dR$ is of the order of 10~m, but the azimuth resolution is 18 km. Using different incidence angles $\theta_I$ (0, 2, 4, 6, 8 and 10 degrees) 
+and rotating around the nadir provides estimates $E(k,\theta_0)$ in all direction $\theta_0$. (b) Coverage of the SWIM instrument on CFOSAT: each colored dot is the center 
+of a 19~km diameter footprint.}
+\label{CFOSAT}
+\end{figure}
+%%%%%%%%%%%%% end of figure
+
+When echoes are combined from narrow strip in range (red band in figure 
+\ref{CFOSAT}.a), the Fourier transform of these echoes in the range direction selects only the modulations by waves that are perfectly aligned with the direction 
+$\theta_0$ to which the radar is looking, all other components cancel out.  Hence, the Fourier analysis of radar echoes provides a 1D spectrum  $E(k,\theta_0)$  
+in the look direction. 
+A successive acquisition in different directions provides the full directional spectrum $E(k,\theta)$.  
+This is the principle of the wave spectrometer and it has been demonstrated with the airborne instrument
+RAWS, developed by NASA \citep{Jackson&al.1985}, STORM and KuROS developed jointly by CNES and CNRS \citep{Hauser&al.1992,Caudal&al.2014}.
+The first satellite wave spectrometer is SWIM, and it flies on the China-France Ocean Satellite (CFOSAT, Figure \ref{CFOSAT}), which was launched on October 29, 2018 \citep{Hauser&al.2021}. SWIM is unique in providing wave spectra co-located with classical altimeter measurements, allowing a a much better understanding of historical altimeter data and their along-track variability \citep{DeCarlo&al.2023}, as detailed in chapter \ref{ch_groups}. 
+
+%For larger incidence angles, the measurements cover a larger area of the ocean, but there is more sensitivity to the wind speed in the radar back-scatter. Hence, the SWIM  design is limited to 10 degrees of incidence. A larger incidence also requires a more powerful radar, because the reflectivity decreases with incidence angle. 
+
+It is also possible to analyze the Doppler of the backscattered signal, as demonstrated with KuROS \citep{Caudal&al.2014}, but this is best done with a narrower antenna pattern as used from space. This additional measurement allows to remove the 180 degree ambiguity on the 
+wave propagation direction, but it also provides an indepedant measuremnt of the wave spectrum via the orbital velocities, and finally it contains the signature of 
+surface currents.  This Doppler capability to measure currents was included in the SKIM concept \citep{Ardhuin&al.2019e} and demonstrated with airborne measurements \citep{Marie&al.2020}.
+
+\subsection{Grazing angle radar}
+ Rotating radars are usually deployed at the coast, for ship traffic monitoring, or on ships, for navigation safety, providing a detection of ships, land, and sea ice. 
+  Most of these radar work in X-band, with a wavelength around 3~cm, but S-band can also be used. These radars also record many echos from the sea surface due to waves.  This `sea clutter' is another case of the saying, \emph{somebody's noise is somebody else's signal}. 
+ The clutter greatly limits the detection of ships at sea, but wave and current information can be extracted from it \citep{Young&al.1985}.
+%%%%%%%%%%%%% figure
+\begin{figure}[htb]
+\centerline{\includegraphics[width=0.73\textwidth]{FIGURES/CH3/wamos_en.png}}
+\caption{Examples of radar images recorded with a grazing radar (WAMOS system, Oceanwaves GmbH), onboard the Hydrographic vessel Laplace. The measurements
+were undertaken in March 2003, with a very long and high  swell from the West ($H_{s}=6$~m, $T_{p}=26$~s). The spectrum shown here was obtained in the shadow of Ouessant.
+The swell go around the islands. At the ship location part of the energy has been refracted and arrives from the south.}\label{wamosfig}
+\end{figure}
+%%%%%%%%%%%%% end of figure
+ Because of the low elevation afforded from a ship, the incidence angle of radar waves on the sea surface is grazing. Hence, the sea surface exhibits shadows behind wave crests and 
+ the relationship between the backscatter image and the sea surface is fairly nonlinear. Still, the wave spectrum may be related to the radar image spectrum using 
+ a transfer function (figure \ref{wamosfig}). The analyses procedure uses
+a sequence of several images, in order to decrease the noise. The 3D (frequency-wavenumber-direction) spectrum is estimated to filter the data into 'wave patterns'  that follow 
+the linear gravity wave dispersion relation, and other echoes and noise. This kind of system generally
+gives a good spectral energy distribution, but the gain (proportionality factor between the radar image spectrum 
+and the surface elevation spectrum) is not very accurate,  leading to typical errors of 20\% or more on the estimate of $H_s$. 
+An additional measurement form an altimeter, or a motion sensor giving heave or pitch/roll from a ship, can provide an independent
+measure of this gain. In systems that allow a measurement of the Doppler signal \citep[e.g.][]{Farquharson&al.2005}, the orbital velocities may be measured, but the radar really 
+measures the velocities of scatterers which -- at this incidence -- contains also the phase velocities of steep waves.
+A side-product of the dispersion relation analysis is are maps of surface currents, with sub-kilometer resolution, and water depth if the water is shallow enough.  This is probably the best instrument available today  for the measurement of sub-mesoscale currents over a footprint of about 10~km in diameter. A full exploitation of the dispersion relation can also provide an estimate of the vertical current shear near the surface \citep{Lund&al.2015}. 
+
