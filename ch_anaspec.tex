@@ -27,7 +27,7 @@ For any frequency index $m$, the complex amplitude $Z_m$ is large when the signa
 The decomposition of a discretized real signal with $M$ pieces of information into $M$ frequencies cannot produce $M$ amplitudes and frequencies that are independent, that would be $2M$ pieces of information. Indeed, the frequencies from $M/2 f_s$ to $M f_s$ do contain the same information as those between $0$ $(M/2-1) f_s$, as shown in figure \ref{fig:anaspec:spectreDFT}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}
-\centerline{\includegraphics[width=0.9\textwidth]{FIGURES/spectra_DFT.pdf}}
+\centerline{\includegraphics[width=0.9\textwidth]{FIGS_CH_ANASPEC/spectra_DFT.pdf}}
 %\vspace{3.64in}
 \caption{(a) Example of surface elevation time series sampled at 12~Hz, (b) Discrete Fourier transform amplitude of the signal, and (c) phase of the same signal.} \label{fig:anaspec:spectreDFT}
 \end{figure}
@@ -86,7 +86,7 @@ This is well known problem in oceanography in the case of the measurement of tid
 In the case of ocean waves, it is really necessary to measure waves with a sampling frequency that is at least 4 times the dominant frequency.  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htb]
-\centerline{\includegraphics[width=0.5\textwidth]{FIGURES/AliasingSines.pdf}}
+\centerline{\includegraphics[width=0.5\textwidth]{FIGS_CH_ANASPEC/AliasingSines.pdf}}
 %\vspace{3.64in}
 \caption{Example of spectral aliasing. A signal with period 10/9, in red, and sampled with a step of 1 (black dots) 
 gives an apparent period of  10, in blue. (Moxfyre, wikimedia commons).} \label{aliasing}
@@ -99,7 +99,7 @@ Figure \ref{fig:anaspec:timeseries} shows an example of the filtering of a surfa
 the noise associated with the measurement method. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htb]
-\centerline{\includegraphics[width=\textwidth]{FIGURES/timeseries.pdf}}
+\centerline{\includegraphics[width=\textwidth]{FIGS_CH_ANASPEC/timeseries.pdf}}
 %\vspace{3.64in}
 \caption{Example of surface elevation measured by stereo-video from the Katsiveli platform, in 20~m depth, on Octoebr 4, 2011 \citep[see][for further detailed analysis of this dataset]{Leckler&al.2015,Aubourg&al.2017}.  (a) small piece of record around $t= 1430~s$ with (red) and without (black) a 3-point smoothing filter  (b) full record (1780~s) (c) spectra of the time series with different filters applied.} \label{fig:anaspec:timeseries}
 \end{figure}
@@ -128,7 +128,7 @@ Indeed waves are random and the surface elevation is nearly-Gaussian. As a resul
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htb]
-\centerline{\includegraphics[width=\textwidth]{FIGURES/spectra1.pdf}}
+\centerline{\includegraphics[width=\textwidth]{FIGS_CH_ANASPEC/spectra1.pdf}}
 %\vspace{3.64in}
 \caption{(a) First 1000 points of time series shown in  (\ref{fig:anaspec:timeseries}).b, with (red) and without (black) multiplication by a Hann window. 
 (b) Resulting spectra (c) Average spectra using Welch's method with 21 independent windows and thus 42 degrees of freedom.} \label{fig:anaspec:spectre1}
@@ -137,7 +137,7 @@ Indeed waves are random and the surface elevation is nearly-Gaussian. As a resul
  Using figure \ref{table_chi2}, we find that the expected ratio of the lower and upper bound of a 95$\%$ confidence interval is 146. This number is the ratio of  $\chi^2_{2,0.975}$ and  $\chi^2_{2,0.025}$, that give the probabilities that $\chi^2_{n} > \chi^2_{n,\alpha}$ is equal to the acceptance threshold $\alpha$. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}
-\centerline{\includegraphics[width=\textwidth]{FIGURES/table_chi2.png}}
+\centerline{\includegraphics[width=\textwidth]{FIGS_CH_ANASPEC/table_chi2.png}}
 %\vspace{3.64in}
 \caption{Table of $\chi^2$ distributions. This table gives the confidence intervals
 for the estimation of spectra with 
@@ -153,7 +153,7 @@ That is fairly annoying. There are two ways to reduce this uncertainty: the firs
 Because the Hann window practically removes part of the data, \cite{Welch1967} has defined a method in which the windows are shifted by half their length, as shown in figure \ref{fig:anaspec:spectre31}.a. The lower panel shows the 21+20 spectra estimated, and the average result.  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}
-\centerline{\includegraphics[width=0.9\textwidth]{FIGURES/spectra_31.pdf}}
+\centerline{\includegraphics[width=0.9\textwidth]{FIGS_CH_ANASPEC/spectra_31.pdf}}
 %\vspace{3.64in}
 \caption{(a) Succession of the Hann windows applied to the data, with 21 independent windows and 20 overlapping windows, from number 22 to 41. The solid line is the mean spectrum and the dotted and dashed line show the expected 95\% confidence intervals for 2 and 42 degrees of freedom. 
 à 95\%.} \label{fig:anaspec:spectre31}
@@ -274,7 +274,7 @@ effect leads to asymetries $\alpha$ et $\beta$
 \end{equation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}
-\centerline{\includegraphics[width=0.6\textwidth]{FIGURES/Asymetrie_Elf.pdf}}
+\centerline{\includegraphics[width=0.6\textwidth]{FIGS_CH_ANASPEC/Asymetrie_Elf.pdf}}
 %\vspace{3.64in}
   \caption{Definition of parameters $M$ ,$m$, $T_1$ et $T_2$ used to estimate the amplitude  $a=(M-m)/2$, period $T=T_1+T_2$, vertical asymetry  $\alpha=(M+m)/2$  and horizontal asymetry $a\pi(T_1-T_2)/(T_1+T_2)/2$ (from \cite{Elfouhaily&al.2003}, \copyright Elsevier).
    Here $m<0$, because $m$ is defined as the trough level between two up-crossing zeros that define the start and end of the wave.} \label{Asymetrie_Elf}

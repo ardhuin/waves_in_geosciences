@@ -1,4 +1,4 @@
-A detailed knowledge of the wave motion in any location is often not required, 
+A detailed knowledge of the wave motion in all locations is generally not required, 
 one may rather be interested in the evolution of some wave properties on distances 
 much larger than the wavelength.  A statistical approach is therefore preferred.
 Note also, that even in a wave tank, waves are never strictly monochromatic.
@@ -7,10 +7,10 @@ The most common method to represent the random nature of waves is the spectral a
 It owes its success to the dispersive nature of waves (different components travel at different speeds), and it was made practical by the 
 development of computer sciences in the 1960s and to the elegant 
 Fast Fourier Transform (FFT) algorithm.  Those curious to know how a spectrum can be calculated without a computer can read the amazing account 
-of the rotating system  invented by  \cite{Barber&al.1946} with variable speed to read off different spectral components off a wave record printed on paper .
+of the rotating system with variable speed invented by  \cite{Barber&al.1946}  to read off the energies of the spectral components from a wave time series printed on paper.
 
 With the Fourier method, a record of wave elevation $\zeta(t)$ is decomposed into 
-a superposition of sine waves, each with a particular period. If the record has the three dimensions, $\zeta(x,y,t)$ this decomposition can be 
+a superposition of sine waves, with regularly spaced frequencies. If the record has the three dimensions, $\zeta(x,y,t)$ this decomposition can be 
 done in frequency, wavelength and propagation direction. 
 The phases of theses sine waves are generally random, namely, the phase of one component 
 in one record and the next record are not correlated at all. The only slowly varying quantity 
@@ -174,7 +174,7 @@ the model output is transformed back to $E(f,\theta)$.
 of wavenumber or direction. For the last two cases, the surface is composed of three components.\label{fig:spectres101}}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-The reader is invited to try to recomposed a sea surface in the physical space from the spectrum produced by a numerical model,
+The reader is invited to try to recompose a sea surface in the physical space from the spectrum produced by a numerical model,
 \begin{equation}
 \zeta(x,y,t)=\sum_{m}^{M}\sum_{n}^{N}\sqrt{2E(f_m,\theta_n)\Delta_f \Delta_\theta} \cos\left[ k_m \cos \theta_n x +k_m \sin \theta_n  y- \sigma_m + \Theta_0(m,n)\right],
 \label{eq3.11}
@@ -190,7 +190,7 @@ an actual sea state, and the observed crest-trough asymmetry will not be reprodu
 that disregards the phases coupling between spectral components. You may add some nonlinear effects with the "choppy" method, shifting your elevation map using an estimate of horizontal displacement, giving more realistic wave crest shapes \citep{Nouguier&al.2009}.  %These issues are further addressed in \S\ref{random_harmonics}.
 
 \section{Using spectra}
-Skipping here the technical details necessary for a practical estimation of the spectrum  (see chapter \ref{ch_anaspec}), we now have a spectrum. Very nice, but what 
+Skipping here the technical details necessary for a practical estimation (see chapter \ref{ch_anaspec}), we now have a spectrum. Very nice, but what 
 can we do with it? 
 
 \subsection{Transfer function}\label{sub:transfer}
@@ -253,7 +253,7 @@ The frequency distribution can also be characterized from the spectral moments, 
 T_{m0,p} =  \left[m_p/m_0\right]^{-1/p} \simeq \left[\left(\int_{0}^{f_{\max}} f^{p} E(f) df\right)/\left({\int_{0}^{f_{\max}} E(f) {\mathrm d}f}\right)\right]^{-1/p}.
 \label{eq3.17}
 \end{equation}
-The most widely used periods are $T_{m0,-1}$, $T_{m0,1}$, $T_{m0,2}$. Each of these has a more or less weight on low frequency part of the spectrum.
+The most widely used periods are $T_{m0,-1}$, $T_{m0,1}$, $T_{m0,2}$. Each of these has more or less weight on low frequency part of the spectrum.
 If one is interested in an effect proportional to $f^2$, as is  the case of the wave forces exerted on a structure, it is reasonable to use $T_{m0,2}$.
 Besides, $T_{m0,2}$ is very close to the mean period $T_z$ given by  wave-by-wave analysis. Note however that in practical calculations, $T_{m0,2}$ depends on the choice
 of $f_{\max}$. The values of the different periods for a typical spectrum are shown in figure 
