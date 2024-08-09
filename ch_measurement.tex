@@ -496,6 +496,29 @@ Such a technique can also be applied to high resolution airborne or satellite im
 on board Sentinel-2. Clouds or haze obviously limit the application of optical methods, which is why radar is often preferred for wave remote sensing. 
 
 
+\subsection{Grazing angle radar}
+ Rotating radars are usually deployed at the coast, for ship traffic monitoring, or on ships, for navigation safety, providing a detection of ships, land, and sea ice. 
+  Most of these radar work in X-band, with a wavelength around 3~cm, but S-band can also be used. These radars also record many echos from the sea surface due to waves.  This `sea clutter' is another case of the saying, \emph{somebody's noise is somebody else's signal}. 
+ The clutter greatly limits the detection of ships at sea, but wave and current information can be extracted from it \citep{Young&al.1985}.
+%%%%%%%%%%%%% figure
+\begin{figure}[htb]
+\centerline{\includegraphics[width=0.73\textwidth]{FIGS_CH_MEASUREMENTS/wamos_en.png}}
+\caption{Examples of radar images recorded with a grazing radar (WAMOS system, Oceanwaves GmbH), onboard the Hydrographic vessel Laplace. The measurements
+were undertaken in March 2003, with a very long and high  swell from the West ($H_{s}=6$~m, $T_{p}=26$~s). The spectrum shown here was obtained in the shadow of Ouessant.
+The swell go around the islands. At the ship location part of the energy has been refracted and arrives from the south.}\label{wamosfig}
+\end{figure}
+%%%%%%%%%%%%% end of figure
+ Because of the low elevation afforded from a ship, the incidence angle of radar waves on the sea surface is grazing. Hence, the sea surface exhibits shadows behind wave crests and 
+ the relationship between the backscatter image and the sea surface is fairly nonlinear. Still, the wave spectrum may be related to the radar image spectrum using 
+ a transfer function (figure \ref{wamosfig}). The analyses procedure uses
+a sequence of several images, in order to decrease the noise. The 3D (frequency-wavenumber-direction) spectrum is estimated to filter the data into 'wave patterns'  that follow 
+the linear gravity wave dispersion relation, and other echoes and noise. This kind of system generally
+gives a good spectral energy distribution, but the gain (proportionality factor between the radar image spectrum 
+and the surface elevation spectrum) is not very accurate,  leading to typical errors of 20\% or more on the estimate of $H_s$. 
+An additional measurement form an altimeter, or a motion sensor giving heave or pitch/roll from a ship, can provide an independent
+measure of this gain. In systems that allow a measurement of the Doppler signal \citep[e.g.][]{Farquharson&al.2005}, the orbital velocities may be measured, but the radar really 
+measures the velocities of scatterers which -- at this incidence -- contains also the phase velocities of steep waves.
+A side-product of the dispersion relation analysis is are maps of surface currents, with sub-kilometer resolution, and water depth if the water is shallow enough.  This is probably the best instrument available today  for the measurement of sub-mesoscale currents over a footprint of about 10~km in diameter. A full exploitation of the dispersion relation can also provide an estimate of the vertical current shear near the surface \citep{Lund&al.2015}. 
 
 \subsection{Surface wave radar}
 An extreme case of grazing angle occurs when the radar waves propagate along the surface. This kind of propagation is possible
