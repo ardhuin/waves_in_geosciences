@@ -225,8 +225,7 @@ known.
 
 \section{Weakly non-linear evolution}
 Because waves are not exactly linear, 
-they produce many interesting effects: presence of harmonics, recurrence patterns, instabilities ... that are further discussed in 
-chapter  \ref{ch_nonlin}. Here we will focus on the evolution of the wave spectrum that comes from the exchange of 
+they produce many interesting effects: presence of harmonics, recurrence patterns, instabilities ... that are further discussed in Part 3. Here we will focus on the evolution of the wave spectrum that comes from the exchange of 
 energy between different spectral components. 
 
 This spectral evolution is generally described as a wave-wave interaction process, which is a particular case of wave scattering. In the case of a continuous 
@@ -247,14 +246,13 @@ strongest for steep waves. The only remaining doubts about this theory are its a
 
 \subsection{Wave-wave interation theory}
 When solving the Euler equations, we can keep the non-linear terms that were discarded by Airy, 
-and write the solution as an expansion in powers of the wave slope $\varepsilon = k a $ (see eq. \ref{power
-expansion}).  One then finds a first order solution that is a superposition of Airy waves
+and write the solution as an expansion in powers of the wave slope $\varepsilon = k a $.  One then finds a first order solution that is a superposition of Airy waves
 \begin{equation}
  \zeta_1=\sum_{\kb,s} Z(\kb,s) \er^{\ir \left[\kb \bcdot \xb -s \sigma t\right]}
 \end{equation}
 and that can be introduced into the second order equations. 
 
-In order to make things simple, let us replace the full boundary conditions  (\ref{surface comb}),  by something more simple, 
+In order to make things more simple, let us imagine that the full boundary condition is given by, 
 \begin{equation}
 \left[ \frac{\partial }{\partial t^2} - g k \tanh(kD) \right]\zeta  = g \bnabla \zeta \bcdot \bnabla \zeta.
 \end{equation}
@@ -274,7 +272,7 @@ with $A (\kb_1,\kb_2,s_1,s_2)$ a constant coefficient given by
  A=\frac{\kb_1 \bcdot \kb_2 }{s_1 \sigma_1 s_2 \sigma_2 - g k \tanh(kD)}\label{eq:nl_A_simple}.
 \end{equation}
 
-The actual Euler equation  (\ref{surface comb}) has a few extra terms but it is the same principle with a similar result, only expression for  $A$ is more complex. 
+The actual Euler equation (see Part 3) has a few extra terms but it is the same principle with a similar result, only expression for  $A$ is more complex. 
 This second order elevation is the generalization of the first harmonic of a monochromatic waves: if the first order only contains waves of frequency $f$, 
 the the second order has components with frequency $2f$ and 0. 
 
@@ -331,10 +329,10 @@ et Hasselmann (1980\nocite{Herterich&Hasselmann1980}), or, with a simpler form, 
 The practical calculation of this coefficient and its integration requires a careful handling of singularities \citep[e.g.][]{Gorman2003}. 
 
 The positive term $E\left(\kb_1\right)E\left(\kb_2\right)
-    \left[E\left(\kb_3\right)+E\left(\kb_4\right)\right]$ in eq. (\ref{Snl:ch5}) comes from the third order amplitude squared in (\ref{E33}), 
+    \left[E\left(\kb_3\right)+E\left(\kb_4\right)\right]$ in eq. (\ref{Snl:ch5}) comes from a third order amplitude squared, 
 and the negative term $-E\left(\kb_3\right)E\left(\kb_4\right)
     \left[E\left(\kb_1\right)+E\left(\kb_2\right)\right]$ is due to the correlations between 
-first and fifth order terms in eq. (\ref{E6}). 
+first and fifth order terms (see Part 3 for details). 
 This negative part is critical to conserve the total wave energy. In general the coefficient $T$ decreases as the difference between wavenumbers 
 is larger. In other words, the interaction of very different wavelengths or directions is much weaker than the interaction of
 components that are very similar. A rough estimate of the time scale of spectral evolution is $\varepsilon^4
@@ -359,7 +357,7 @@ and the wave action,
 A=\int  \rho_w g \frac{E\left(\kb\right)}{\sigma}
 {\mathrm d}\kb.
 \end{equation}
-As we will see in chapter \ref{ch_courant}, the conservation of wave action in general is related to the invariance of the phase-averaged physical situation by 
+As we will see in chapter \ref{ch_current}, the conservation of wave action in general is related to the invariance of the phase-averaged physical situation by 
 a change of the wave phases. In particular, wave action - and not wave energy - is conserved when waves propagate across current gradients without energy dissipation. 
 
 The conservation of the two scalar quantities $A$ and $E$ in  a non-linear system imposes the presence of transfers of energy, also known as 'cascades', towards 
@@ -519,7 +517,7 @@ Near the shore or on offshore shoals, the water is shallow enough that the domin
 case the question of wave breaking is greatly simplified by considering the total energy $E_t$ instead of the spectrum. 
 Since waves near the shore often have a well-defined direction we may consider that the wave energy is radiated in a single direction, 
 that of the spectral peak. 
-By analogy with a hydraulic jump, as detailed in section  \ref{sds:energy2},
+By analogy with a hydraulic jump, as detailed in Part 3,
 the rate of energy dissipation per unit surface is 
 \begin{equation}
     \epsilon(H,D,T) \simeq \frac{1}{L}\epsilon_1(D-H/2,D+H/2) \approx \frac{1}{4}  \rho g \frac{\left(B H \right)^3}{D T}
@@ -557,14 +555,14 @@ This leads to
 \begin{equation}
     \epsilon(H,D,T) = \frac{1}{8 \pi} \rho g k \left(B H \right)^3 \sqrt{\frac{gk}{\tanh(kD)}} \label{eps_CK2002}
 \end{equation}
-The choice of  $\widetilde{h}$  can be debated and should be determined from an energy balance such as  eq. (\ref{epsi_shallow}). 
+The choice of  $\widetilde{h}$  can be debated and should be determined from an energy balance such as  eq. (\ref{epsi_shallow_mean}). 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \subsubsection{Breaking wave statistics in shallow water\label{TG1983}}
 Finally, the dissipation rate requires a definition of  $W(H,T)$ and $p\left(H,T\right)$. 
-In shallow water, the energy is usually integrated across frequencies, and  in that case we only need $W(H)$ and $p\left(H\right)$. The latter is often taken to be the Rayleigh distribution $p_R$ (figure \ref{Rayleigh}). 
+In shallow water, the energy is usually integrated across frequencies, and  in that case we only need $W(H)$ and $p\left(H\right)$. The latter is often taken to be the Rayleigh distribution $p_R$ (figure \ref{fig:Rayleigh}). 
 For $W$, two different choices have been made. The first choice by \cite{Battjes&Janssen1978} 
 is based on the idea that all breaking waves have the same height corresponding to the depth limitation  
 $H=\gamma  D$ in which $\gamma$ is a known constant, and the probability of occurence of these waves is simply given by the Rayleigh distribution, namely 

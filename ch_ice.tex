@@ -12,7 +12,7 @@ When the water is very calm it freezes from the surface as columnar ice crystals
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htb]
-\centerline{\includegraphics[width=\textwidth]{FIGURES/ice_frazil_pancakes.jpg}}
+\centerline{\includegraphics[width=\textwidth]{FIGS_CH_ICE/ice_frazil_pancakes.jpg}}
   \caption{From frazil to pancakes.}{(a) vertical plane view of frazil cristals viewed with polarized light, and their aggregation (copyright Elsevier, taken from \cite{McFarlane&al.2015}. (b) accumulation of frazil in a surface layer under waves. (c) Formation of an ice edge in frazil ice \citep[From][, copyright Cambridge University Press]{Martin&Kauffman1981}. (d) Field of pancakes in a storm as recorded by E. Rogers on October 12, 2015 in the Beaufort sea \citep{Rogers&al.2016}. (e) Ice floes resulting from the agregation of pancakes, Beaufort sea, November 1, 2015, picture by H. Shen.} \label{fig:frazil_pancakes}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -73,7 +73,7 @@ There are many more complex theories for the dispersion relation \citep[e.g.][]{
 \section{Dissipation for solid floes: basal friction}
 When freezing persists, pancakes weld together, leading to a single and continuous layer of ice. The agitation due to waves that has led to the formation of pancakes results in a thicker layer of ice compared to freezing conditions without agitation that produces columnar ice in which the heat is lost to the atmosphere by diffusion through the ice layer. 
 
-With such a single ice layer heaving up and down with the wave motion but constrained in its horizontal displacement, the dissipation energy can occur in the boundary layer below the ice. This oscillatory boundary layer is similar to the air-side boundary layer discussed in section \ref{Dore1978}, and the bottom boundary layer discussed in chapter \ref{ch_wbbl}. For the case of ice, the problem was treated by \cite{Liu&MolloChristensen1988}, with the additional effect of ice inertia that we neglect here. Here we consider the finite viscosity of seawater at the freezing point, $\nu_w \simeq 1.83 \times 10^{-6}$~m$^2$~s$^{-1}$. For monochromatic waves of radian frequency $\sigma$,  a boundary layer of thickness $\sqrt{\nu_w \sigma}$ develops in the laminar case, and the attenuation rate of the wave energy in time is 
+With such a single ice layer heaving up and down with the wave motion but constrained in its horizontal displacement, the dissipation energy can occur in the boundary layer below the ice. This oscillatory boundary layer is similar to the air-side boundary layer discussed in Part 3, and the bottom boundary layer discussed in chapter \ref{ch_bbl}. For the case of ice, the problem was treated by \cite{Liu&MolloChristensen1988}, with the additional effect of ice inertia that we neglect here. Here we consider the finite viscosity of seawater at the freezing point, $\nu_w \simeq 1.83 \times 10^{-6}$~m$^2$~s$^{-1}$. For monochromatic waves of radian frequency $\sigma$,  a boundary layer of thickness $\sqrt{\nu_w \sigma}$ develops in the laminar case, and the attenuation rate of the wave energy in time is 
 \begin{equation}
 \beta_{\mathrm{ice,bfr,v}}=-k\sqrt{\nu_w \sigma / 2}.  \label{eq:beta_ice_visc}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 \end{equation}
@@ -83,7 +83,7 @@ For a smooth under-ice surface, if we accept the similarity with the bottom boun
 \beta_{\mathrm{ice,bfr,t}}=-f_e u_{\mathrm{orb}} / g,\label{eq:beta_ice_turb}
 \end{equation}
 where $u_{\mathrm{orb}}$ is is the significant orbital velocity amplitude at the water-ice interface. 
-The dissipation factor $f_e$ is obtained from the under-ice roughness in the same way that it was obtained in the turbulent bottom boundary layer in chapter \ref{ch_wbbl}.
+The dissipation factor $f_e$ is obtained from the under-ice roughness in the same way that it was obtained in the turbulent bottom boundary layer in chapter \ref{ch_bbl}.
 
 For random waves, neglecting the effects of the 
 ice layer on the water motion, we use the solution given in chapter \ref{ch1b}, 
@@ -104,7 +104,7 @@ can happen only for the highest waves, giving a smooth transition of the average
 as shown in figure \ref{fig:under_ice_friction}, where we have used a weight $w=0.5 \left[1 + \tanh((\mathrm{Re}-\mathrm{Re}_c)/\Delta_{\mathrm{Re}}\right]$, and $\Delta_{\mathrm{Re}}=2 \times 10^5$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htb]
-\centerline{\includegraphics[width=0.65\textwidth]{FIGURES/under_ice_friction_laminar_turbulent.pdf}}
+\centerline{\includegraphics[width=0.65\textwidth]{FIGS_CH_ICE/under_ice_friction_laminar_turbulent.pdf}}
   \caption{Top: schematic of velocities and boundary layer below an ice layer (light blue). Bottom: expected decay distance $X_{1/2}=C_g \ln(2)/\beta_c $ as a function of wave period $T$, for an under-ice roughness of 0.1~mm, and wave heights ranging from 0.5 to 5~m. The `combined Rayleigh' solution uses a combination of $\beta_{\mathrm{ice,bfr,v}}$ and $\beta_{\mathrm{ice,bfr,t}}$ with a weighting depending on a Rayleigh distribution of wave amplitudes, and the `combined smooth' solution is given by eq. (\ref{eq:beta_c_ice_bfr}). Adapted from \cite{Stopa&al.2016}.} \label{fig:under_ice_friction}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -118,7 +118,7 @@ That seems impossible to explain by the ice morphology alone, with complicated k
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htb]
-\centerline{\includegraphics[width=\textwidth]{FIGURES/TARA_data_model.pdf}}
+\centerline{\includegraphics[width=\textwidth]{FIGS_CH_ICE/TARA_data_model.pdf}}
   \caption{Left: Spectrogram of surface elevation and width  $\sigma_2$ of the directional 
 wave spectrum estimated from second moments $a_2$ and $b_2$.  The black rectangle highlights the time and frequency range of the spectral peak on February 12 at 18:00 UTC, showing that the directional spreading is around 10$^\circ$ or less when the energy is maximum. Right: model snapshot giving some context to the measured data. The two swell events are due to two distinct storms. Adapted from \cite{Ardhuin&al.2016}.} \label{fig:TARA_data_model}
 \end{figure}
@@ -141,7 +141,7 @@ Over the scale of the Arctic basin, the example shown in Fig. \ref{fig:TARA_data
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}%[htb]
 \begin{center}
- \includegraphics[width=0.7\columnwidth]{FIGURES/SAR_icebergs.pdf}
+ \includegraphics[width=0.7\columnwidth]{FIGS_CH_ICE/SAR_icebergs.pdf}
  \caption{Example of a synthetic aperture image acquired by Envisat's ASAR instrument at 
 53$^\circ$S 155$^\circ$W on December 26, 2008, 9:35 UTC. White areas are the sides of icebergs facing the satellite.
 Waves propagate from the West (left of the image, see arrow) and a majority of icebergs align their 
@@ -161,7 +161,7 @@ As a result, the average estimated impact of these icebergs can be a reduction i
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}%[htb]
 \begin{center}
- \includegraphics[width=\columnwidth]{FIGURES/model_icebergs.jpg}
+ \includegraphics[width=\columnwidth]{FIGS_CH_ICE/model_icebergs.jpg}
  \caption{Left: climatological mean of the fraction of ocean area covered by icebergs. Right: maximum difference, in meters, over the year 2008, between modeled wave heights without ($Hs_1$) 
 and with ($Hs_2$) icebergs parameterized using the Ifremer database. Reproduced from \cite{Ardhuin&al.2011b}.\label{fig:iceberg_model}}
  \end{center}

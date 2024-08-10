@@ -71,7 +71,7 @@ islands in the Pacific \citep{Tolman2003}, as illustrated in figure \ref{fig_obs
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% figure
 \begin{figure}
-\centerline{\includegraphics[width=0.7\textwidth]{FIGURES/CH10/Chawla_obstruction.pdf}}
+\centerline{\includegraphics[width=0.7\textwidth]{FIGS_CH_MODEL/Chawla_obstruction.pdf}}
 %\vspace{3.64in}
 \caption{Left picture: example of wave attenuation due to propagation across many islands, here the Tuamotus, for a case of swell from the 
 North-East, which almost never happens in this region, as computed on a 3.6~km grid. These islands  
@@ -122,7 +122,7 @@ Figure \ref{fig_wind_quality} shows the reduction in errors in both analyses and
 operational deterministic forecasting system. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% figure
 \begin{figure}
-\centerline{\includegraphics[width=\textwidth]{FIGURES/CH10/wind_quality_v2.pdf}}
+\centerline{\includegraphics[width=\textwidth]{FIGS_CH_MODEL/wind_quality_v2.pdf}}
 %\vspace{3.64in}
 \caption{Root mean square error (RMSE) as a function of the forecast range, 0 corresponding to the analysis, in the operational systems ran 
 at ECMWF. These modeled wind speed and wave heights are compared to buoy measurements over a year centered in winder 
@@ -155,7 +155,7 @@ However, it must be noted that the quality of the nested grid result, owes much 
 the quality of the parent model. Sometimes a statistical correction of coarse grid can be a better option \citep{Signell&al.2005}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% figure
 \begin{figure}
-\centerline{\includegraphics[width=\textwidth]{FIGURES/CH10/Cavaleri_Bertotti_U10_Hs.pdf}}
+\centerline{\includegraphics[width=\textwidth]{FIGS_CH_MODEL/Cavaleri_Bertotti_U10_Hs.pdf}}
 %\vspace{3.64in}
 \caption{Average wind and wave height in the Northern Hemisphere, Southern Hemisphere and Mediterranean sea, 
 obtained in different runs of the ECMWF model in which the spatial resolution is changed. The resolutions of Gaussian grids 
@@ -237,7 +237,7 @@ In frequencies, one needs to choose
 \end{itemize}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% figure
 \begin{figure}[htb]
-\centerline{\includegraphics[width=0.8\textwidth]{FIGURES/CH10/spectrum_discrete.pdf}}
+\centerline{\includegraphics[width=0.8\textwidth]{FIGS_CH_MODEL/spectrum_discrete.pdf}}
 %\vspace{3.64in}
 \caption{Example of spectral discretization: here these modeled spectra use 32 frequencies from 0.037~Hz to 0.72~Hz with $X_{fr}=1.1$, and 24 directions. The same spectrum 
 is shown in cartesian and polar coordinates. 
@@ -323,7 +323,7 @@ The name upwind expresses the idea that the information is taken from  where it 
 $C_g \Delta_t/\Delta_x$ is less than 1. This condition is known as the CFL condition after the work of Courant, Friedrichs and Lewy \citep{Courant&al.1928}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% figure
 \begin{figure}[htb]
-\centerline{\includegraphics[width=0.8\textwidth]{FIGURES/CH10/PR1_UQ_timeseries.pdf}}
+\centerline{\includegraphics[width=0.8\textwidth]{FIGS_CH_MODEL/PR1_UQ_timeseries.pdf}}
 %\vspace{3.64in}
 \caption{Time series of modeled wave height (computed over wave periods longer than 20~s) at two locations of the Arctic, using 
 the first order upwind scheme, or 
@@ -345,7 +345,7 @@ at ECMWF.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% figure
 \begin{figure}[htb]
-\centerline{\includegraphics[width=0.7\textwidth]{FIGURES/CH10/PR1_UQ_cyclone.pdf}}
+\centerline{\includegraphics[width=0.7\textwidth]{FIGS_CH_MODEL/PR1_UQ_cyclone.pdf}}
 %\vspace{3.64in}
 \caption{Example of wave heights for Tropical Cyclone Dora, in the Southern Indian ocean, using 4 different numerical schemes. 
 'GSEC' is the GSE correction scheme of 
@@ -373,8 +373,7 @@ on February 25.
 
 
 \section{Parameterizations of physical processes}
-Because of the complexity of wave evolution processes that were briefly described in chapter \ref{ch_evol_profond}, and further discussed 
-in chapters \ref{ch_Satm} and \ref{ch_sds}, there is no generally agreed upon parameterization for wave generation and dissipation. Also, the non-linear 
+Because of the complexity of wave evolution processes that were briefly described in chapter \ref{ch_sourceterms}, and further discussed Part 3, there is no generally agreed upon parameterization for wave generation and dissipation. Also, the non-linear 
 wave interaction that is based on the theory of \cite{Hasselmann1962} is too costly to be computed accurately for routine applications. Hence several 
 parameterizations have been proposed to reproduce the non-linear source function. The most common is the Discrete Interaction 
 Approximation by \cite{Hasselmann&al.1985b}, which keeps the energy, action and momentum conservation properties of the full non-linear interaction, 
@@ -438,7 +437,7 @@ wave evolution conditions and measured parameters to which the model can be adju
  vertical acceleration variance (from buoys) 
  \item check on the decay of pure swells using one of the many cases sampled by SARs, for both large and small amplitude swells.
  \item Verify the biases of swell peak periods against buoy data, and frequency-dependent biases in the energy content of the spectrum.
- \item Once the deep water evolution is correct, later adjust bottom friction (see chapter \ref{ch_wbbl}), then sea ice effects (see chapter \ref{ch_ice}). 
+ \item Once the deep water evolution is correct, later adjust bottom friction (see chapter \ref{ch_bbl}), then sea ice effects (see chapter \ref{ch_ice}). 
 \end{enumerate}
 
 
@@ -462,7 +461,7 @@ West Africa.
 % Use the relevant command to insert your figure file.
 % For example, with the graphicx package use
 \noindent \begin{centering}
-  \includegraphics[width=0.85\textwidth]{FIGURES/CH10/Hs_bias_RMSE_RA2014_small.pdf}
+  \includegraphics[width=0.85\textwidth]{FIGS_CH_MODEL/Hs_bias_RMSE_RA2014_small.pdf}
 \par\end{centering}
 
 % figure caption is below the figure
@@ -477,7 +476,7 @@ The differences between the BJA and TEST451 parameterizations are mainly in the 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% figure
 \begin{figure}[htb]
-\centerline{\includegraphics[width=0.75\textwidth]{FIGURES/CH10/62163_51001_errors.pdf}}
+\centerline{\includegraphics[width=0.75\textwidth]{FIGS_CH_MODEL/62163_51001_errors.pdf}}
 %\vspace{3.64in}
 \caption{Example of scatter plot comparing two model runs, with the \cite{Bidlot&al.2005} parameterization 
 and the \cite{Ardhuin&al.2010} parameterization, described below. Data for the full year 2007 is used 
@@ -527,7 +526,7 @@ This spurious effect contributes to the
 larger scatter in the western part of ocean basins which are dominated by wind seas, with the occasional 
 presence of swells. 
 
-As explained in chapter \ref{ch_evol_profond}, today's understanding of wave breaking and swell dissipation processes, 
+As explained in chapter \ref{ch_sourceterms}, today's understanding of wave breaking and swell dissipation processes, 
 although not complete, have led to parameterizations in which the steepness is more local in spectral space. 
 For example \cite{Ardhuin&al.2010} have proposed to use 
 \begin{equation}
@@ -574,7 +573,7 @@ can lead to very large biases. The swell wave height also depends on the wave he
 %and a swell dissipation overestimated by \cite{Bidlot&al.2005} and \cite{Zieger&al.2015} for very large propagation distances. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% figure
 %\begin{figure}[htb]
-%\centerline{\includegraphics[width=\textwidth]{FIGURES/CH10/swell_dissipation_model.pdf}}
+%\centerline{\includegraphics[width=\textwidth]{FIGS_CH_MODEL/swell_dissipation_model.pdf}}
 %%\vspace{3.64in}
 %\caption{Typical model result for swell wave height attenuation away from storms. The left panel shows the 
 %modelled swell field using the TEST451 parameterizations described in \cite{Rascle&Ardhuin2013}, and the center and right 
@@ -608,7 +607,7 @@ generally give a poor representation of Stokes drift variability. This is illust
 \citep[see also figure 8 in][]{Ardhuin&al.2010}. 
 %%%%%%%%%%%%% figure
 \begin{figure}[htb]
-\centerline{\includegraphics[width=1.0\textwidth]{FIGURES/CH10/Ussnd_46005.pdf}}
+\centerline{\includegraphics[width=1.0\textwidth]{FIGS_CH_MODEL/Ussnd_46005.pdf}}
   \caption{Surface Stokes drift for all wave components with a frequency below 0.36~Hz, 
   at the location of NOAA buoy 46005, off the U.S. West Coast.
   In this calculation we have assumed that all waves travel in the same direction, giving 

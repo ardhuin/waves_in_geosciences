@@ -16,7 +16,7 @@ For the horizontal momentum, which is a two-component horizontal vector $(U,V)$,
 where the neutral wind speed is the equivalent wind speeds that gives the same stress in the atmospheric stratification is neutral. It was found in most experiment that $C_{10N}$ tends to be higher for relatively young waves as shown in figure \ref{Drennanetal2003}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}
-\centerline{\includegraphics[width=\textwidth]{FIGURES/Drennan_etal_JGR2003.pdf}}
+\centerline{\includegraphics[width=\textwidth]{FIGS_CH_AIRSEA/Drennan_etal_JGR2003.pdf}}
 %\vspace{3.64in}
   \caption{Effect of sea state on the wind stress.}{Left: measured neutral drag coefficient  $C_{10N}$, 
   during the  FETCH experiment in the Mediterranean. Right: variation of the roughness length  $z_0$, normalized by a typical wave amplitude $\sigma=H_s/2$ for various experiments. Figure reproduced from \cite{Drennan&al.2003}.}
@@ -29,7 +29,7 @@ However, in general the wave age is correlated to the wind speed, so that it is 
 For higher wind speeds, several estimates of the stress suggest that the value of $C_d$ may decrease, possibly associated to a full separation of the boundary layer. Figure \ref{Lucia2017} shows several drag coefficient from observations and as used in the ECMWF atmospheric model, for which the drag takes into account the waves \citep{Janssen2004}. %Interestingly the ECMWF drag is relatively high and the ECMWF winds are relatively low compared to measurement from platforms. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[h]
-\centerline{\includegraphics[width=0.6\textwidth]{FIGURES/High_drag_coeff.pdf}}
+\centerline{\includegraphics[width=0.6\textwidth]{FIGS_CH_AIRSEA/High_drag_coeff.pdf}}
 %\vspace{3.64in}
   \caption{Left: Comparison of drag coefficient for ECMWF (CY41R1) parameterization, empirically-adjusted Charnock parameterization and observations (Donelan et al., 2004, 'R' or 'M' corresponds to different measurements techniques Reynolds or Momentum Budget. %Right: Wind speed biases, on the period 23 to 27 of January 2014 on North East Atlantic, between (a) ASCAT-KNMI, (b) ASCAT-RSS, (c)AMSR2, (d) WindSat, (e) buoys, (f) platforms and model for the default ECMWF CY41R1 (blue) and empirically-adjusted (red) parameterizations.  
 %  Beyond 30~m/s, values are plotted as points, representing the large uncertainties on observations.  
@@ -47,12 +47,12 @@ Waves generally have an impact on all air-sea exchanges, not just momentum. This
 
 \section{Drift and mixing}
 \subsection{Momentum flux for the Eulerian mean current}
-Knowing the wind stress is a first step in determining how the ocean is forced, but this is not enough to tell how much of that momentum goes into currents as most of it generally goes through the wave field. It is only when the wave momentum is constant that the momentum flux from the wind goes entirely to the ocean circulation. In general, we can use the wave energy balance with source terms $S_{\rm in}$ and $S_{\rm dis}$ presented in Chapter \ref{ch_evol_profond}, to compute the wave momentum balance. This was done at the end of Chapter \ref{ch_courant}, when we introduced the momentum flux from wind to waves $\tau^{\mathrm{aw}}$ and the flux from waves to ocean $\tau^{\mathrm{wo}}$ .
+Knowing the wind stress is a first step in determining how the ocean is forced, but this is not enough to tell how much of that momentum goes into currents as most of it generally goes through the wave field. It is only when the wave momentum is constant that the momentum flux from the wind goes entirely to the ocean circulation. In general, we can use the wave energy balance with source terms $S_{\rm in}$ and $S_{\rm dis}$ presented in Chapter \ref{ch_sourceterms}, to compute the wave momentum balance. This was done at the end of Chapter \ref{ch_current}, when we introduced the momentum flux from wind to waves $\tau^{\mathrm{aw}}$ and the flux from waves to ocean $\tau^{\mathrm{wo}}$ .
 
 \subsection{Quasi-Eulerian currents}
 The interaction of waves and currents is the topic of onging research, in particular the effects of vertically sheared currents on the waves. 
-A general description of these interaction in three dimensions is given in chapter \ref{ch_vaguescourant3D}. Here 
-we will consider the much more simple case of a horizontally homogeneous ocean. The wave-averaged momentum equation  (\ref{GLM_Gro3}) for the mean current $ \widehat{\mathbf u}$
+A general description of these interaction in three dimensions is given in Part 3. Here 
+we will consider the much more simple case of a horizontally homogeneous ocean. The wave-averaged momentum equation for the mean current $ \widehat{\mathbf u}$
 then takes the following form \citep{Hasselmann1970,Xu&Bowen1994}, 
 \begin{equation}
  \frac{\partial \widehat{\mathbf u}}{\partial t}
@@ -63,12 +63,13 @@ then takes the following form \citep{Hasselmann1970,Xu&Bowen1994},
 \end{equation}
 
 The solution is determined by the surface boundary conditions, and the profiles of the mixing coefficient $K_z$,  
-and the momentum injected by the waves ${\mathbf T}^{\mathrm{wo}}$ which is a depth-distributed force such that the momentum flux defined by eq. (\ref{eq:tauwo}) is 
+and the total momentum injected by the waves ${\mathbf T}^{\mathrm{wo}}$ which is a depth-distributed force such that the momentum flux is 
 \begin{equation}
-\tau^{\mathrm{wo}}_{\alpha} = \int_{-h}^{\overline{\zeta}} T^{\mathrm{wo}}_{\alpha} {\mathrm d}z.
+\tau^{\mathrm{wo}}_{\alpha} = \int_{-h}^{\overline{\zeta}} T^{\mathrm{wo}}_{\alpha} {\mathrm d}z = \int \frac{\rho_w g}{C}\left[ S_{\mathrm{tot}}(f,\theta) -S_{\mathrm{atm}}(f,\theta)  \right] {\mathrm d}f {\mathrm d} \theta 
  \end{equation}
+ with the source terms $S$ defined in Chapter \ref{ch_sourceterms}. 
  
-The solution can be obtained by solving  (\ref{avgmomz2}) with a turbulent closure that gives an estimate of  $K_z$. 
+The current can be obtained by solving  (\ref{avgmomz2}) with a turbulent closure that gives an estimate of  $K_z$. 
 Following Prandtl (1904), the usual turbulence closure has an addy viscosity that increases with the distance from the boundary 
 \citep{Schlichting1979} and involves a velocity scale $q$ associated to the turbulent motion, 
 \begin{equation}
@@ -127,7 +128,7 @@ with $u_\star$ is the wind friction velocity.
 
 %%%%%%%%%%%%% figure
 \begin{figure}
-\centerline{\includegraphics[width=\textwidth]{FIGURES/profil1_en.pdf}}
+\centerline{\includegraphics[width=\textwidth]{FIGS_CH_AIRSEA/profil1_en.pdf}}
   \caption{Upper ocean current profiles for a wind speed $U_{10}=10$~m/s}
  {(a) Profiles with a very low value of $z_0$, representing an unrealistic situation without waves 
   (b) profiles with a realistic value of $z_0$. In terms of drift velocity, the much lower value of the surface current is compensated 
@@ -147,7 +148,7 @@ relatively shallow mixed layers such as found in the Arabian Sea in summer \cite
 
 %%%%%%%%%%%%% figure
 \begin{figure}
-\centerline{\includegraphics[width=0.4\textwidth]{FIGURES/Terray_etal2000_p5.pdf}}
+\centerline{\includegraphics[width=0.4\textwidth]{FIGS_CH_AIRSEA/Terray_etal2000_p5.pdf}}
   \caption{Quasi-Eulerian velocities near the sea surface.}{Two types of current-meters  (SASS and VMCM) provide mean current velocities that have been corrected for wave motion. $u_{\star w}=(\rho_a/\rho_w)^{1/2} u_{\star}$ is the friction velocity in the water (Figure from Terray et al. 2000)\nocite{Terray&al.2000}. The difference in current velocity between the surface and the thermocline is of the order of  0.5\% 
   of the wind speed $U_{10}$.} \label{fig_Santala}
 \end{figure}
@@ -168,7 +169,7 @@ The difference between the Lagragian mean velocity, which is the speed or water 
 \end{eqnarray}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htb]
-\includegraphics[width=0.9\linewidth]{FIGURES/Us_PAPA_62069_line.pdf}
+\includegraphics[width=0.9\linewidth]{FIGS_CH_AIRSEA/Us_PAPA_62069_line.pdf}
 \caption{Example of mean value (in red) of the surface Stokes drift vector norm $U_{ss}=|(U_{ss},V_{ss})|$ as a function of wind speed for two locations: station PAPA in the North-East Pacific, and buoy 62069 off the French Atlantic coast. These are obtained by integrating the wave spectrum up to 0.5~Hz. The black symbols show the mean plus or minus one standard deviation for each wind speed. The dashed grey line is $U_S = 0.01 U_{10}$.   \label{fig:USU10}}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -199,14 +200,14 @@ Still the modeled drift is low by  0.5 to 1.5\% of $U_{10}$ compared to the typi
 \section{Langmuir circulation}
 %%%%%%%%%%%%% figure
 \begin{figure}
-\centerline{\includegraphics[width=0.7\textwidth]{FIGURES/SmithStoryOfMixing.pdf}}
+\centerline{\includegraphics[width=0.7\textwidth]{FIGS_CH_AIRSEA/SmithStoryOfMixing.pdf}}
   \caption{Langmuir cells (figure by J. A. Smith)} \label{fig_Langmuir}
 \end{figure}
 %%%%%%%%%%%%% end of figure
 Indeed the velocities in the upper ocean are not homogeneous horizontally \citep{Weller&al.1985}. Many observations, starting with 
 \cite{Langmuir1938} have revealed lines of convergence where foam, flotsam, sargassum and any buoyant material gathers at the surface \citep{Thorpe&al.2003b}. 
 These lines are roughly aligned with the wind direction, and correspond to the surface convergence of the rolls that form the Langmuir circulation (Figure \ref{fig_Langmuir}). These rolls emerge due to an instability of the mean vertical shear $\partial \widehat{u}/ \partial z$ that is  stretched by the Stokes 
-drift shear $\partial U_s/ \partial z$  and thus get their energy from the wave field via the turbulent kinetic energy production term $\overline{u'w'}\partial U_s/\partial z$, as detailed in chapter \ref{ch_vaguescourant3D}. The momentum balance that gives 
+drift shear $\partial U_s/ \partial z$  and thus get their energy from the wave field via the turbulent kinetic energy production term $\overline{u'w'}\partial U_s/\partial z$, as detailed in Part 3. The momentum balance that gives 
 these rolls was further analyzed by \cite{Suzuki&Fox-Kemper2016}. These rolls have been observed in most experiments in the ocean and in the laboratory \citep[e.g.][]{Thorpe1992,Melville&al.1998,Smith1999}, including in shallow water \citep{Marmorino&al.2005}. They are well reproduced in Large Eddy Simulations \citep[e.g.][]{Noh&al.2004,Harcourt&DAsaro2006,Sullivan&McWilliams2010} and can interact with mixed layer fronts \citep{Suzuki&al.2016}.
 
 The parameterization of Langmuir circulation in models that do not resolve them is the topic of active research \citep[e.g.][]{Li&Fox-Kemper2017}. 

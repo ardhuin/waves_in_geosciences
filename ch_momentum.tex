@@ -49,8 +49,10 @@ in the wave amplitude. This is given by the following Taylor expansion
     + O(\varepsilon^3),\label{eq:Stokes_drift_Taylor}
     \end{eqnarray}
 where $\mathbf{u}_2$  is the gradient of the second order potential $\phi_2$,
-    which comes in the solution of non-linear wave equation (\ref{surface comb}). That term can be rather complex to compute, and it is 
-done in chapter \ref{chnl2}. However, we do not need to worry about that term because the average over time of $\mathbf{u}_2$  is zero. 
+    which comes in the solution of nonlinear wave equation (see Part 3). 
+    %That term can be rather complex to compute, and it is 
+%done in chapter \ref{chnl2}. 
+However, we do not need to worry about that term because the average over time of $\mathbf{u}_2$  is zero. 
 We will thus only consider the last two terms which are given by products of linear terms. 
 
     First of all $\xi_h(t)$ is 90 degrees out of phase with $\mathbf{u}$, and 
@@ -95,8 +97,7 @@ The Stokes drift computed here is the pseudo-momentum of the wave field. When in
 \end{equation}
 with $E_t$ the wave energy per unit surface. Eq. (\ref{eq:momentum-energy}) is a very general result in physics for all types of waves. 
 It is the same result as the momentum of a photon $p=E/c$, where $c$ is the speed of light. For non-linear waves of finite 
-amplitude, the exact relationship is ${\mathbf M}^w=2 {E_c}/{C}$, where $E_c$ is the mean kinetic energy per unit surface \citep[][
-see chapter \ref{ch_nonlin_per}]{Longuet-Higgins1984}.
+amplitude, the exact relationship is ${\mathbf M}^w=2 {E_c}/{C}$, where $E_c$ is the mean kinetic energy per unit surface \citep[][]{Longuet-Higgins1984}.
 
 Finally, this transport can also be computed from the Eulerian velocity, 
 integrated from the bottom to the crest level, 
@@ -166,7 +167,7 @@ flux of momentum when the waves are present minus the flux when waves are absent
 waves and currents make it impossible to have the exact same current without the waves, in practice it means 
 that we assume the sea level to remain the same and we just set the orbital velocity to zero and the pressure becomes the hydrostatic pressure. 
 A more rigorous definition is given in \cite{Andrews&McIntyre1978b}
-and discussed in chapter \ref{ch_vaguescourant3D}. Anyway, let us make this thought experiment of  removing the waves, 
+and discussed in Part 3. Anyway, let us make this thought experiment of  removing the waves, 
  we define the first component of the radiation stresses by a phase average of the wave effects, 
 \begin{equation}
     S^{\mathrm{rad}}_{xx}=\overline{ \int_{-h}^\zeta p + \rho_w u^2 \mathrm{d}z }
@@ -289,7 +290,7 @@ S^{\mathrm{rad}}_{xx} & = & \rho_w g \left[ E \frac{C_g}{C} \cos^2 \theta
         +  \frac{E}{2}\left(2\frac{C_g}{C}-1\right)\right]\\
  S^{\mathrm{rad}}_{xy}=S^{\mathrm{rad}}_{yx} & = &  \rho_w g E \frac{C_g}{C} \sin \theta \cos \theta.
 \end{eqnarray}
-This result was obtained using linear wave theory. For periodic non-linear waves, $S^{\mathrm{rad}}$ is actually very close to the linear theory result, 
+This result was obtained using linear wave theory. For periodic nonlinear waves, $S^{\mathrm{rad}}$ is actually very close to the linear theory result, 
 with a difference that is less than  5\% for $kD < 0.3$. 
 
 In general the radiation stress is thus the sum of the wave momentum flux and a correction for the change 
