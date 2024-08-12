@@ -202,7 +202,7 @@ the target displacement in the SAR image due to the velocity towards the satelli
 where $U$ and $W$ are the amplitudes of the horizontal and vertical velocities given by eqs. (\ref{vitesse})-(\ref{eq:w}). 
 
 Assuming a uniform radar power scattered from the sea surface $\sigma_0$, and taking the $y$ dimension  along the azimuth, 
-the SAR image intensity is the incoherent sum at the displaced positions $y'$ of the power coming from the true pixe positions $y$, it is thus given by the inverse of Jacobian of the SAR displacements 
+the SAR image intensity is the incoherent sum at the displaced positions $y'$ of the power coming from the true pixel positions $y$, it is thus given by the inverse of Jacobian of the SAR displacements 
 $y \rightarrow y'=y+\delta$, \citep[see eq. 21  in][]{Hasselmann&Hasselmann1991}, 
 \begin{equation}
  J = \left|dy'/dy\right|,
@@ -288,7 +288,7 @@ Compared to the SAR systems on Envisat and Sentinel-1 described above, the KaRIN
 \item the noise of the interferometric phase is related to the distribution of these distances within a resolution pixel, hence the significant wave height of the waves that are not resolved by the image. 
 \end{itemize}
 
-When trying to analyse SWOT data at small scales, it is thus really important to understand what is resolved, what is not, and how the unresolved surface elevations give spurious signals in the resolved part: indeed the imaging of the surface at near-nadir angles meas that all targets that have the same range will fall in the same pixel, even though they are not at the same $(x,y)$ position. This leads to a fairly nonlinear image-blurring or image-enhancing effect called "range-bunching": just like velocity bunching, which distorts or enhances the image in the azimuth direction, range bunching leads to distotions and blurring in range. Figure \ref{fig:SWOTswell} shows some example of wave signatures in SWOT surface elevation maps, that still have to be analyzed quantitatively.
+When trying to analyse SWOT data at small scales, it is thus really important to understand what is resolved, what is not, and how the unresolved surface elevations give spurious signals in the resolved part: indeed the imaging of the surface at near-nadir angles meas that all targets that have the same range will fall in the same pixel, even though they are not at the same $(x,y)$ position. This leads to a fairly nonlinear image-blurring or image-enhancing effect called "range-bunching": just like velocity bunching, which distorts or enhances the image in the azimuth direction, range bunching leads to distortions and blurring in range. Figure \ref{fig:SWOTswell} shows some example of wave signatures in SWOT surface elevation maps, that still have to be analyzed quantitatively.
 %%%%%%%%%%%%% figure
 \begin{figure}[htb]
 \centerline{\includegraphics[width=\textwidth]{FIGS_CH_SAT/SWOTSWELL.pdf}}

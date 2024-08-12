@@ -1,11 +1,11 @@
 \section{Introduction}
 Chapter \ref{ch2} has shown how random waves can be usually treated as a 
-sum of linear waves with random phases. Chapter \ref{ch_evol_profond} presented how it evolves under the influence of weak non-linearities 
+sum of linear waves with random phases. Chapter \ref{ch_sourceterms} presented how it evolves under the influence of weak non-linearities 
 as described by a wave action equation. Non-linearities actually become stronger in shallow water when the waves are less dispersive ($kD << 1$), 
 and we have to reconsider the non-linear effects. In chapter \ref{ch1b} we have introduced the two small parameters 
 $\varepsilon=ka$ and $\delta=a/D$. The nonlinear effects that we will discuss here occur when the parameter $U_r = \delta^3/\varepsilon^2= a/k^2 D^3$ is 
 of order 1. This parameter was introduced by \cite{Ursell1953}. The regime $U_r  \ll 1$ corresponds to the weak nonlinearity already 
-discussed in chapter  \ref{ch_evol_profond}. 
+discussed in chapter  \ref{ch_sourceterms}. 
 
 The stronger non-linearity that occurs for $U_r=O(1)$ correspond to a near-resonance at second order, i.e. $k_3 \simeq k_1 + k_2$ and 
  $f_3 = f_1 \pm f_2$, with the plus sign giving super-harmonics of higher frequency, and the minus sign giving sub-harmonics of very low frequency 
@@ -34,7 +34,7 @@ Among these cnoidal waves, the classical solitary wave solution is,
 \end{equation}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% figure
 \begin{figure}
-\centerline{\includegraphics[width=0.8\textwidth]{FIGURES/CH15/soliton.pdf}}
+\centerline{\includegraphics[width=0.8\textwidth]{FIGS_CH_SURF/soliton.pdf}}
 %  \vspace{8.0cm}
   \caption{Solitary wave given by eq. (\ref{eq:solitary}) that is a solution of the KdV equation (\ref{eq:KdV}) in the case  $D=10$~m}
 \label{soliton}
@@ -62,7 +62,7 @@ for a shore-normal incidence $\theta=0$.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htb]
  \vspace{9pt}
-\centerline{\includegraphics[width=0.7\linewidth]{FIGURES/CH15/wave_shape_near_breaking.pdf}}
+\centerline{\includegraphics[width=0.7\linewidth]{FIGS_CH_SURF/wave_shape_near_breaking.pdf}}
  \caption{Wave profiles computed using the numerical solution method by\cite{Dean1965} and \cite{Dalrymple1974} 
  at 60th order for a 3~m water depth, in the case of deep water waves in (a) and (b) with a period $T=1.5$s ($kD \simeq 5$), and 
  shallow water in  (c) and (d)  with $T=8$s, $kD \simeq 0.45$. The arrows represent orbital velocities. 
@@ -97,7 +97,7 @@ previously known $kH/2 = 0.44$.  Miche's approximation is very accurate.  Figure
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htb]
  \vspace{9pt}
-\centerline{\includegraphics[width=\linewidth]{FIGURES/CH15/wave_stream_Hmax.pdf}}
+\centerline{\includegraphics[width=\linewidth]{FIGS_CH_SURF/wave_stream_Hmax.pdf}}
  \caption{Steepness of nearly breaking waves, $Y=H_{max}/L$. The original breaking criterion of Miche (1944) is recalled. 
  A new
  criterion, using a second order polynomial fit for $H/L$ as a function of $X=\tanh(kD)$ is given. 
@@ -128,7 +128,7 @@ Besides the water depth, the local bottom slope also has an influence on
 the shape of breaking waves, as shown in figure \ref{f_surf_cerc}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htb]
-\centerline{\includegraphics[width=0.8\textwidth]{FIGURES/CH15/f_surf_cerc_plus.png}}
+\centerline{\includegraphics[width=0.8\textwidth]{FIGS_CH_SURF/f_surf_cerc_plus.png}}
 \caption{Examples of (a) spilling, (b) plunging breakers, taken from Coastal Engineering Manual - Part II (2002).  (c et d) 
 are not so nice pictures of a surging breaker on a steep beach and on a rocky point (Ruscumunoc beach, Plouarzel, France).} \label{f_surf_cerc}
 \end{figure}
@@ -168,7 +168,7 @@ could explain the onshore migration of sand bars.
 
 %%%%%%%%%%%%%
 \begin{figure}
-\centerline{\includegraphics[width=\textwidth]{FIGURES/CH15/f_surf_formeCox.pdf}}
+\centerline{\includegraphics[width=\textwidth]{FIGS_CH_SURF/f_surf_formeCox.pdf}}
  \caption{Time series of surface elevation before and after wave breaking, for monochromatic waves with $T=2.2$~s and $H_0 =0.115$~m over a laboratory beach of 
  constant slope $\beta=1/35$ \citep[taken from][]{Cox1995}. These are spilling breakers with an Iribarren number $\xi_0 = 0.23$.  
  The distance is measured from the point $x=0$ of incipient breaking. \label{f_surf_formeCox}}
@@ -180,7 +180,7 @@ could explain the onshore migration of sand bars.
 In the case of random waves, the wave evolution is more complex. 
 %%%%%%%%%%%%% figure
 \begin{figure}[htb]
-\centerline{\includegraphics[width=0.6\textwidth]{FIGURES/surfer_en.pdf}}
+\centerline{\includegraphics[width=0.6\textwidth]{FIGS_CH_SURF/surfer_en.pdf}}
 %\vspace{3.64in}
   \caption{Evolution of significant wave height during breaking}
     {Results of the model by \cite{Thornton&Guza1986}  for a wave period $T=12$~s and 20$^\circ$ incidence angle 
@@ -190,7 +190,7 @@ In the case of random waves, the wave evolution is more complex.
 \end{figure}
 %%%%%%%%%%%%% end of figure
 Looking at the energy only, it is possible to have a good approximation of the 
-evolution of the wave energy with a wave dissipation parameterized following the hydraulic jump model presented in chapter \ref{ch_sds}. This was first 
+evolution of the wave energy with a wave dissipation parameterized following the hydraulic jump model presented in chapter \ref{ch_sourceterms}. This was first 
 developed in models for the total wave energy by \cite{Battjes&Janssen1978} and \cite{Thornton&Guza1983}. 
 An example result from the model by Thornton and Guza, is shown in figure \ref{fig:surfer}. 
 
@@ -242,7 +242,7 @@ Real waves in shallow water are intermediate between these two extremes and harm
 Nearshore Sediment Transport Study (NSTS) experiment. 
 %%%%%%%%%%%%% figure
 \begin{figure}[htb]
-\centerline{\includegraphics[width=\textwidth]{FIGURES/CH15/Elgar_Guza_spectra.pdf}}
+\centerline{\includegraphics[width=\textwidth]{FIGS_CH_SURF/Elgar_Guza_spectra.pdf}}
 %\vspace{3.64in}
   \caption{Spectral and bi-spectral evolution recorded on February 2, 1980.}
     {The position of bottom-mounted pressure gauges is shown  in  the upper-middle panel, from 9 m depth to 1.1 m depth. 
@@ -278,7 +278,7 @@ As a result, most spectral wave models have adopted relatively crude parameteriz
  to the swash zone, with a typical wind-sea spectrum transforming into a spectrum dominated by motions at frequencies below 0.04~Hz.
 %%%%%%%%%%%%% figure
 \begin{figure}[htb]
-\centerline{\includegraphics[width=0.8\textwidth]{FIGURES/CH15/Elgar_Guza_spectra_IG.pdf}}
+\centerline{\includegraphics[width=0.8\textwidth]{FIGS_CH_SURF/Elgar_Guza_spectra_IG.pdf}}
 %\vspace{3.64in}
   \caption{Spectra of surface elevation recorded in Santa Barbara on February 4, 1980.}
     {Measurements at $D=0$~m were performed with a run-up wire: the elevation is not at a fixed position in $x$ but along the beach profile. Adapted 
@@ -290,7 +290,7 @@ These long period oscillations of the water level are readily observed by video 
 is very important for the understanding of coastal hazards. 
  %%%%%%%%%%%%% figure
 \begin{figure}[htb]
-\centerline{\includegraphics[width=\textwidth]{FIGURES/runup_Stockdon.pdf}}
+\centerline{\includegraphics[width=\textwidth]{FIGS_CH_SURF/runup_Stockdon.pdf}}
 %\vspace{3.64in}
   \caption{Measurement of run-up using a video system}
     {Left: Snapshot of the beach at Duck, North Carolina, with the white line marking the position of a transect. Right: 
@@ -306,7 +306,7 @@ The highest measured IG wave heights, around 2.5~m, was recorded on the cliff
 of the small island of Banneg, France, as shown in figure \ref{fig:NSTS_IG}. 
  %%%%%%%%%%%%% figure
 \begin{figure}[htb]
-\centerline{\includegraphics[width=\textwidth]{FIGURES/Banneg_IG.pdf}}
+\centerline{\includegraphics[width=\textwidth]{FIGS_CH_SURF/Banneg_IG.pdf}}
 %\vspace{3.64in}
   \caption{Large infragravity wave heights measured on Banneg Island, France.}
     {Left: (a) Time series of pressure converted to surface elevation (assuming hydrostatic pressure) from the sensors at the top of the cliff (P2, red) and the bottom of the cliff (P3, blue). 
@@ -320,8 +320,7 @@ of the small island of Banneg, France, as shown in figure \ref{fig:NSTS_IG}.
 
 \subsection{Theories for IG waves generation}
 A first theoretical explanation for the formation of infra-gravity waves was given by \cite{Witham1962} and \cite{Longuet-Higgins&Stewart1962},  looking 
-at the flow response to the passage of wave groups. They actually gave two derivations, the first follows the perturbation method used in chapter \ref{ch1b} and 
-\ref{chnl2}. The second method, which we will use here, is only applicable when wave groups are long compared to the water depth, 
+at the flow response to the passage of wave groups. They actually gave two derivations, the first follows the perturbation method used in chapter \ref{ch1b}. The second method, which we will use here, is only applicable when wave groups are long compared to the water depth, 
 and uses the wave-averaged mass and momentum equation, (\ref{Phillips_mom}) and (\ref{Phillips_mass}). 
 Neglecting 
 the Coriolis force, advection, and surface and bottom friction, these become, for waves propagating in the $x$ direction only 
@@ -355,7 +354,7 @@ It should be noted that this bound wave response has a singularity in the limit 
 the limit into which the interaction of two short waves and the long wave becomes resonant. 
 %%%%%%%%%%%%% figure
 \begin{figure}[htb]
-\centerline{\includegraphics[width=0.6\textwidth]{FIGURES/CH15/Generation_IG_en.pdf}}
+\centerline{\includegraphics[width=0.6\textwidth]{FIGS_CH_SURF/Generation_IG_en.pdf}}
 %\vspace{3.64in}
   \caption{Schematic of bound infragravity waves associated to wave groups.}
     \label{IGfig}
@@ -365,7 +364,8 @@ the limit into which the interaction of two short waves and the long wave become
 This 180$^\circ$ phase shift between the wave energy and the long waves was indeed verified in some experiments, typically just outside the surf zone on 
 gently sloping beaches, but it is typically less in the surf zone \citep{Elgar&Guza1985b}. This may be due to the difference between  the flat bottom 
 solution where the long wave is exactly bound, and the real case of a varying depth in which the long wave is partially free. For a general wave 
-spectrum with waves in all directions, the theoretical bound response is integral over all possible pairs of waves, as detailed in chapter \ref{chnl2}, and the theory 
+spectrum with waves in all directions, the theoretical bound response is integral over all possible pairs of waves, %as detailed in chapter \ref{chnl2}, 
+and the theory 
 is well verified over a flat bottom \citep{Herbers&al.1994a}. The free and bound IG wave energy can be separated using a bi-spectral analysis  
 \citep{Herbers&al.1994a}. Free IG energy usually dominates even in 8~m depth, and even more so in deeper water \citep{Herbers&al.1995}. 
 
@@ -401,7 +401,7 @@ H_{IG}   =  4 \sqrt{\int_{0.05~\mathrm{mHz}}^{30~\mathrm{mHz}} \widehat{E}_{IG}(
 %A global model with such a source of free infragravity waves at the coast gives average IG wave heights shown in figure \ref{fig:IG_global}.
  %%%%%%%%%%%%% figure
 %\begin{figure}[htb]
-%\centerline{\includegraphics[width=0.7\textwidth]{FIGURES/IG_climatology.pdf}}
+%\centerline{\includegraphics[width=0.7\textwidth]{FIGS_CH_SURF/IG_climatology.pdf}}
 %\vspace{3.64in}
 %  \caption{Mean values of $H_{IG}$ over (a) January and February 2008, (b) June and July 2008. 
 %Small squares with numbers correspond to the location of DART stations 

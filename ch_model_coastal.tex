@@ -63,7 +63,7 @@ Also, in order to optimize the model cost, grids that allow higher resolution wh
 %très lente.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% figure
 \begin{figure}
-\centerline{\includegraphics[width=0.8\textwidth]{FIGURES/Roland_diffusion.pdf}}
+\centerline{\includegraphics[width=0.8\textwidth]{FIGS_CH_MODELCOAST/Roland_diffusion.pdf}}
 %\vspace{3.64in}
 \caption{Test case with a wave spectrum propagating obliquely over a broad and shallow continental shelf, with a mean direction starting at 60 degrees from shore normal: the directional spread should decrease as the water depth decreases and all wave components are refracted to the shore-normal direction. In numerical models, this refraction is not exact. Here the test involves three different models: one uses ray-tracing \citep{Ardhuin&Herbers2005} and the others are SWAN with 2 different advection schemes and two different spatial resolutions in the top panel, and Contour Residual Distribution schemes \citep{Csik&al.2002} of different orders in the Wind Wave Model of \cite{Roland2008}, using triangle-based grids, in the bottom panel. Schemes  N1 and N2 are implicit while  N and FCT are explicit. Reproduced from \cite{Roland2008}.} \label{Aaron_shelf}
 \end{figure}
@@ -83,7 +83,7 @@ At the same time, the numerical diffusion of some numerical schemes may compensa
 \section{Parameterizations of physical processes}
 
 \subsection{Bottom friction}
-Many models still use an empirical "JONSWAP" parameterization, presented in chapter \ref{ch_wbbl}, that has very little connection with what happens in the bottom boundary layer, beyond the obvious transformation of the surface elevation spectrum into a bottom velocity spectrum.  Indeed, bottom friction is only significant where bottom velocities are large enough. The reason for this default empirical choice is that other choices require the use of some information about bottom sediments. In practice we found that using a ripple parameterization and assuming a grain size of 0.2~mm (coarse sand) everywhere was generally acceptable. Obviously, if information on the bottom is available, it should be used: friction over rock or mud can indeed be many times stronger than over sand \citep{Elgar&Raubenheimer2008,Monismith2007}.
+Many models still use an empirical "JONSWAP" parameterization, presented in chapter \ref{ch_bbl}, that has very little connection with what happens in the bottom boundary layer, beyond the obvious transformation of the surface elevation spectrum into a bottom velocity spectrum.  Indeed, bottom friction is only significant where bottom velocities are large enough. The reason for this default empirical choice is that other choices require the use of some information about bottom sediments. In practice we found that using a ripple parameterization and assuming a grain size of 0.2~mm (coarse sand) everywhere was generally acceptable. Obviously, if information on the bottom is available, it should be used: friction over rock or mud can indeed be many times stronger than over sand \citep{Elgar&Raubenheimer2008,Monismith2007}.
 
 \subsection{Triad wave-wave interactions: sum interactions}
 Spectrum evolution around the surf zone is severely affected by the near-resonant triad interactions which can produce a net transfer of energy from the peak of the spectrum to harmonics, but also a flow of energy from the harmonics back to the peak. An accurate description of this process requires some knowlege of the bispectrum that is not available in spectral phase-averaged models. 
@@ -107,7 +107,7 @@ Thanks to their continuous time series it is often easier to use in situ measure
  
 %%%%%%%%%%%%% figure
 \begin{figure}[htb]
-\centerline{\includegraphics[width=0.7\textwidth]{FIGURES/NORGASUG_mesh.pdf}}
+\centerline{\includegraphics[width=0.7\textwidth]{FIGS_CH_MODELCOAST/NORGASUG_mesh.pdf}}
   \caption{Map showing the North Sea - Channel - Biscay  mesh used for our hindcasts and forecasts. 
 Magenta and green circles show location of permanent and temporary buoys used for calibration 
 or validation in addition to satellite altimeter data. Inset are zooms of four grid areas, showing typical alongshore resolutions, 
@@ -119,7 +119,7 @@ The full mesh contains 110,000 wet nodes. Reproduced from \cite{Roland&Ardhuin20
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%% figure
 \begin{figure}[htb]
-\centerline{\includegraphics[width=\textwidth]{FIGURES/Johanna.jpg}}
+\centerline{\includegraphics[width=\textwidth]{FIGS_CH_MODELCOAST/Johanna.jpg}}
   \caption{Wave heights simulated around Brittany and in the Channel the March 10, 2008 at 15h00 UTC. 
   \label{fig:Hs_storm}}
 \end{figure}
@@ -130,7 +130,7 @@ The full mesh contains 110,000 wet nodes. Reproduced from \cite{Roland&Ardhuin20
 % Use the relevant command to insert your figure file.
 % For example, with the graphicx package use
 
-  \includegraphics[width=\textwidth]{FIGURES/NGUG_ALTI_v2.pdf}
+  \includegraphics[width=\textwidth]{FIGS_CH_MODELCOAST/NGUG_ALTI_v2.pdf}
 
 % figure caption is below the figure
 \caption{Validation of the bay of Biscay model grid for year 2011 using all available altimeter data. 
@@ -149,7 +149,7 @@ Results are only shown for bins with at least 4 SOs for the bias and 6 SOs for t
 % Use the relevant command to insert your figure file.
 % For example, with the graphicx package use
 
-  \includegraphics[width=\textwidth]{FIGURES/NGUG_timeseries_v2.pdf}
+  \includegraphics[width=\textwidth]{FIGS_CH_MODELCOAST/NGUG_timeseries_v2.pdf}
 
 % figure caption is below the figure
 \caption{Time series of observed and modelled significant wave height at several buoys using the SHOWEX (blue diamonds) 
@@ -166,7 +166,7 @@ We close this chapter with one example of modeled and observed time series at di
 % Use the relevant command to insert your figure file.
 % For example, with the graphicx package use
 
-  \includegraphics[width=\textwidth]{FIGURES/Duck_validation.pdf}
+  \includegraphics[width=\textwidth]{FIGS_CH_MODELCOAST/Duck_validation.pdf}
 
 % figure caption is below the figure
 \caption{Left: depth profile and location $D_1$ to $D_5$ where waves were measured. Right: time series of the rms wave height (defined as $H_{\mathrm{rms}}=H_s / \sqrt{2}$) at the 5 measurement locations.  Reproduced from \cite{Filipot&Ardhuin2012}.}
@@ -198,7 +198,7 @@ We close this chapter with one example of modeled and observed time series at di
 
 %%%%%%%%%%%%% figure
 %\begin{figure}
-%\centerline{\includegraphics[width=1.0\textwidth]{FIGURES/bretagne_map.pdf}}
+%\centerline{\includegraphics[width=1.0\textwidth]{FIGS_CH_MODELCOAST/bretagne_map.pdf}}
 %  \caption{Exemples de carte de hauteur des vagues en mer d'Iroise, calculée avec la version
 %  non-structurée du code WAVEWATCH III (schéma CRD-N de Csik), et, pour un autre jour, avec
 %  un modèle de propagation linéaire (refraction-diffraction). On retrouve les mêmes structures. On
@@ -208,7 +208,7 @@ We close this chapter with one example of modeled and observed time series at di
 
 %%%%%%%%%%%%% figure
 %\begin{figure}
-%\centerline{\includegraphics[width=1.0\textwidth]{FIGURES/Hs_valid_iroise.pdf}}
+%\centerline{\includegraphics[width=1.0\textwidth]{FIGS_CH_MODELCOAST/Hs_valid_iroise.pdf}}
 %  \caption{Evaluation de modèles de propagation en mer d'Iroise}{En haut, résultats pour la bouée Iroise
 %  en termes de hauteur (Hs), et direction moyenne. En violet le calcul est fait avec la version
 %  non-structurée du code WAVEWATCH III utilisant le paramétrage décrit ici, en bleu par tracé de rayons

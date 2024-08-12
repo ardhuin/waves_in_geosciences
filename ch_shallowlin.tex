@@ -1,5 +1,5 @@
 In chapter \ref{ch1b}, we assumed that the wave field had spatially homogeneous amplitudes, propagating over a flat bottom. 
-We will now allow the water depth to vary, which, like variations in the current velocity in chapter \ref{ch_courant}, causes important 
+We will now allow the water depth to vary, which, like variations in the current velocity in chapter \ref{ch_current}, causes important 
 wave modifications. 
 
 \section{Wave shoaling}
@@ -101,7 +101,7 @@ $\mathrm{d}s/\mathrm{d}t=C_g$ in the direction $\theta$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% figure
 \begin{figure}[htb]
-\centerline{\includegraphics[width=0.7\textwidth]{FIGURES/refraction_Snel.pdf}}
+\centerline{\includegraphics[width=0.7\textwidth]{FIGS_CH_SHALLOWLIN/refraction_Snel.pdf}}
     \caption{Propagation directions for incident or reflected waves, for each part of two
     phase speed $C$ discontinuities. For a natural topography, refraction is steady and the intensity
     of reflected waves is generally weak.}
@@ -111,7 +111,7 @@ $\mathrm{d}s/\mathrm{d}t=C_g$ in the direction $\theta$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% figure
 \begin{figure}
-\centerline{\includegraphics[width=0.8\textwidth]{FIGURES/Long_Beach.pdf}}
+\centerline{\includegraphics[width=0.8\textwidth]{FIGS_CH_SHALLOWLIN/Long_Beach.pdf}}
   \caption{Refraction diagram for waves of 20~s period from 160$^\circ$ at Long Beach harbor, California}{From \cite{Lacombe1950}. 
   Note the units on the dashed depth contours: 1 fathom is 1.83~m.  }
    \label{RaysLongBeach}
@@ -120,7 +120,7 @@ $\mathrm{d}s/\mathrm{d}t=C_g$ in the direction $\theta$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% figure
 \begin{figure}
-\centerline{\includegraphics[width=0.8\textwidth]{FIGURES/Cap_Breton.png}}
+\centerline{\includegraphics[width=0.8\textwidth]{FIGS_CH_SHALLOWLIN/Cap_Breton.png}}
   \caption{Refraction diagram for 12~s swell over the Gouf de Cap Breton}{From \cite{Lacombe1950}.}  
    \label{RaysCapBreton}
   \end{figure}
@@ -128,7 +128,7 @@ $\mathrm{d}s/\mathrm{d}t=C_g$ in the direction $\theta$.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% figure
 \begin{figure}
-\centerline{\includegraphics[width=0.63\textwidth]{FIGURES/NCEX_rays.png}}
+\centerline{\includegraphics[width=0.63\textwidth]{FIGS_CH_SHALLOWLIN/NCEX_rays.png}}
   
     \caption{Examples of two wave rays methods}{a. "Traditional" computation for a west swell with a 15-s period,
     near La Jolla, California. The location of some the wave buoys deployed during the NCEX experiment is indicated
@@ -190,7 +190,7 @@ So far, we have considered that the wave amplitude and the properties of the med
 propagate vary slowly in comparison to the wave period on wave length (WKB approximation).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% figure
 \begin{figure}
-\centerline{\includegraphics[width=0.4\textwidth]{FIGURES/NTUA_NCEX_en.png}}
+\centerline{\includegraphics[width=0.4\textwidth]{FIGS_CH_SHALLOWLIN/NTUA_NCEX_en.png}}
   \caption{Example of propagation of a monochromatic 16~s period, 1~m amplitude offshore swell.}
   {Computation made with the finite differences elliptical extended Berkhoff model, from Athanassoulis et Belibassakis
   (1999)}
@@ -287,7 +287,7 @@ of a factor 5 in the wave amplitude across the Scripps canyon wall, over a dista
 
 
 \begin{figure}
-\centerline{\includegraphics[width=0.5\textwidth]{FIGURES/comparison_at_all_sites.pdf}}
+\centerline{\includegraphics[width=0.5\textwidth]{FIGS_CH_SHALLOWLIN/comparison_at_all_sites.pdf}}
   \caption{Wave observations and modeling during NCEX.}
   {The significant wave heights ($H_s$) for the frequency band 
    0.04-0.08~Hz are computed from the spectra measured from 1:30 to
@@ -321,7 +321,7 @@ Hence, the magnitude of the reflection, that can be characterized by the ratio $
 strongly with the bottom slope $\beta$ and with the wave period $T$. 
 %%%%%%%%%%%%% figure
 \begin{figure}[htb]
-\centerline{\includegraphics[width=0.5\textwidth]{FIGURES/R2_vs_Miche.png}}
+\centerline{\includegraphics[width=0.5\textwidth]{FIGS_CH_SHALLOWLIN/R2_vs_Miche.png}}
   \caption{Energy Reflection coefficient $R^2$ as a function of the Miche number $M$, From Elgar et al. (1994), copyright American Meteorological Society.}
 \label{fig:Miche_ref}
 \end{figure}
@@ -355,8 +355,7 @@ B_{{\mathbf l}}\left( \widetilde{\mathbf x}\right)
 \mathrm{e}^{\mathrm{i}{\mathbf l}\bcdot{\mathbf x}},  \label{h}
 \end{equation}
 and to calculate the interaction of the wave spectrum with each sine wave.
-Strictly speaking, we obtain a wave forcing by the topography as obtained
-in Chapter 2 for the wind turbulence (Hasselmann, 1966\nocite{Hasselmann1966}).
+Strictly speaking, we obtain a wave forcing by the topography. % as obtained in Chapter 2 for the wind turbulence (Hasselmann, 1966\nocite{Hasselmann1966}).
 At fist order in bottom slope ($\varepsilon = lh$), we obtain a resonance between
 two waves with wave numbers ${\mathbf k}$ et ${\mathbf k}^{\prime }$, such as
 $k=k^\prime$, that exchange energy thanks to bottom ripples with wave number
@@ -366,7 +365,7 @@ in other directions (figure \ref{fig:Braggscattering2}).
 
 %%%%%%%%%%%%% figure
 \begin{figure}[htb]
-\centerline{\includegraphics[width=\textwidth]{FIGURES/figure_whitepaper72.jpg}}
+\centerline{\includegraphics[width=\textwidth]{FIGS_CH_SHALLOWLIN/figure_whitepaper72.jpg}}
   \caption{Bathymetry of a region with underwater dunes in the south of the North Sea.}{On the
   spectrum (b) of this bathymetry, the contours indicate the value  $log_{10}[4\pi F_B({\mathbf l})]$
   with F$_B$ the bottom spectrum. The circles indicate the components ${\mathbf l}$ that interact
@@ -377,7 +376,7 @@ in other directions (figure \ref{fig:Braggscattering2}).
 
 %%%%%%%%%%%%% figure
 \begin{figure}[htb]
-\centerline{\includegraphics[width=0.8\textwidth]{FIGURES/figure_whitepaper73.jpg}}
+\centerline{\includegraphics[width=0.8\textwidth]{FIGS_CH_SHALLOWLIN/figure_whitepaper73.jpg}}
   \caption{Example of spectral evolution caused by bottom reflection for the wave spectrum shown in 
   figure \ref{fig:Braggscattering1} and applied in 20~m depth }{(a) computation domain, (b) incident spectrum imposed at point F,
   (c) and (d) evolution term of the spectrum with and without current, (e) spectrum at point O, 40 km inside the domain after

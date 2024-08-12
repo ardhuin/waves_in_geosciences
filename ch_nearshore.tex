@@ -3,7 +3,7 @@ The storm surge is generally defined as the difference between the observed mean
 However, even if the water level oscillations caused by waves are filtered out, the storm surge does contain some direct effect of the waves: this is called the "wave set up". This wave set-up can be large part of the storm surge. For example, it was estimated to be about 1~m out of the 8~m of storm surge that flooded New Orleans during the passage of Hurricane Katrina in 2005  \citep{Resio&Westerink2008}. The proportion of set-up in the storm surge increases. On the French Atlantic coast, the highest storm surge recorded is around 4~m on the steep cliffs of Bannec Island near Molne \citep{Ardhuin&Magne2010,Sheremet&al.2014}. In that case the wave set-up exceeds 80\% of the storm surge. In the context of rising global sea level exacerbated by land subsidence in many coastal cities, understanding and managing the wave-induced extra meters of sea level will thus become more and more important. This, together with wave-induced currents that are the main source of nearshore sediment transport, are the main motivations for the present chapter. 
 
 \section{Mean flow equations}
-We have established in chapter \ref{ch_momentum} that waves introduce and extra flux of momentum, the radiation stress $S^{\mathrm{rad}}$ (which is a 2 by 2 tensor) and a mass flux, the Stokes transport ${\mathbf M^w}$ (\ref{Phillips_mass}) which is a horizontal vector. We have given in chapter \ref{ch_courant} the form of the wave-averaged momentum and mass conservation equations. We are now going to look at the consequences of these wave-induced fluxes in the surf zone. 
+We have established in chapter \ref{ch_momentum} that waves introduce and extra flux of momentum, the radiation stress $S^{\mathrm{rad}}$ (which is a 2 by 2 tensor) and a mass flux, the Stokes transport ${\mathbf M^w}$ (\ref{Phillips_mass}) which is a horizontal vector. We have given in chapter \ref{ch_current} the form of the wave-averaged momentum and mass conservation equations. We are now going to look at the consequences of these wave-induced fluxes in the surf zone. 
 
 We recall  that the mean water depth is 
 $D=\overline{\zeta}+h$ and the total mass flux caused by a mean current and the waves is  ${\mathbf M}=\rho
@@ -106,7 +106,7 @@ The depth difference $\left(h_d-h\right)$ is positive in the surf zone and the w
 Measurements of mean sea level in the surf zone haev generaly confirmed the cross-shore momentum balance between the convergence of the radiation stresses and the slope in the mean sea level. However, in reality, bottom friction can be an important term for shallow water, in particular $D < 1~m$ in the examples shown in Fig. \ref{Apotsos_setup}. 
 %%%%%%%%%%%%% figure
 \begin{figure}
-\centerline{\includegraphics[width=0.7\textwidth]{FIGURES/Apotsos_setup.pdf}}
+\centerline{\includegraphics[width=0.7\textwidth]{FIGS_CH_NEARSHORE/Apotsos_setup.pdf}}
 %\vspace{3.64in}
   \caption{Wave set up on the beach: measurements and model}
     {Data were collected from September to November at locations 10 to 300~m from the shoreline at Duck, North Carolina. The data was sliced into 8.5 minute-long records, and the figure shows the observed mean sea level compared to the prediction using a model that integrates gradients of radiation stresses, with radiation stresses estimated from local wave measurements. One flavor of the model includes a parameterization for a "wave roller" which is represents the wave roller as an intermediate buffer of momentum between the waves and the mean flow. Bottom friction is parameterized here with an eddy viscosity that is a function of he wave height, giving bottom drag coefficient valies close to those of eq. (\ref{taub_LH70}) 
@@ -123,7 +123,7 @@ H_H=T_{m0,-1} \sqrt{g H_s},
 Many observations show that extreme water levels generally scale with this height $H_H$.  For a given depth profile, Fig. \ref{bannec_runup}  shows how $H_H$ gives a useful scale of extreme water levels measured at Bannec island (to be precise, the measurement is not a water level but a pressure converted to height above the sensor assuming hydrostatic equilibrium). 
 %%%%%%%%%%%%% figure
 \begin{figure}
-\centerline{\includegraphics[width=\textwidth]{FIGURES/bannec_runup.jpg}}
+\centerline{\includegraphics[width=\textwidth]{FIGS_CH_NEARSHORE/bannec_runup.jpg}}
 %\vspace{3.64in}
   \caption{Left: map of Bannec island, Center: topography profile along the A-A' transect, Right: Maximum surface elevation for every 10-minute record from October 2008 to March 2009, as a function of the offshore wave height and period estimated from the wave model of \cite{Ardhuin&Magne2010}. Blue squares correspond to an astronomical tide below the mean sea level, and red squares are for tide levels above 2.5~m.}
 \label{bannec_runup}
@@ -186,7 +186,7 @@ and the longshore current velocity is given by \citep{Thornton&Guza1986},
 One example of estimated surf zone current for a beach profile that includes a bar is shown in Fig. \ref{fig:surfer_cur}. The large magnitude of the current, of the order of 1~m/s is realistic. This current has also been called the "river of sand" as it is responsible for transporting sand along beaches in the direction of the dominant waves. 
 %%%%%%%%%%%%% figure
 \begin{figure}[htb]
-\centerline{\includegraphics[width=0.5\textwidth]{FIGURES/surfer_cur.pdf}}
+\centerline{\includegraphics[width=0.5\textwidth]{FIGS_CH_NEARSHORE/surfer_cur.pdf}}
 %\vspace{3.64in}
   \caption{Wave breaking and longshore current}
     {Results of the model by \cite{Thornton&Guza1986}  for the same case shown in Fig. \ref{fig:surfer}, namely a wave period $T=12$~s and 20$^\circ$ incidence angle 
@@ -213,7 +213,7 @@ The tracer is clearly transported along the coast by the longshore current and a
 
 %%%%%%%%%%%%% figure
 \begin{figure}[htb]
-\centerline{\includegraphics[width=0.9\textwidth]{FIGURES/surf_zone_pink.jpg}}
+\centerline{\includegraphics[width=0.9\textwidth]{FIGS_CH_NEARSHORE/surf_zone_pink.jpg}}
 %\vspace{3.64in}
   \caption{Longshore and cross-shore transport in the surf zone. (A) shows a release in the surfzone at Imperial Beach, south of San Diego, California,
 and (B) shows a release within an ebb tidal flow at New River Inlet, North Carolina. Figure from \cite{Clark&al.2014}, copyright American Meteorological Society.}
@@ -229,7 +229,7 @@ and (B) shows a release within an ebb tidal flow at New River Inlet, North Carol
 
 %%%%%%%%%%%%% figure
 %\begin{figure}
-%\centerline{\includegraphics[width=0.8\textwidth]{FIGURES/wave_over_step.pdf}}
+%\centerline{\includegraphics[width=0.8\textwidth]{FIGS_CH_NEARSHORE/wave_over_step.pdf}}
 %  \caption{Equilibre des forces pour des vagues au-dessus d'une marche
 %  lissée.}{En absence de réflexion et de dissipation des vagues, la  force correspondant à la divergence du flux de quantité de mouvement induit par les vagues se combine   avec la pression moyenne. Cette combinaison est généralement équilibrée par un gradient de pression hydrostatique associé   au gradient de la surface libre. L'accélération de la circulation moyenne   (petites flèches en pointillés) n'apporte, en général, qu'une faible  correction à cet équilibre. En absence de réflexion, il n'y a pas de force exercée par le fond, outre la pression hydrostatique.} \label{fig_wave_over_step}
 %\end{figure}
@@ -249,7 +249,7 @@ and (B) shows a release within an ebb tidal flow at New River Inlet, North Carol
 
 %%%%%%%%%%%%% figure
 %\begin{figure}
-%\centerline{\includegraphics[width=0.8\textwidth]{FIGURES/NTUA2_meanflow.pdf}}
+%\centerline{\includegraphics[width=0.8\textwidth]{FIGS_CH_NEARSHORE/NTUA2_meanflow.pdf}}
 %  \caption{Ecoulements Eulériens et Lagrangiens moyens pour des vagues au-dessus d'une marche  lissée.}{(a) Perturbation de pression $(p-\overline{p})/(\rho_w g)$ à $t=0$  telle que calculée avec le modèle NTUA-nl2 (Belibassakis and Athanassoulis 2002), qui résoud l'équation de Laplace à l'ordre 2 en pente des   vagues, pour des vagues d'amplitude $a=0.12$~m.  (b) Courant Eulérien moyen $-\widehat{u}$, et (c) composante horizontale de la pseudo-quantité de mouvement $P_1$, qui est ici égale à la dérive de Stokes. Les flèches indiquent le sens de l'écoulement.} \label{fig_NTUA2}
 %\end{figure}
 %%%%%%%%%%%%% end of figure
