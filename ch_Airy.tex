@@ -1,7 +1,7 @@
 This chapter explains how and why water moves in waves, once the waves have been generated. 
 A more logical sequence might have been to study the generation process of the waves first, but it is much more complex 
 and can only be understood once one knows how the waves move. The properties exposed in this chapter
-are thus common to all surface gravity waves, including tsunamis and wind-generated waves. 
+are independent of the generation mechanism, and thus common to all surface gravity waves, including tsunamis, ship wakes, and wind-generated waves. 
 
 In order to make things simple, we consider a flat, non-deformable bottom 
 located at $z=-h$, and periodic waves in both space and time. This may sound very restrictive, but waves at 
@@ -187,7 +187,15 @@ and
     +\frac{p}{\rho_w}+gz \right]=0.\label{eq:NStoBer}
 \end{equation}
 These two equations establish that the term in brackets is not a function of position and can 
-only be a function of time $\gamma(t)$. 
+only be a function of time $\gamma(t)$, 
+\begin{equation}
+    \frac{\partial \phi}{\partial t}
+    +\frac{1}{2}\left(
+    \left|\bnabla \phi\right|^2
+    +\left(\frac{\partial \phi}{\partial z}\right)^2
+    \right)
+    +\frac{p}{\rho_w}+gz =\gamma(t).\label{eq:Bernoulli}
+\end{equation}
 
 The other important equation given by the conservation of mass is linear, 
 The mass conservation equation was already linear, 
@@ -209,7 +217,7 @@ irrotational motion (A3), a flat bottom (A4).
 %le potentiel des vitesses varie spatialement comme une sinuso\EFde
 %(H5). 
 
-We shall now linearize the momentum equations (\ref{eq:NStoBer}), assuming that the wave amplitude is small enough to 
+We shall now linearize the momentum equation (\ref{eq:Bernoulli}), assuming that the wave amplitude is small enough to 
 neglect the non-linear terms. This is verified in chapter Part 3, provided that 
 the wave amplitude $a$ is much less than the wavelength $L$ and $a$ is much less than the mean water depth $D$. 
 
@@ -220,7 +228,7 @@ This gives the linearized Bernoulli equation
        -\frac{p}{\rho_w}-g z + \gamma(t).\label{Bernoulli_lin}
 \end{equation}
 Assuming that waves are propagating \footnote{In the presence of standing waves, $\gamma(t)$ 
-is an oscillating function of the order of $g a^2/L$, as derived by \cite{Miche1944d}.  \cite{Longuet-Higgins1950} further showed that this pressure field is actually an acoustic wave when the water compressibility is considered, which explains the generation of seismic and acoustic waves by ocean wind-generated waves.} at a speed $C$, the motion is periodic as a function of $x-C(t)$ and thus $\gamma(t)$ is a true constant, that can be determined from the dynamic boundary condition $p=\overline{p}_a$ at $z=\zeta$,
+is an oscillating function of the order of $g a^2/L$, as derived by \cite{Miche1944d}.  \cite{Longuet-Higgins1950} further showed that this pressure field is actually an acoustic wave when the water compressibility is considered, which explains the generation of seismic and acoustic waves by ocean wind-generated waves.} at a speed $C$, the motion is periodic as a function of $x-C t$ and thus $\gamma(t)$ is a true constant, that can be determined from the dynamic boundary condition $p=\overline{p}_a$ at $z=\zeta$,
 This gives the pressure as a function of the velocity potential, for $z< \zeta$, 
 \begin{equation}
     p=\overline{p}_a -{\rho_w}g(z-\zeta) 

@@ -111,6 +111,12 @@ latitudes beyond 66 degrees. Also, sea ice  produces echoes that differ from tho
 \end{figure}
 %%%%%%%%%%%%% end of figure
 
+Details will vary with different instruments, and here we will use the most simple case of radar altimeters. It was shown by \cite{Chelton&al.1989} that the sea echoes that contribute to the rising part of the waveforms, as shown on Fig. \ref{waveform}, are within a radius $r_C$ of the nadir, the point on the sea surface that is vertically below the satellite, with 
+\begin{equation}
+    r_C =\sqrt{\frac{ 2 h_o H_s+ 2 \delta_R}{1+h_o/R_E}} \label{eq:rC}
+\end{equation}
+where $h_o$ is the satellite orbit height above the ground, $R_E$ is the Earth radius and $\delta_R$ is the range resolution of the altimeter.  
+
 \subsection{delay-Doppler altimetry}\label{section:delay-Doppler}
 Another principle that can be used to refine the position and/or to measure the velocity of targets along the satellite flight path is the Doppler effect: fixed targets ahead of the radar are moving towards it, and hence have a higher frequency, while fixed targets that are behind along the satellite path 
 are moving away, giving a lower radar frequency. Typical low Earth orbits give a satellite velocity around $V=7$~km/s. Hence, a Ka-band system at 36~GHz frequency will see a Doppler shift

@@ -86,10 +86,19 @@ with the frequency peakedness defined as the reciprocal of the frequency bandwid
 $Q_f$ is a parameter that characterizes the shape of the frequency spectrum, and that is generally well correlated with the period $T_{m0,-1}$. 
 
 We note that almost the same result for the uncertainty of estimates $H_\tau$ can be obtained by starting from the $\chi^2$ distribution for 
-spectral densities. \cite{Young1986} noted that $E$ is the sum of $\chi^2$ distributed random variables and therefore is also $\chi^2$ distributed, with a number of degrees of freedom equal to $\nu_{f,H}=2/ Q_f^2 df$ where $df$ is the frequency resolution of the spectral analysis, corresponding to $df=1/(2 \tau)$. The wave height estimate $H_\tau$ is thus a $\chi$-distributed random variable with its variance and mean given by  functions of $\nu_{f,H}$. 
-For most practical applications we have 
+spectral densities. \cite{Young1986} noted that $E$ is the sum of $\chi^2$ distributed random variables and therefore is also $\chi^2$ distributed, with a number of degrees of freedom equal to 
 \begin{equation}
-\frac{\mathrm{std}(H_\tau)}{\mathrm{mean}(H_\tau)} =\sqrt{\frac{\Gamma^2(\nu_{f,H}/2) \nu_{f,H}}{2 \Gamma^2((\nu_{f,H}+1)/2)}-1} \simeq 0.5  Q_f / \sqrt{ 2 \tau },
+\nu_{f,H}=2/ Q_f^2 df
+\end{equation}
+ where $df$ is the frequency resolution of the spectral analysis, corresponding to $df=1/(2 \tau)$. The wave height estimate $H_\tau$ is thus a $\chi$-distributed random variable with its variance and mean given by  functions of $\nu_{f,H}$ and a ratio 
+ \begin{equation}
+\frac{\mathrm{std}(H_\tau)}{\mathrm{mean}(H_\tau)} =\sqrt{\frac{\Gamma^2(\nu_{f,H}/2) \nu_{f,H}}{2 \Gamma^2((\nu_{f,H}+1)/2)}-1}.
+   \label{eq:groups_var_nu}
+\end{equation}
+ 
+For most practical applications, the number of degrees of freedom is large enough and we can use
+\begin{equation}
+\frac{\mathrm{std}(H_\tau)}{\mathrm{mean}(H_\tau)} \simeq 0.5  Q_f / \sqrt{ 2 \tau },
    \label{eq:groups_var_1DY}
 \end{equation}
 where $\Gamma$ is the Euler gamma function. 
@@ -108,11 +117,31 @@ It is always possible to average over longer times but at some point one loses t
 
 
 \subsection{Spatial maps}
-Details will vary with different instruments, and here we will use the most simple case of radar altimeters. It was shown by \cite{Chelton&al.1989} that the sea echoes that contribute to the rising part of the waveforms, as shown on Fig. \ref{waveform}, are within a radius $r_C$ of the nadir, the point on the sea surface that is vertically below the satellite, with 
-\begin{equation}
-    r_C =\sqrt{\frac{ 2 h_o H_s+ 2 \delta_R}{1+h_o/R_E}} \label{eq:rC}
+Following the same steps we took for time series, we may define the wave height meeasured by altimeters $H_{L}$ as a spatial average of the envelope over a 
+square of side $L$. The wave height estimate $H_\tau$ is  again $\chi$-distributed random variable with its variance and mean given by  functions of $\nu_{f,H}$ and their ratio given by eq. \ref{eq:groups_var_nu}. The only difference is that now  $\nu_{f,H}$ is replaced by 
+\begin{equation} 
+\nu_{\mathrm{kk},H}=1/ Q_{\mathrm{kk},H}^2 dk_x dk_y \label{eq:nukk}
 \end{equation}
-where $h_o$ is the satellite orbit height above the ground, $R_E$ is the Earth radius and $\delta_R$ is the range resolution of the altimeter.  Following the same steps we took for time series, we may define the wave height meeasured by altimeters $H_{r}$ as a spatial average of the envelope over a disc of radius $r$, and if we had a swarm of any altimeters we could make a map of wave heights that would be given by 
+
+ where $dk_x dk_y$ is the spectral resolution of the spectral analysis, corresponding to $dk_x dk_y=(2 \pi)^2/(2 L)^2$, with 
+\begin{equation} 
+   Q_{\mathrm{kk}}^2 = \frac{  \int_{-\infty}^\infty \int_{-\infty}^\infty E^2(k_x,k_y)\mathrm{d}k_x \mathrm{d}k_y }{\left( \int_{-\infty}^\infty \int_{-\infty}^\infty E(k_x,k_y)\mathrm{d}k_x \mathrm{d}k_y  \right)^2} \label{eq:Qkk},
+\end{equation}
+where  $E(k_x,k_y)$ is the centrally symmetric double-sided spectrum. If one uses the single-sided spectrum instead, as we did for frequency spectra in eq. (\ref{eq:Qf}), the numerator of eq. (\ref{eq:nukk}) should be 2 instead of 1. 
+
+This expression is easily verified by taking a wave spectrum $E(k_x,k_y)$, simulating the ocean surface map $\zeta(x,y)$ using random phases, and computing the variance over square tiles of side $L$, as illustrated in Fig. \ref{fig:groups_maps}. The theory, combining eq. (\ref{eq:nukk}) and eq. (\ref{eq:groups_var_nu}) gives a good approximation, in cases where the tile size is much larger than the dominant wavelength. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htb]
+\centerline{\includegraphics[width=\textwidth]{FIGS_CH_GROUPS/std_maps.pdf}}
+%\vspace{3.64in}
+  \caption{Variability of $H_L$ in simulated surfaces from 2 different wave spectra, one with $Q_{\mathrm{kk}}=43$~m and the other with $Q_{\mathrm{kk}}=15$~m. These two spectra are shown below in Fig. \ref{figure:groups_storm2}.}
+\label{fig:groups_maps}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection{Along-track variability in altimeter data}
+Replacing our boxcar window for a square tile of side length $L$ with a disc of radius $r$ we can imagine that the local height is some convolution of the envelope
 \begin{equation}
     H_{r}(x,y) = 4\sqrt{\frac{2}{\pi}} (\eta \otimes g_{r})(x,y).
    \label{eq:relation_Hs_eta}
