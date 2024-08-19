@@ -88,7 +88,7 @@ $Q_f$ is a parameter that characterizes the shape of the frequency spectrum, and
 We note that almost the same result for the uncertainty of estimates $H_\tau$ can be obtained by starting from the $\chi^2$ distribution for 
 spectral densities. \cite{Young1986} noted that $E$ is the sum of $\chi^2$ distributed random variables and therefore is also $\chi^2$ distributed, with a number of degrees of freedom equal to 
 \begin{equation}
-\nu_{f,H}=2/ Q_f^2 df
+\nu_{f,H}=2/ Q_f^2 df \label{eq:nuf}
 \end{equation}
  where $df$ is the frequency resolution of the spectral analysis, corresponding to $df=1/(2 \tau)$. The wave height estimate $H_\tau$ is thus a $\chi$-distributed random variable with its variance and mean given by  functions of $\nu_{f,H}$ and a ratio 
  \begin{equation}
@@ -127,14 +127,14 @@ square of side $L$. The wave height estimate $H_\tau$ is  again $\chi$-distribut
 \begin{equation} 
    Q_{\mathrm{kk}}^2 = \frac{  \int_{-\infty}^\infty \int_{-\infty}^\infty E^2(k_x,k_y)\mathrm{d}k_x \mathrm{d}k_y }{\left( \int_{-\infty}^\infty \int_{-\infty}^\infty E(k_x,k_y)\mathrm{d}k_x \mathrm{d}k_y  \right)^2} \label{eq:Qkk},
 \end{equation}
-where  $E(k_x,k_y)$ is the centrally symmetric double-sided spectrum. If one uses the single-sided spectrum instead, as we did for frequency spectra in eq. (\ref{eq:Qf}), the numerator of eq. (\ref{eq:nukk}) should be 2 instead of 1. 
+where  $E(k_x,k_y)$ is the centrally symmetric double-sided spectrum. If one uses the single-sided spectrum instead, as we did for frequency spectra in eq. (\ref{eq:Qf}), the numerator of eq. (\ref{eq:nukk}) should be 2, as in \ref{eq:nuf}. 
 
 This expression is easily verified by taking a wave spectrum $E(k_x,k_y)$, simulating the ocean surface map $\zeta(x,y)$ using random phases, and computing the variance over square tiles of side $L$, as illustrated in Fig. \ref{fig:groups_maps}. The theory, combining eq. (\ref{eq:nukk}) and eq. (\ref{eq:groups_var_nu}) gives a good approximation, in cases where the tile size is much larger than the dominant wavelength. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htb]
 \centerline{\includegraphics[width=\textwidth]{FIGS_CH_GROUPS/std_maps.pdf}}
 %\vspace{3.64in}
-  \caption{Variability of $H_L$ in simulated surfaces from 2 different wave spectra, one with $Q_{\mathrm{kk}}=43$~m and the other with $Q_{\mathrm{kk}}=15$~m. These two spectra are shown below in Fig. \ref{figure:groups_storm2}.}
+  \caption{Variability of $H_L$ in simulated surfaces from 2 different wave spectra, one with $Q_{\mathrm{kk}}=43$~m and the other with $Q_{\mathrm{kk}}=15$~m. These two spectra are shown below in Fig. \ref{figure:groups_storm2}. for each spectrum, 10 surface realisations were generated using random phases. This figure was generated with the notebook \url{https://github.com/ardhuin/waves_in_geosciences/blob/main/NOTEBOOKS/chapter_groups_figure_Qkk_stdH_2D_maps.ipynb} }
 \label{fig:groups_maps}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
