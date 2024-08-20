@@ -126,7 +126,7 @@ It is always possible to average over longer times but at some point one loses t
 
 \subsection{Spatial maps}
 Following the same steps we took for time series, we may imagine that an instrument provides a wave height  $H_{L}$ from a spatial average over a 
-square of side $L$ \citep{Lenain&al.2024,Ardhuin&al.2024}. The wave height estimate $H_L$ is  again a $\chi$-distributed random variable with its variance and mean given by  functions of the number of 
+square of side $L$ \citep{Lenain&al.2023,Ardhuin&al.2024}. The wave height estimate $H_L$ is  again a $\chi$-distributed random variable with its variance and mean given by  functions of the number of 
 degrees of freedom, and their ratio given by eq. (\ref{eq:groups_var_nu}). The only difference is that now  $\nu_{f,H}$ is replaced by 
 \begin{equation} 
 \nu_{\mathrm{kk},H}=1/ Q_{\mathrm{kk},H}^2 dk_x dk_y \label{eq:nukk}
@@ -146,7 +146,7 @@ This expression is easily verified by taking a wave spectrum $E(k_x,k_y)$, simul
 which a good approximation in cases where $L$ is much larger than the dominant wavelength. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htb]
-\centerline{\includegraphics[width=0.8\textwidth]{FIGS_CH_GROUPS/std_maps.pdf}}
+\centerline{\includegraphics[width=0.9\textwidth]{FIGS_CH_GROUPS/std_maps.pdf}}
 %\vspace{3.64in}
   \caption{Variability of $H_L$ in simulated surfaces from 2 different wave spectra, one with $Q_{\mathrm{kk}}=43$~m and the other with $Q_{\mathrm{kk}}=15$~m. These two spectra are shown below in Fig. \ref{figure:groups_storm2}. for each spectrum, 10 surface realisations were generated using random phases, and the average standard deviation is compared to the 
   theoretical value from eq. (\ref{eq:groups_var_2DY}). The notebook that generated this figure is available on \href{https://github.com/ardhuin/waves_in_geosciences/blob/main/NOTEBOOKS/chapter_groups_figure_Qkk_stdH_2D_maps.ipynb}{github}.}
@@ -156,12 +156,33 @@ which a good approximation in cases where $L$ is much larger than the dominant w
 
 
 \subsection{Along-track variability in altimeter data}
-A practical important application of the result above is the interpretation of the most common measurement of wave heights from space: using satellite altimeters. Although the details will be given only in the next chapters, we may guess that an altimeter samples the ocean with some filtering function that not a square boxcar but some sort of disc of radius $r$, and  we can imagine that the local height is some convolution of the envelope
+A practical important application of the result for spatial maps is the interpretation of the most common measurement of wave heights from space, usinbg satellite altimeters. Looking at data from storm Dennis in the North Atlantic in 2020, as illustrated in Fig. \ref{figure:groups_storm1}, \cite{DeCarlo&al.2023} were surprised to find that for the same mean wave height of 9.3~m, the CFOSAT altimeter beam gave a very small variability on the north side, and a twice larger variability on the south side. What is this variability telling us about the sea state? 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h!]
+\centerline{\includegraphics[width=\textwidth]{FIGS_CH_GROUPS/DeCarlo_fig1.pdf}}
+    \caption{a) Map of wave heights in the North Atlantic at 09:00 on 14 February 2020, as provided by the model hindcast of \cite{Alday&al.2021}, overlaid with circles located at the center of SWIM box estimates for the L2-CWWIC wave spectra. Circles are sized by the L2-CWWIC $H_s$ estimate and color corresponds to $\mathrm{std}(Hs)$; b) corresponding measured $H_s$ values as a function of latitude (y-axis) : black small dots represent native measurements at 4.5 Hz, blue stars represent the 1~Hz averaged and grey circles represent the $H_s$ averaged over a box. Two boxes are selected for the case study: box A - highlighted in light blue - is at 62$^\circ$N, and box B - in dark blue - is at 44$^\circ$N.} 
+   \label{figure:groups_storm1}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+The great thing with CFOSAT is that it is the first satellite that combines an altimeter with a wave scatterometer (which provides a measurement of the directional wave spectrum) in the same instrument called SWIM \citep{Hauser&al.2021}. We can thus use the measured wave spectra to understand details in the altimeter data.  In particular we can use the directional spectrum to compute $\Psi$, the spectrum of the envelope. %The maximum value of $H_s$ reported by CFOSAT in the storm was estimated at 17.9~m when using a the average over one measurement cycle (there are 4.5 such measurements per second), or 17.9~m when averaged over 1 s. More interesting to us was, 
+Taking the measured wave spectra and simulating the surface and its envelope, as done in Fig. \ref{figure:groups_storm2} makes it easier to visualize the importance of the spectral shape for the defining the spatial variability of wave heights $H_r$. Both panels (c) and (d) correspond to spatially homogeneous sea states with a uniform $H_s$. However, any measurement of waves will be sensitive to the "lumps" of high values and low values that are best seen in the envelope map of Fig. \ref{figure:groups_storm2}.f. The only way to remove this effect of wave groups in the measurements would be to average in time as these groups propagate fast and randomly appear and disappear. 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[hbt!]
+\centerline{\includegraphics[width=\textwidth]{FIGS_CH_GROUPS/DeCarlo_fig2.jpg}}
+    \caption{From wave spectra (top) to surface elevation envelope (bottom): the surface elevations maps in the middle line are simulated using the CFOSAT-derived spectra (these are L2S product corrected to give the same wave height as the nadir beam), with random phases. Combining the real and imaginary parts of the simulated surface gives the envelope. The left column is for a broad wave spectrum with a lower peak period. The right column has the same wave height but a long peak period and narrower spectrum. } 
+   \label{figure:groups_storm2}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+Although the details will be given only in the next chapter, we may guess that an altimeter samples the ocean with some filtering function that not a square boxcar but some sort of disc of radius $r$, and  we can imagine that the local height is some convolution of the envelope
 \begin{equation}
     H_{r}(x,y) = 4\sqrt{\frac{2}{\pi}} (\eta \otimes g_{r})(x,y).
    \label{eq:relation_Hs_eta}
 \end{equation}
-In practice a single altimeter gives estimates along a single track in the $(x,y)$ plane and the filter function $g_r$ can be a little complicated. For Delay-only altimeters the detailed form of $g_r$ was derived in \cite{DeCarlo&al.2023}, and for our purpose a good approximation is a a Gaussian filter of radius $r_a=r_C/4.5$, giving a filter $G_{r_a}=\exp{(-k^2 r_a^2)}$ for the power spectrum in Fourier space with $r_C$ given by \cite{Chelton&al.1989} as the radius of the region of the ocean surface that may contribute to the measured signal (again, details will follow in the next chapter), 
+In practice a single altimeter gives estimates along a single track in the $(x,y)$ plane and the filter function $g_r$ can be a little complicated. For Delay-only altimeters the detailed form of $g_r$ was derived in \cite{DeCarlo&al.2023}, and for our purpose a good approximation is a a Gaussian filter of radius $r_a=r_C/4.5$, giving a filter $G_{r_a}=\exp{(-k^2 r_a^2)}$ for the power spectrum in Fourier space, with $r_C$ given by \cite{Chelton&al.1989} as the radius of the region of the ocean surface that may contribute to the measured signal (again, details will follow in the next chapter), 
 \begin{equation}
     r_C =\sqrt{\frac{ 2 h_o H_s+ 2 \delta_R}{1+h_o/R_E}} \label{eq:rC}
 \end{equation}
@@ -207,29 +228,9 @@ This expression gives the approximate value for the standard deviation,
     \mathrm{std}(H_{r},d_1) \simeq  H_s   Q_{kk}  \sqrt{ (4-\pi) \left[2/r_a^2 -  8 k_1 / r_a\right] }.\label{eq:Lambda2}
 \end{equation}
 
-{This variability of $H_{r_a}$, which we have defined as the contribution of wave groups to the variability of measured wave heights $\widehat{H}_s$ is thus the product of three factors: the significant wave height $H_s$, the shape of the wave spectrum as quantified by $Q_{kk}$, and the effective range of spatial scales over which the variance is integrated. That last factor is a function of the smoothing effect of the altimeter, represented by the filtering scale $r_a$, and the distance $d_1=2\pi / k_1$ over which  we consider the variability.
+{This variability of $H_{r_a}$, which we have defined as the contribution of wave groups to the variability of "measured" wave heights $\widehat{H}_s$ is thus the product of three factors: the significant wave height $H_s$, the shape of the wave spectrum as quantified by $Q_{kk}$, and the effective range of spatial scales over which the variance is integrated. That last factor is a function of the smoothing effect of the altimeter, represented by the filtering scale $r_a$, and the distance $d_1=2\pi / k_1$ over which  we consider the variability.
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[h!]
-\centerline{\includegraphics[width=\textwidth]{FIGS_CH_GROUPS/DeCarlo_fig1.pdf}}
-    \caption{a) Map of wave heights in the North Atlantic at 09:00 on 14 February 2020, as provided by the model hindcast of \cite{Alday&al.2021}, overlaid with circles located at the center of SWIM box estimates for the L2-CWWIC wave spectra. Circles are sized by the L2-CWWIC $H_s$ estimate and color corresponds to $\mathrm{std}(Hs)$; b) corresponding measured $H_s$ values as a function of latitude (y-axis) : black small dots represent native measurements at 4.5 Hz, blue stars represent the 1~Hz averaged and grey circles represent the $H_s$ averaged over a box. Two boxes are selected for the case study: box A - highlighted in light blue - is at 62$^\circ$N, and box B - in dark blue - is at 44$^\circ$N.} 
-   \label{figure:groups_storm1}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-This work on the variability of wave height estimates was started after finding a much larger variability on the south side of storm Dennis in the North Atlantic in 2020, as illustrated in Fig. \ref{figure:groups_storm1}. We used CFOSAT because the SWIM instrument has a nadir (vertical) beam working like an altimeter, and slanted beams that give a measure of the directional spectrum which we can use to compute $\Psi$, the spectrum of the envelope. The maximum value of $H_s$ reported by CFOSAT in the storm was estimated at 17.9~m when using a the average over one measurement cycle (there are 4.5 such measurements per second), or 17.9~m when averaged over 1 s. More interesting to us was, for the same mean wave height of 9.3~m, a very small variability on the north side, and a twice larger variability on the south side. 
-
-Taking the measured wave spectra and simulating the surface and its envelope, as done in Fig. \ref{figure:groups_storm2} makes it easier to visualize the importance of the spectral shape for the defining the spatial variability of wave heights $H_r$. Both panels (c) and (d) correspond to spatially homogeneous sea states with a uniform $H_s$. However, any measurement of waves will be sensitive to the "lumps" of high values and low values that are best seen in the envelope map of Fig. \ref{figure:groups_storm2}.f. The only way to remove this effect of wave groups in the measurements would be to average in time as these groups propagate fast and randomly appear and disappear. 
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[hbt!]
-\centerline{\includegraphics[width=0.8\textwidth]{FIGS_CH_GROUPS/DeCarlo_fig2.jpg}}
-    \caption{From wave spectra (top) to surface elevation envelope (bottom): the surface elevations maps in the middle line are simulated using the CFOSAT-derived spectra (these are L2S product corrected to give the same wave height as the nadir beam), with random phases. Combining the real and imaginary parts of the simulated surface gives the envelope. The left column is for a broad wave spectrum with a lower peak period. The right column has the same wave height but a long peak period and narrower spectrum. } 
-   \label{figure:groups_storm2}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-We can use our theory to verify that in the case of narrow spectra, the expected effect of wave groups gives a standard deviatin of the estimates of wave heights $H_r$ that is similar to the standard deviation of the measurement over a 80~km segment along the satellite track (Fig. \ref{figure:groups_storm3}). 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[ht!]
 \centerline{\includegraphics[width=0.75\textwidth]{FIGS_CH_GROUPS/groups_Storm_Dennis_2023_fig3.pdf}}
@@ -237,7 +238,20 @@ We can use our theory to verify that in the case of narrow spectra, the expected
    \label{figure:groups_storm3}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+We can use our theory to verify that in the case of narrow spectra, the expected effect of wave groups gives a standard deviatin of the estimates of wave heights $H_r$ that is similar to the standard deviation of the measurement over a 80~km segment along the satellite track (Fig. \ref{figure:groups_storm3}). 
+
 On the contrary, for the broader wave spectrum, the effect of wave groups is much smaller than in the measurements: it is possible that the data contains true gradients of the underlying $H_s$, and we also know that measurement noise (known as speckle) is often the dominant source of variability in the measured values. This is one of the main reason for the development of Delay-Doppler altimetry which has a much lower level of speckle noise due to the averaging of different indepedent Doppler "looks" for the same measurement. 
 
-In their paper \cite{DeCarlo&al.2023} went on to show that one can remove the predicted "group-induced noise" in the wave height measurements to produce maps of wave height "noise" that now clearly show that small scale variability in wave heights is clearly associated with regions of strong mesoscale currents, as we will see in chapter \ref{ch_current}.
+Once the expected effect of groups are removed we can study the influence on other factors on the variability of $H_s$. Figure \ref{fig:groups_global1}, shows that the relative fluctuations in significant wave height is clearly associated with regions of strong mesoscale currents, as we will see in chapter \ref{ch_current}. However, in order to be able to transpose these results to other satellites, we now have to go back to these assumptions about how altimeters actually work, and do a little bit of theory about these instruments and what they actually measure: nadir altimeter do not measure wave height or sea level, they measure waveforms from which wave height and sea level are estimated. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure} [ht!]
+   \centerline{\includegraphics[width=\linewidth]{FIGS_CH_GROUPS/Fig8_map_stdHs_byHs_nadir_vs_L2S.pdf}}
+    \caption{Map of the average of a) $\mathrm{std}(\widehat{H}_s)/\mathrm{mean}(\widehat{H}_s)$ - upper panel -, b) $\mathrm{std}(H_s)_\mathrm{{wg}}/\mathrm{mean}(H_s)$ -middle panel - and c) residual standard deviation of $H_s$, in meters, after removing the effect expected
+from wave groups - lower panel -, for the years 2020 and 2021 for all the SWIM L2-IWWOC boxes with a $H_s$ above 1.5 m. With the wave group contribution $\mathrm{std}(H_s)_\mathrm{{wg}}$ estimated from SWIM L2S spectra.  reproduced from \cite{DeCarlo&al.2023}.} 
+   \label{fig:groups_global1}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 

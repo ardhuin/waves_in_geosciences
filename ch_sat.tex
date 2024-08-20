@@ -1,22 +1,61 @@
 
- \section{Radar remote sensing}
+It is not possible to cover in a single chapter all the technical development in radar instruments and their processing over the last 50 years. We will thus focus mostly on nadir radar altimeters with some discussion of complementary measurements from Synthetic Aperture Radar (SAR) and wave spectrometer systems. Hopefully more chapters will pop up in Part 3 to go beyond 
+this presentation. 
+
+\section{General considerations about radar remote sensing}
 Since the invention of radar, the sea was found to be an important source of echoes, at all radar frequencies (from decametric to micro waves). 
 This is due to the dielectric properties of sea water. An active radar measures the electromagnetic power received by its antenna. Using the radar equation, this power (in Watts)
-is normalized by the antenna-target distance, the antenna size, and the emitted power. This gives the normalized radar cross section (NRCS), often represented 
+is normalized by the antenna-target distance, the antenna size, and the emitted power. This gives the normalized radar cross section (NRCS), a quantity without dimensions that is often represented 
 by the symbol $\sigma_0$. 
-$\sigma_0$ depends on the surface geometry but it alsy varies with the radar frequency and polarization,  and observation direciton (azimuth and incidence angles). %In particular, $\sigma_0$ highly depends on the radar wavelength and of the wave radar incidence angle relative to the surface.
-The phase properties of the signal can alsl be used to estimate velocities at the ocean surface: current and wave velocities. 
+$\sigma_0$ depends on the surface geometry but it also varies with the radar frequency and polarization,  and observation direction (azimuth and incidence angles). %In particular, $\sigma_0$ highly depends on the radar wavelength and of the wave radar incidence angle relative to the surface.
+The phase properties of the signal can also be used to estimate velocities at the ocean surface: current and wave orbital velocities \citep{Nouguier&al.2018,Rodriguez2018}. 
 
 %A down-looking (nadir) radar will measure a high $\sigma_0$ for a smooth sea surface. If waves are present, the surface echoes may be considered as the incoherent superposition of the facet echoes. 
+%%%%%%%%%%%%% figure
+\begin{figure}[htb]
+\centerline{\includegraphics[width=0.7\textwidth]{FIGS_CH_SAT/scatter.pdf}}
+%\vspace{3.64in}
+  \caption{Conceptual schematic of microwave radar waves scattering at the sea surface. The grey shades are an example of a map of surface slopes estimated from a polarimetric system and covering a region of about 1 by 1 meter \citep{Laxague&al.2018}.}\label{fig:scatter}
+\end{figure}
+%%%%%%%%%%%%% end of figure
+Now, before we look at radar power of phase, one should realize a few important facts 
+\begin{itemize}
+\item within the radar field of view, the echoes recieved by the radar are coming from only a very small fraction of the surface: where the ocean is smooth (at the scale of the radar wavelength) only those pieces of the ocean surface that are facing the radar will contribute to the measured reflected signal, where the surface is curved, there will be a very weak scattering in all directions. 
+\item the many sources of the echoes on the sea surface have randomly distributed distances (and velocities) relative to the radar, so that  the relative phase of all the echoes is randomly distributed and the sum of the electric fields from all these random sources will have highly fluctuating amplitudes within a few milliseconds as the ocean surface moves: this effect is called "Rayleigh fading" and it introduces speckle noise in the radar measurements. This is very similar to the presence of wave groups in narrow-banded wave spectra. 
+\end{itemize}
 
 
 %\subsection{Satellite radar altimeters}
-Radar altimeter data are, the source of measurements of $H_s$  available at global scale and used for operational wave forecasting
-through data assimilation. Contrary to other observation systems, $H_s$ is directly determined, without the use of a spectral analysis. The usual 
-arrangement is a radar antenna looking straight down - at the nadir - on the the sea surface. The choice of the radar frequency is dictated by 
+The choice of the radar frequency is dictated by 
 a number of considerations, including atmospheric absorption -- we want to be able to measure a returning echo from the sea surface -- and the 
 size of the antenna -- low frequencies give large wavelength that require a proportionally large antenna to have a narrow beam. The radar wavelength 
-and frequency are related by the speed of light $c$, namely $f_r = c / \lambda_r$.
+and frequency are related by the speed of light $c$, namely $f_r = c / \lambda_r$. Different frequency bands have been reserved for Earth remote sensing, although they can be contaminated by military radars and other 
+systems. Note that telecommunication systems (FM radio, TV channels, GSM networks, GPS/Galileo positionning systems ...) use different bands  also in the microwave range, and remote sensing may use these 
+sources of opportunity for signals that reflect off the sea surface  \citep[e.g.][]{Lowe&al.2002}.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{table}[hb]
+  \centering
+  \begin{tabular}{|c|c|c|c| c |}
+ \hline
+band name & frequency & wavelenghth & example instrument & satellite  carrying the instrument  \\
+ \hline
+W  & 94 GHz  & 0.3 cm & CPR & Cloudsat  \\
+Ka & 30 GHz  & 0.8 cm & AltiKa or KaRIN & SARAL or SWOT  \\
+Ku & 15 GHz  & 2.2 cm & Poseidon 3 & Jason 3  \\
+X &  9.6 GHz & 3.1 cm & & TerraSAR-X  \\
+C & 6 GHz   & 5 cm & Poseidon 3 or ASCAT & Jason 3 or MetOp \\
+S & 3 GHz   & 12 cm & S-SAR &  NISAR \\
+L & 1.5 GHz  & 24 cm & SMAP  & SMAP \\
+P & 435 MHz  & 70 cm & P-SAR & Biomass (launch  in 2024 or 2025) \\
+\hline
+\end{tabular}
+\caption{Typical average frequencies and wavelengths used for ocean remote sensing in the different radar microwave bands. The actual frequency usually varies during a radar pulse with a bandwidth $B$ that defines 
+the range resolution of the instrument. \label{table_radars}}
+\label{table_bands}
+\end{table}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Ocean waves have been monitored from space continuously since the lauch of ERS-1 using altimeters and SARs, as summarized in figure \ref{fig:satellite}
 %%%%%%%%%%%%% figure
@@ -31,6 +70,10 @@ Ocean waves have been monitored from space continuously since the lauch of ERS-1
 \end{figure}
 %%%%%%%%%%%%% end of figure
 
+\section{Radar altimeters and the The Brown-Hayes model: echoes from a spatially uniform ocean}
+Radar altimeter data are, the source of measurements of $H_s$  available at global scale and used for operational wave forecasting
+through data assimilation. Contrary to other observation systems, $H_s$ is directly estimated, without the use of a spectral analysis. The usual 
+arrangement is a radar antenna looking straight down - at the nadir - on the the sea surface. 
 
 \subsection{Conventional or `delay' altimetry}\label{delay}
 %%%%%%%%%%%%% figure
