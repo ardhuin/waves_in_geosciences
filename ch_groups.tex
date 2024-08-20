@@ -74,7 +74,7 @@ surface elevation spectrum $E(f)$ by itself,
  In practice people have rather studied the variations of $H_s$ and not that of $H_s^2$, 
  Although the details of the theory are more complex, the important result is that, for low frequencies, the spectrum of the envelope $\Psi(f)$ has the same shape as the spectrum of the envelope squared $\Psi_2(f)$ \citep{Rice1944}. More specifically, \cite{Tayfun&Lo1989} have showed that a good approximation for $\Psi$ is given by eq. (\ref{eq:TayfunetLo}). 
 
-If $\tau$ is large enough, then the frequency $1/(2 \tau)$ will fall in the region where $\Psi(f) \simeq \Psi(f=0)$, and we can estimate the  variance of $\widehat{H}_\tau$ as
+If $\tau$ is large enough, then the frequency $1/(2 \tau)$ will fall in the region where $\Psi(f) \simeq \Psi(f=0)$. For the case shown in Fig. \ref{fig:groups1D}, that cand be up to 0.02 or even 0.04~Hz. We can use this approximation to estimate the  variance of $\widehat{H}_\tau$ as
 \begin{equation}
    \mathrm{var}(H_\tau)\simeq \frac{32}{\pi} \frac{\Psi (f=0)}{4 \tau} \simeq \frac{16(16 - 4 \pi) }{4 \pi \tau H_s^2} 8 \int_0^\infty (E(f))^2 {\mathrm d}f =  \frac{4 -  \pi }{ 2 \pi  \tau }  H_s^2 Q_f^2 
    \label{eq:groups_var_1D}
@@ -85,23 +85,31 @@ with the frequency peakedness defined as the reciprocal of the frequency bandwid
 \end{equation}
 $Q_f$ is a parameter that characterizes the shape of the frequency spectrum, and that is generally well correlated with the period $T_{m0,-1}$. 
 
-We note that almost the same result for the uncertainty of estimates $H_\tau$ can be obtained by starting from the $\chi^2$ distribution for 
-spectral densities. \cite{Young1986} noted that $E$ is the sum of $\chi^2$ distributed random variables and therefore is also $\chi^2$ distributed, with a number of degrees of freedom equal to 
+We note that almost the same result for the uncertainty of estimates $H_\tau$ can be obtained by starting from the result shown in the previous chapter that  
+spectral densities are randomly distributed with a $\chi^2$ distribution. \cite{Young1986} noted that the surface elevation variance $E$ is the sum of all spectral components, and thus the sum of $\chi^2$ distributed random variables. Mathematics tell us that $E$ must also be $\chi^2$ distributed, and thus, like any $\chi^2$-distributed random variable, its number of degrees of freedom is 
 \begin{equation}
-\nu_{f,H}=2/ Q_f^2 df \label{eq:nuf}
+\nu_{f,H}=2 (\mathrm{mean}(E))^2/\mathrm{var}(E).\label{eq:nu_from_ratio}
+\end{equation} 
+
+The mean value of $E$ is estimated from the sum of all spectral components, $E= \sum E(f) df$, and the variance of $E$ is simply the sum of the variances of each spectral component, as we can assume they are independent. Since each spectral component is $\chi^2$ distributed we can also link its variance to its mean value and its number of degrees of freedom, namely, for a double-sided spectrum estimated from a single Fourier transform window, it has 2 degrees of freedom, and $\nu=2 n$ degrees of freedom if the spectrum is an average of $n$ independent estimates.  We can thus rewrite eq. (\ref{eq:nu_from_ratio}) as 
+\begin{equation}
+\nu_{f,H}=\frac{2 E^2}{\sum 2 ( E (f)\mathrm{d}f)^2 / (2n)}=\frac{2n}{ Q_f^2 df}=\frac{4 \tau}{ Q_f^2} \label{eq:nuf}
 \end{equation}
- where $df$ is the frequency resolution of the spectral analysis, corresponding to $df=1/(2 \tau)$. The wave height estimate $H_\tau$ is thus a $\chi$-distributed random variable with its variance and mean given by  functions of $\nu_{f,H}$ and a ratio 
+ where $df$ is the frequency resolution of the spectral analysis, corresponding to $df=n/(2 \tau)$. 
+ 
+ Now we can go back to wave heights. The wave height estimate $H_\tau=4\sqrt{E}$ is thus a $\chi$-distributed random variable with its variance and mean given by  functions of $\nu_{f,H}$ and a ratio 
  \begin{equation}
-\frac{\mathrm{std}(H_\tau)}{\mathrm{mean}(H_\tau)} =\sqrt{\frac{\Gamma^2(\nu_{f,H}/2) \nu_{f,H}}{2 \Gamma^2((\nu_{f,H}+1)/2)}-1}.
+%\frac{\mathrm{std}(H_\tau)}{\mathrm{mean}(H_\tau)} =\sqrt{\frac{\Gamma^2(\nu_{f,H}/2) \nu_{f,H}}{2 \Gamma^2((\nu_{f,H}+1)/2)}-1}.
+\frac{\mathrm{std}(H_\tau)}{\mathrm{mean}(H_\tau)} =\sqrt{\frac{\nu_{f,H}\Gamma^2(\nu_{f,H}/2)-2 \Gamma^2((\nu_{f,H}+1)/2) }{2 \Gamma^2((\nu_{f,H}+1)/2)}} \simeq \sqrt{\frac{1}{2 \nu_{f,H}}},
    \label{eq:groups_var_nu}
 \end{equation}
- 
-For most practical applications, the number of degrees of freedom is large enough and we can use
+ where $\Gamma$ is Euler's function and  approximation is valid for a large number of degrees of freedom. 
+For most practical applications, t we can use
 \begin{equation}
-\frac{\mathrm{std}(H_\tau)}{\mathrm{mean}(H_\tau)} \simeq 0.5  Q_f / \sqrt{ 2 \tau },
+\frac{\mathrm{std}(H_\tau)}{\mathrm{mean}(H_\tau)} \simeq  Q_f / \sqrt{ 8  \tau }.
    \label{eq:groups_var_1DY}
 \end{equation}
-where $\Gamma$ is the Euler gamma function. 
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htb]
@@ -117,8 +125,9 @@ It is always possible to average over longer times but at some point one loses t
 
 
 \subsection{Spatial maps}
-Following the same steps we took for time series, we may define the wave height meeasured by altimeters $H_{L}$ as a spatial average of the envelope over a 
-square of side $L$. The wave height estimate $H_\tau$ is  again $\chi$-distributed random variable with its variance and mean given by  functions of $\nu_{f,H}$ and their ratio given by eq. \ref{eq:groups_var_nu}. The only difference is that now  $\nu_{f,H}$ is replaced by 
+Following the same steps we took for time series, we may imagine that an instrument provides a wave height  $H_{L}$ from a spatial average over a 
+square of side $L$ \citep{Lenain&al.2024,Ardhuin&al.2024}. The wave height estimate $H_L$ is  again a $\chi$-distributed random variable with its variance and mean given by  functions of the number of 
+degrees of freedom, and their ratio given by eq. (\ref{eq:groups_var_nu}). The only difference is that now  $\nu_{f,H}$ is replaced by 
 \begin{equation} 
 \nu_{\mathrm{kk},H}=1/ Q_{\mathrm{kk},H}^2 dk_x dk_y \label{eq:nukk}
 \end{equation}
@@ -127,27 +136,38 @@ square of side $L$. The wave height estimate $H_\tau$ is  again $\chi$-distribut
 \begin{equation} 
    Q_{\mathrm{kk}}^2 = \frac{  \int_{-\infty}^\infty \int_{-\infty}^\infty E^2(k_x,k_y)\mathrm{d}k_x \mathrm{d}k_y }{\left( \int_{-\infty}^\infty \int_{-\infty}^\infty E(k_x,k_y)\mathrm{d}k_x \mathrm{d}k_y  \right)^2} \label{eq:Qkk},
 \end{equation}
-where  $E(k_x,k_y)$ is the centrally symmetric double-sided spectrum. If one uses the single-sided spectrum instead, as we did for frequency spectra in eq. (\ref{eq:Qf}), the numerator of eq. (\ref{eq:nukk}) should be 2, as in \ref{eq:nuf}. 
+where  $E(k_x,k_y)$ is the centrally symmetric double-sided spectrum. If one uses the single-sided spectrum instead, as we did for frequency spectra in eq. (\ref{eq:Qf}), the numerator of eq. (\ref{eq:nukk}) should be 2, as in  eq. (\ref{eq:nuf}). 
 
-This expression is easily verified by taking a wave spectrum $E(k_x,k_y)$, simulating the ocean surface map $\zeta(x,y)$ using random phases, and computing the variance over square tiles of side $L$, as illustrated in Fig. \ref{fig:groups_maps}. The theory, combining eq. (\ref{eq:nukk}) and eq. (\ref{eq:groups_var_nu}) gives a good approximation, in cases where the tile size is much larger than the dominant wavelength. 
+This expression is easily verified by taking a wave spectrum $E(k_x,k_y)$, simulating the ocean surface map $\zeta(x,y)$ using random phases, and computing the variance over square tiles of side $L$, as illustrated in Fig. \ref{fig:groups_maps}. The theory, combining eq. (\ref{eq:nukk}) and eq. (\ref{eq:groups_var_nu}) gives 
+\begin{equation} 
+ \frac{\mathrm{std}(H_L)}{\mathrm{mean}(H_L)} \simeq \pi \sqrt{2}  Q_{\mathrm{kk}} /  L,
+   \label{eq:groups_var_2DY}
+\end{equation}
+which a good approximation in cases where $L$ is much larger than the dominant wavelength. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htb]
-\centerline{\includegraphics[width=\textwidth]{FIGS_CH_GROUPS/std_maps.pdf}}
+\centerline{\includegraphics[width=0.8\textwidth]{FIGS_CH_GROUPS/std_maps.pdf}}
 %\vspace{3.64in}
-  \caption{Variability of $H_L$ in simulated surfaces from 2 different wave spectra, one with $Q_{\mathrm{kk}}=43$~m and the other with $Q_{\mathrm{kk}}=15$~m. These two spectra are shown below in Fig. \ref{figure:groups_storm2}. for each spectrum, 10 surface realisations were generated using random phases. This figure was generated with the notebook \url{https://github.com/ardhuin/waves_in_geosciences/blob/main/NOTEBOOKS/chapter_groups_figure_Qkk_stdH_2D_maps.ipynb} }
+  \caption{Variability of $H_L$ in simulated surfaces from 2 different wave spectra, one with $Q_{\mathrm{kk}}=43$~m and the other with $Q_{\mathrm{kk}}=15$~m. These two spectra are shown below in Fig. \ref{figure:groups_storm2}. for each spectrum, 10 surface realisations were generated using random phases, and the average standard deviation is compared to the 
+  theoretical value from eq. (\ref{eq:groups_var_2DY}). The notebook that generated this figure is available on \href{https://github.com/ardhuin/waves_in_geosciences/blob/main/NOTEBOOKS/chapter_groups_figure_Qkk_stdH_2D_maps.ipynb}{github}.}
 \label{fig:groups_maps}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 \subsection{Along-track variability in altimeter data}
-Replacing our boxcar window for a square tile of side length $L$ with a disc of radius $r$ we can imagine that the local height is some convolution of the envelope
+A practical important application of the result above is the interpretation of the most common measurement of wave heights from space: using satellite altimeters. Although the details will be given only in the next chapters, we may guess that an altimeter samples the ocean with some filtering function that not a square boxcar but some sort of disc of radius $r$, and  we can imagine that the local height is some convolution of the envelope
 \begin{equation}
     H_{r}(x,y) = 4\sqrt{\frac{2}{\pi}} (\eta \otimes g_{r})(x,y).
    \label{eq:relation_Hs_eta}
 \end{equation}
-In practice a single altimeter gives estimates along a single track in the $(x,y)$ plane and the filter function $g_r$ can be a little complicated. For Delay-only altimeters the detailed form of $g_r$ was derived in \cite{DeCarlo&al.2023}, and for our purpose a good approximation is a a Gaussian filter of radius $r_a=r_C/4.5$, giving a filter $G_{r_a}=\exp{(-k^2 r_a^2)}$ for the power spectrum in Fourier space.  
-
+In practice a single altimeter gives estimates along a single track in the $(x,y)$ plane and the filter function $g_r$ can be a little complicated. For Delay-only altimeters the detailed form of $g_r$ was derived in \cite{DeCarlo&al.2023}, and for our purpose a good approximation is a a Gaussian filter of radius $r_a=r_C/4.5$, giving a filter $G_{r_a}=\exp{(-k^2 r_a^2)}$ for the power spectrum in Fourier space with $r_C$ given by \cite{Chelton&al.1989} as the radius of the region of the ocean surface that may contribute to the measured signal (again, details will follow in the next chapter), 
+\begin{equation}
+    r_C =\sqrt{\frac{ 2 h_o H_s+ 2 \delta_R}{1+h_o/R_E}} \label{eq:rC}
+\end{equation}
+where $h_o$ is the satellite orbit height above the ocean, $R_E$ is the Earth radius and $\delta_R$ is the range resolution of the altimeter.  
+ 
+ 
 Using the double-sided wave spectrum $E(k_x,k_y)$ of the surface elevation, defined for $(k_x,k_y)$ in the entire wavenumber plane and centrally symmetric, the region of the envelope spectrum for $k \ll k_p$, with $k_p$ the wavenumber peak, is 
 proportional to
 \begin{equation}
