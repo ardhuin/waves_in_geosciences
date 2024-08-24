@@ -15,25 +15,18 @@ The phase properties of the signal can also be used to estimate velocities at th
 \begin{figure}[htb]
 \centerline{\includegraphics[width=0.7\textwidth]{FIGS_CH_SAT/scatter.pdf}}
 %\vspace{3.64in}
-  \caption{Conceptual schematic of microwave radar waves scattering at the sea surface. The grey shades are an example of a map of surface slopes estimated from a polarimetric system and covering a region of about 1 by 1 meter \citep{Laxague&al.2018}.}\label{fig:scatter}
+  \caption{Conceptual schematic of microwave radar waves scattering at the sea surface. The grey shades are an example of a map of surface slopes estimated from a polarimetric system and covering a region of about 1 by 1 meter \citep{Laxague&al.2018}.  Note that the scattered (radar) wave field strongly varies with radar frequency, incidence and azimuth angles,  and polarization.  }\label{fig:scatter}
 \end{figure}
 %%%%%%%%%%%%% end of figure
-Now, before we look at radar power of phase, one should realize a few important facts 
+Before we look at radar power or phase, one should have in mind a few important facts:
 \begin{itemize}
-\item within the radar field of view, the echoes recieved by the radar are coming from only a very small fraction of the surface: where the ocean is smooth (at the scale of the radar wavelength) only those pieces of the ocean surface that are facing the radar will contribute to the measured reflected signal, where the surface is curved, there will be a very weak scattering in all directions. 
-\item the many sources of the echoes on the sea surface have randomly distributed distances (and velocities) relative to the radar, so that  the relative phase of all the echoes is randomly distributed and the sum of the electric fields from all these random sources will have highly fluctuating amplitudes within a few milliseconds as the ocean surface moves: this effect is called "Rayleigh fading" and it introduces speckle noise in the radar measurements. This is very similar to the presence of wave groups in narrow-banded wave spectra. 
+\item within the radar field of view, the echoes recieved by the radar are coming from only a very small fraction of the surface. 1) Where the ocean is smooth (at the scale of the radar wavelength) only those pieces of the ocean surface that are facing the radar will contribute to the measured reflected signal. 2) Where the surface is curved, there will be a very weak scattering in all directions. 
+\item the many echoes on the sea surface have randomly distributed distances (and velocities) relative to the radar, so that  the relative phases of all the echoes are randomly distributed and the sum of the electric fields of all these random echoes will have highly fluctuating amplitudes within a few milliseconds as the ocean surface moves: this effect is called "Rayleigh fading" and it introduces speckle noise in the radar measurements. This is very similar to the presence of wave groups in narrow-banded wave spectra. 
 \end{itemize}
 
-
-%\subsection{Satellite radar altimeters}
-The choice of the radar frequency is dictated by 
-a number of considerations, including atmospheric absorption -- we want to be able to measure a returning echo from the sea surface -- and the 
-size of the antenna -- low frequencies give large wavelength that require a proportionally large antenna to have a narrow beam. The radar wavelength 
+The radar wavelength 
 and frequency are related by the speed of light $c$, namely $f_r = c / \lambda_r$. Different frequency bands have been reserved for Earth remote sensing, although they can be contaminated by military radars and other 
-systems. Note that telecommunication systems (FM radio, TV channels, GSM networks, GPS/Galileo positionning systems ...) use different bands  also in the microwave range, and remote sensing may use these 
-sources of opportunity for signals that reflect off the sea surface  \citep[e.g.][]{Lowe&al.2002}.
-
-
+systems. Note that telecommunication systems (FM radio, TV channels, GSM networks, GPS/Galileo positionning systems ...) use different bands in the microwave range, and remote sensing may use these sources of opportunity for signals that reflect off the sea surface  \citep[e.g.][]{Lowe&al.2002}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{table}[hb]
   \centering
@@ -56,8 +49,8 @@ the range resolution of the instrument. \label{table_radars}}
 \label{table_bands}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Ocean waves have been monitored from space continuously since the lauch of ERS-1 using altimeters (looking straight down)  and SARs (generally looking to the side), as summarized in figure \ref{fig:satellite}: note that with the exception of CFOSAT, no satellite was ever designed for measuring waves. Waves are a by-product, sometimes necessary for other measurements. Altimeters generally combine different radar frequencies to be able to correct for specific time delays in the propagation through the ionosphere, while additional radiometers provide correction for tropospheric time delays.  Some satellite missions also include both SARs and altimeters. In the case of SWOT the pair of SARs constitutes the across-track interferometer KaRIN which also measures the elevation of the sea surface at very high resolution, but across a narrower (120 km) swath that other SARs. Any satellite may carry many different instruments, and it is often easier to use the instrument name to avoid any confusion: SWOT carries both a Poseidon-3 altimeter (like Jason 3) and KaRIN. 
 
-Ocean waves have been monitored from space continuously since the lauch of ERS-1 using altimeters and SARs, as summarized in figure \ref{fig:satellite}
 %%%%%%%%%%%%% figure
 \begin{figure}[htb]
 \centerline{\includegraphics[width=\textwidth]{FIGS_CH_SAT/missions.pdf}}
@@ -70,12 +63,18 @@ Ocean waves have been monitored from space continuously since the lauch of ERS-1
 \end{figure}
 %%%%%%%%%%%%% end of figure
 
-\section{Radar altimeters and the The Brown-Hayes model: echoes from a spatially uniform ocean}
-Radar altimeter data are, the source of measurements of $H_s$  available at global scale and used for operational wave forecasting
-through data assimilation. Contrary to other observation systems, $H_s$ is directly estimated, without the use of a spectral analysis. The usual 
-arrangement is a radar antenna looking straight down - at the nadir - on the the sea surface. 
 
-\subsection{Conventional or `delay' altimetry}\label{delay}
+
+For any application (measuring sea level, wind speed, ... ) the choice of the radar frequency is dictated by 
+a number of considerations, including atmospheric absorption, as we want to be able to measure a returning echo from the sea surface, and the 
+size of the antenna. In particular, low frequencies give large wavelength that require a proportionally large antenna to have a narrow beam. A very narrow beam (tens of meters) is only achievable with visible light (lidars). Radars will typically collect echoes from a region that is several kilometers across, which is good as we generally wish to average over the waves to measure non-wave properties (such as sea level). A wide beam makes it possible to cover a wide area, which is nice if we can "slice" the data into smaller "radar pixels". The most simple way to slice the data is transmit "chirps", radar pulses with a carrier frequency that sweeps a bandwidth $B$. The standard \href{https://en.wikipedia.org/wiki/Pulse_compression}{pulse compression technique} is able to separate\footnote{The separation is not perfect and there is always some "mixture" of signals from neighboring pixels (in radar jargon, the Point Target Response, or PTR, is not a delta function).} echoes as a function of their distance from the radar, with a resolution that is $\delta_R=c/2B$.  This is another reason for using higher frequencies: most radar altimeters have used Ku band and a bandwidth $B=320$~MHz which gives a resolution $\delta_R=47$~cm. It is easier to fit a wider bandwidth at higher frequencies, as was done with AltiKa on SARAL, using $B=500~MHz$ that gives $\delta_R=30$~cm. So how can we measure sea level within a few centimeters given these rather large resolution?  Well, we don't measure sea level: we estimate it from the actual measurement which is the radar waveform. These resolutions also explain why nadir altimeters can't distinguish very well between 10 cm and 40 cm wave heights.
+
+
+\section{Altimeters waveforms and the Brown-Hayes model}
+%Radar altimeter data are, the source of measurements of $H_s$  available at global scale and used for operational wave forecasting
+%through data assimilation. Contrary to other observation systems, $H_s$ is directly estimated, without the use of a spectral analysis. The usual 
+%arrangement is a radar antenna looking straight down - at the nadir - on the the sea surface. 
+
 %%%%%%%%%%%%% figure
 \begin{figure}[htb]
 \centerline{\includegraphics[width=0.9\textwidth]{FIGS_CH_SAT/dessin_footprint.pdf}}
@@ -95,15 +94,14 @@ starting from center. (d) Footprint for Sentinel 3, with the 7 seven range gates
 \end{figure}
 %%%%%%%%%%%%% end of figure
 The first main principle of the analysis of the radar echoes is the determination  of the distance, usually called range, based on 
-the delay of a radar pulse 
-to travel from the transmitting antenna to the target and back to the receiving antenna. Usually the two antennas are the same piece of hardware 
+the delay of a radar pulse to travel from the transmitting antenna to the target and back to the receiving antenna. Usually the two antennas are the same piece of hardware 
 and this is called a `monostatic system'. Because the radar pulse has a finite duration which limits the resolution of the time measurement, 
 it is customary to use a varying transmitted carrier frequency $f_t$ that is modulated as chirps: $f_t$ is increased linearly between $f_0$ and $f_0$+$B$ during a radar pulse. As a result, the carrier frequency of the received signal $f_r$ can be used to determine the precise travel time of the received pulse, with each frequency associated to a different range $r$, with a resolution in range $dr$ that is determined by the frequency bandwidth $B$, with $dr=c /(2B)$. The actual signal at frequency $f_r$ combines echos from all ranges convoluted by the point target response \citep[e.g.][]{Halimi2013}.  
 
-for all types of radars, it is thus better to use a larger bandwidth, 
-but this is usually limited by atmospheric absorption windows or telecommunication regulations. Hence, for satellite altimeters, $B$ for the Jason altimeters is 320~MHz  
-giving $dr=48$~cm. SARAL/Altika used a wider bandwidth of  
-500~MHz  giving $dr=30$~cm. Because of issues with rain attenuation, all altimeters since GEOS-3 (1975-1979) have used Ku-band, except for the ongoing SARAL/AltiKa mission which uses only Ka-band.
+%for all types of radars, it is thus better to use a larger bandwidth, 
+%but this is usually limited by atmospheric absorption windows or telecommunication regulations. Hence, for satellite altimeters, $B$ for the Jason altimeters is 320~MHz  
+%giving $dr=48$~cm. SARAL/Altika used a wider bandwidth of  
+%500~MHz  giving $dr=30$~cm. Because of issues with rain attenuation, all altimeters since GEOS-3 (1975-1979) have used Ku-band, except for the ongoing SARAL/AltiKa mission which uses only Ka-band.
 
 Each radar pulse emitted by the radar antenna is reflected by an ocean area that expands with time, starting from the blue disk in the middle of figure \ref{waveform}.c, and 
 expanding to the outer rings. The shape of the blue disk is only correct for a flat sea surface, and is distorted by waves as the crests give a shorter range and the troughs give a higher range. 
@@ -185,7 +183,7 @@ $H_r = 800$~km.
 
 
  \subsection{Synthetic Aperture Radars (SARs)}
-As  explained, in section \ref{delay}, the separation of echoes in the range direction is easily achieved by combining the delay and frequency modulation of 
+As  explained above, the separation of echoes in the range direction is easily achieved by combining the delay and frequency modulation of 
 the chirped radar signal, with a resolution in distance that is thus controled by the frequency bandwidth. 
 In the other direction (azimuth), the simultaneous echoes can be separated by their Doppler shift. 
 This is perfect if targets are fixed relative to the ground, and a 
@@ -368,7 +366,7 @@ in the look direction.
 A successive acquisition in different directions provides the full directional spectrum $E(k,\theta)$.  
 This is the principle of the wave spectrometer and it has been demonstrated with the airborne instrument
 RAWS, developed by NASA \citep{Jackson&al.1985}, STORM and KuROS developed jointly by CNES and CNRS \citep{Hauser&al.1992,Caudal&al.2014}.
-The first satellite wave spectrometer is SWIM, and it flies on the China-France Ocean Satellite (CFOSAT, Figure \ref{CFOSAT}), which was launched on October 29, 2018 \citep{Hauser&al.2021}. SWIM is unique in providing wave spectra co-located with classical altimeter measurements, allowing a a much better understanding of historical altimeter data and their along-track variability \citep{DeCarlo&al.2023}, as detailed in chapter \ref{ch_groups}. 
+The first satellite wave spectrometer is SWIM, and it flies on the China-France Ocean Satellite (CFOSAT, Figure \ref{CFOSAT}), which was launched on October 29, 2018 \citep{Hauser&al.2021}. SWIM is unique in providing wave spectra co-located with classical altimeter measurements, allowing a much better understanding of historical altimeter data and their along-track variability \citep{DeCarlo&al.2023}, as detailed in chapter \ref{ch_groups}. 
 
 %For larger incidence angles, the measurements cover a larger area of the ocean, but there is more sensitivity to the wind speed in the radar back-scatter. Hence, the SWIM  design is limited to 10 degrees of incidence. A larger incidence also requires a more powerful radar, because the reflectivity decreases with incidence angle. 
 

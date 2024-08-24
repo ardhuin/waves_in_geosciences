@@ -182,7 +182,7 @@ Although the details will be given only in the next chapter, we may guess that a
     H_{r}(x,y) = 4\sqrt{\frac{2}{\pi}} (\eta \otimes g_{r})(x,y).
    \label{eq:relation_Hs_eta}
 \end{equation}
-In practice a single altimeter gives estimates along a single track in the $(x,y)$ plane and the filter function $g_r$ can be a little complicated. For Delay-only altimeters the detailed form of $g_r$ was derived in \cite{DeCarlo&al.2023}, and for our purpose a good approximation is a a Gaussian filter of radius $r_a=r_C/4.5$, giving a filter $G_{r_a}=\exp{(-k^2 r_a^2)}$ for the power spectrum in Fourier space, with $r_C$ given by \cite{Chelton&al.1989} as the radius of the region of the ocean surface that may contribute to the measured signal (again, details will follow in the next chapter), 
+In practice a single altimeter gives estimates along a single track in the $(x,y)$ plane and the filter function $g_r$ can be a little complicated. For Delay-only altimeters the detailed form of $g_r$ was derived in \cite{DeCarlo&al.2023}, and for our purpose a good approximation is a Gaussian filter of radius $r_a=r_C/4.5$, giving a filter $G_{r_a}=\exp{(-k^2 r_a^2)}$ for the power spectrum in Fourier space, with $r_C$ given by \cite{Chelton&al.1989} as the radius of the region of the ocean surface that may contribute to the measured signal (again, details will follow in the next chapter), 
 \begin{equation}
     r_C =\sqrt{\frac{ 2 h_o H_s+ 2 \delta_R}{1+h_o/R_E}} \label{eq:rC}
 \end{equation}
@@ -202,7 +202,7 @@ in which $\Psi_{2}$ is also double-sided. From  eq.~(\ref{eq:relation_Hs_eta}), 
 \end{eqnarray}
 with $H_s$ the usual significant wave height and $G_{r}=G_{r_a}$ when considering a single altimeter measurement.
 
-We will now average data along the track, which is the usual practice, at least over 0.05~s corresponding to the 20~Hz rawest data downlinked for most instruments, and corresponding to 350~m distance along the track. For delay-only measurements, these data are fairly noisy and most users typically use at least 1~Hz data (averaged over 7~km) or longer time averages. For simplicity we take the satellite track along the $x$-axis, and we consider an averaging length $d_1$. 
+We will now average data along the track, at least over 0.05~s corresponding to the 20~Hz rawest data downlinked for most instruments, and corresponding to 350~m distance along the track. For delay-only measurements, these data are fairly noisy and most users typically use at least 1~Hz data (averaged over 7~km) or longer time averages. For simplicity we take the satellite track along the $x$-axis, and we consider an averaging length $d_1$. 
 Integrating $\Psi$ for $k_x > k_1$, amounts to integrating $\Psi_{H_r}(k_x,k_y)$ to get the expected variance up to the  cut-off wavenumber along $k_x$, $k_1\simeq \pi / d_1 $, giving $\mathrm{var}(H_{r},d_1)$, the group-induced fluctuations of $\widehat{H}_s$ 
 \begin{equation}
 \mathrm{var}(H_{r}, d_1) = \int_{-\infty}^{\infty} \int_{k_x > |k_1| } \Psi_{H_0}(k_x,k_y)  G_{r}(k_x,k_y) \mathrm{d}k_x \mathrm{d}k_y. \label{eq:varfromspec2D}
