@@ -13,7 +13,7 @@ The phase properties of the signal can also be used to estimate velocities at th
 %A down-looking (nadir) radar will measure a high $\sigma_0$ for a smooth sea surface. If waves are present, the surface echoes may be considered as the incoherent superposition of the facet echoes. 
 %%%%%%%%%%%%% figure
 \begin{figure}[htb]
-\centerline{\includegraphics[width=0.7\textwidth]{FIGS_CH_SAT/scatter.pdf}}
+\centerline{\includegraphics[width=0.5\textwidth]{FIGS_CH_SAT/scatter.pdf}}
 %\vspace{3.64in}
   \caption{Conceptual schematic of microwave radar waves scattering at the sea surface. The grey shades are an example of a map of surface slopes estimated from a polarimetric system and covering a region of about 1 by 1 meter \citep{Laxague&al.2018}.  Note that the scattered (radar) wave field strongly varies with radar frequency, incidence and azimuth angles,  and polarization.  }\label{fig:scatter}
 \end{figure}
@@ -103,40 +103,155 @@ it is customary to use a varying transmitted carrier frequency $f_t$ that is mod
 %giving $dr=48$~cm. SARAL/Altika used a wider bandwidth of  
 %500~MHz  giving $dr=30$~cm. Because of issues with rain attenuation, all altimeters since GEOS-3 (1975-1979) have used Ku-band, except for the ongoing SARAL/AltiKa mission which uses only Ka-band.
 
-Each radar pulse emitted by the radar antenna is reflected by an ocean area that expands with time, starting from the blue disk in the middle of figure \ref{waveform}.c, and 
+Each radar pulse emitted by the radar antenna is  reflected by an ocean area that expands with time, starting from the blue disk in the middle of figure \ref{waveform}.c, and 
 expanding to the outer rings. The shape of the blue disk is only correct for a flat sea surface, and is distorted by waves as the crests give a shorter range and the troughs give a higher range. 
 the radar receives echoes from wave crests firsts and wave troughs later: this difference in travel time between crests and troughs  
 spreads the echoes over time. \cite{Brown1977} showed how the shape of the `waveform',  i.e. the received power return, under a number 
 of simplfiying assumptions, is a convolution 
-of the radar antenna pattern and the distribution of the surface elevation $\zeta$. As a result, 
-the slope of the `wave form leading edge' is proportional to  $H_s$.  Because 
-the rise-time typically spans a few range gates, the wave height typically comes from a region of the ocean that is between 4 and 7~km in diameter. 
+of the radar antenna pattern and the distribution of the surface elevation $\zeta$: if we assume that the surface elevation for each 
+distance (range) follows a Gaussian distribution of standard deviation $\sigma_H=H_s/4$, a uniform distribution of specular points, and in the most simple case of a "flat surface response" in which the echo is 0 for ranges less than the satellite altitude $h_{\mathrm{o}}$ and 1 otherwise, then the Brown waveform is a sum of many shifted Gaussians. If we only had echoes from the region straight down below the satellite (this is called the nadir), the waveform would be a Gaussian. As we add a Gaussian for each region of the ocean located at a radius $r$ from the nadir, the echoes are Gaussian distributed but arrive a little later, with a time difference $2 \sqrt{(r+h_0)^2-h_0^2}/c$, and the waveform is the sum of all these shifted Gaussians.  This sum is a particular function that is called the error function, erf, and the  theoretical waveform as a function of time is, 
+\begin{equation}
+    w_B(t,t_0,\sigma_t,\sigma_0)=  \sigma_0 \left\{ 1+ \mathrm{erf}\left[(t-t_0)/( \sqrt{2} \sigma_t) \right] \right\}, \label{Brown}
+\end{equation}
+with $\sigma_s$ the standard deviation of the travel time from the scatterers to the radar, with is converted from their spatial distribution with $\sigma_t= 2 \sigma_H / c$, with $c$ the speed of light. Likewise the mean radar pulse travel time $t_0$ is related to the mean sea level relative to the satellite is $t_0=2(h_o- z_e)/c$. The last parameter $ \sigma_0$ is the Normalized Radar Cross section which depends on the "surface roughness" and will be further discussed below. We thus have a waveform that is a function of three geophysical quantities that depend on the surface geometry: a mean sea level, a standard deviation of the sea level (a.k.a. $H_s/4$) and roughness parameter. This shape is a good approximation of the "leading edge" of the true waveforms (the rising part of the curves in figure \ref{waveform}. The fact that the true waveform also have a decreasing part is due to the finite aperture of the 
+radar beam, which gives a multiplicative term $\exp(-c_\xi (t-t_0)+c_\xi^2 \sigma_t^2/2)$ that was neglected in eq. (\ref{Brown}).  %adds a exponential decay term, 
+%\begin{equation}
+%    w_B(t)=  \sigma_0 \left\{ 1+ \mathrm{erf}\left[(t-t_0)/( \sqrt{2} \sigma_t) \right] \right\}, \label{Brown_ant}
+%\end{equation}
+
+
+As a result, 
+the slope of the `wave form leading edge' is proportional to  $H_s$.  
 In the case of the largest sea state in figure \ref{waveform}.a, the return 
 power spreads over about 35 range gates, from number 26 to number 61, i.e. a distance of 10.5~m, close to the root mean square wave height
- $H_{\mathrm{rms}} \approx  H_{s}/1.4$. The power in range gates beyond 50 comes from the sea surface that is not directly 
- under the satellite but on a circle around it, and is still illuminated by the radar beam.  
+ $H_{\mathrm{rms}} \approx  H_{s}/1.4$. %The power in range gates beyond 50 comes from the sea surface that is not directly 
+% under the satellite but on a circle around it, and is still illuminated by the radar beam.  
 
-Classical altimeter estimates of $H_s$ are fairly noisy when the wave height is low becase in that case $H_s$ is determined by only very few range gates, and the power in each rage gate as a random noise, also called speckle noise, caused by Rayleigh fading of ocean echoes that are coming from ranges spread over a distance much greater than the electromagnetic wavelength hence with random phases that randomy cancel \citep{Quartly&al.2001}. 
-\cite{DeCarlo&al.2023} showed that wave groups introduce fluctuations in the estimated values $\widehat{H}_s$ that are proportional to $H_s$ and the spectral peakedness parameter $Q_{kk}$, these fluctuations can be dominant for the largest wave heights. 
+But what region of the ocean does this correspond to? \cite{Chelton&al.1989} made a first estimate of the size of the "oceanographic footprint": he reasoned that one can neglect the probability that the sea level may be at $\zeta > H_s$ above the local mean sea level (you can check on $p(\zeta > H_s)$ assuming a Gaussian distrubution)  so that at $t=t_0$ there are no echoes coming from a distance $\rho > \rho_C$ from the nadir.  Using the Pythagorean theorem (assuming the Earth is flat), this neglects the unlikely echoes would contribute to the waveform at $t=t_0$ if their range is $h_o=\sqrt{(h_o-H_s)^2-\rho_C^2}$.  Equivalently this neglects the contribution of nadir echoes at $z< -H_s$ that could mix with echoes from $(z=0,\rho=\rho_C)$ as shown in Figure \ref{fig:group_alti}.
+%%%%%%%%%%%%% figure
+\begin{figure}[htb]
+\centerline{\includegraphics[width=\textwidth]{FIGS_CH_SAT/wave_group_schematic.pdf}}
+%\vspace{3.64in}
+  \caption{Schematic of altimeter measurements in the presence of long wave groups and definition of the \cite{Chelton&al.1989} radius $\rho_C$.}{} \label{fig:group_alti}
+\end{figure}
+%%%%%%%%%%%%% end of figure
+\begin{equation}
+    \rho_C =\sqrt{h_o^2- (h_o-H_s)^2} \simeq \sqrt{ 2 h_o H_s} \label{eq:rC} 
+\end{equation}
+For a more realistic spherical Earth, there is a $1/(1+h_o/R_E)$ correction factor inside the square root, with $R_E$ is the Earth radius, given by simple geometry considerations  \citep{Chelton&al.1989}.
+
+This estimate of the radius of the "oceanographic footprint" is very conservative. In practice it is not important if the parameters to be estimated are uniform at scales greater than $\rho_C$. But as are trying to squeeze out more and more information from satellite measurements, can we be more precise in the spatial resolution of these measurements?  On Figure \ref{fig:group_alti}.b, the fitting of the simulated waveforms ranges from 0.1 $H_s$ to 1.6 $H_s$: an altimeter measures a local wave height that can only gives the significant wave height when averaged over the wave groups. If we assume the local wave height is a properly scaled average of the envelope of the wave groups (you can check that $H_l=4\sqrt{2/\pi} \eta$ gives the proper average), then 0.1  $H_s$  is an average over about 0.25 $\rho_C$. How can we define this exact number? Is it also true for shorter wave groups? 
 
 
 
-Another interesting parameter that can be derived from the waveforms is the mean square slope (mss). Indeed, 
-the backscattered power $\sigma_0$ is nearly inversely proportional to the mss \citep{Vandemark&al.2002}. 
+%Classical altimeter estimates of $H_s$ are fairly noisy when the wave height is low becase in that case $H_s$ is determined by only very few range gates, and the power in each rage gate as a random noise, also called speckle noise, caused by Rayleigh fading of ocean echoes that are coming from ranges spread over a distance much greater than the electromagnetic wavelength hence with random phases that randomy cancel \citep{Quartly&al.2001}. 
+%\cite{DeCarlo&al.2023} showed that wave groups introduce fluctuations in the estimated values $\widehat{H}_s$ that are proportional to $H_s$ and the spectral peakedness parameter $Q_{kk}$, introduced in chapter \ref{ch_groups}, these fluctuations can be dominant for the largest wave heights. 
+
+
+\subsection{The mean square slope (mss)}
+The backscattered power $\sigma_0$ is nearly inversely proportional to the mss \citep{Vandemark&al.2002}. 
 For display purposes the waveforms shown in figure \ref{waveform} have been scaled: you can see that the noise level (power in gates 11 to 21) which should be nearly the same for 
 all sea states is scaled to lower values for lower sea states that generally have low values of both $H_s$ and mss.  
 Because the mss is not a very common parameter in applications, many authors have derived empirical estimates of peak or mean  periods from $H_s$ and $\sigma_0$. Also, the mss is a good proxy for the wind speed \citep{Cox&Munk1954}.
 
 
 
+
+
+\section{Fitting the waveforms}
+
+The practical method for estimating the three parameters, is to find the values for the sea level $\widehat{z}_e$, wave height $\widehat{H}_s=4 \widehat{\sigma}_H= 2 c \widehat{\sigma}_t$, and $\widehat{\sigma}_0$ that minimize a cost function. The most simple case is to use a the least square cost 
+function. With a measured waveform $(y_k)$ discretized with a resolution $\delta_t$, we search for the values  $\widehat{t}_0$, $\widehat{\sigma}_t$ that minimize 
+\begin{equation} 
+    C_{\mathrm{LS}}=\sum_{k=k_{\min}}^{k_{\max}}  \left[ y_k - w_B(k \delta_t,\widehat{t}_0,\widehat{\sigma}_t,\widehat{\sigma}_0) \right]^2. \label{eq_CLS}
+\end{equation}
+For a perfect ocean and perfect instrument we have a measured waveform that follows eq. (\ref{Brown}) and the cost function is zero (and minimum) for 
+$\widehat{t}_0=t_0$, $\widehat{\sigma}_t=\sigma_t$, $\widehat{\sigma}_0=\sigma_0$. For the real ocean, we get something that is a little different. 
+
+An interesting case is the effect of spatial variations in the local wave height. In the most simple case we imagine a local wave group with a wave height $H_s(1+\Delta)$. We will assume that this perturbed wave height is present in an area $A_0$ that is small compared to what we define as the equivalent footprint area $A_e= \pi \rho_C^2/4$, and centered around the radius $\rho_0$ corresponding to the travel time $t_\rho$. For $A_0/A_e \ll 1$, the waveform is obtained by replacing the local Gaussian distribution $G$ in the area $A_0$ by a different Gaussian distribution, giving the analytical expression 
+\begin{equation}
+    w(t,t_0,\sigma_t,\sigma_0,a,b)=  w_B(t,t_0,\sigma_t,\sigma_0) + \sigma_0 \frac{A_0}{2 \pi \rho_0} \left[ G((1+\Delta)\sigma_t,t_0,t-t_\rho)- G(\sigma_t,t_0,t-t_\rho)  \right].
+\end{equation}
+
+We can use a Taylor expansion to replace the difference by $\Delta$ times the derivative of $G$ with respect to $\sigma_t$, which gives, 
+\begin{equation}
+    w(t,t_0,\sigma_t,\sigma_0,a,b) \simeq  w_B(t,t_0,\sigma_t,\sigma_0) + \sigma_0 a p(t-2 b H_s/c,t_0,\sigma_t)
+\end{equation} 
+with 
+\begin{eqnarray}
+        a&=&\Delta \frac{A_0}{A_{\mathrm{e}}} \label{eq:alti_a} \\ 
+    p(t,t_0,\sigma_t) &=& \frac{1}{\sqrt{2\pi}} \mathrm{e}^{-0.5 \left(\frac{t-t_0}{\sigma_t} \right)^2 } \left[\left(\frac{t-t_0}{\sigma_t} \right)^2-1\right]. \label{eq:p_alti} \\
+        b&=& \left(\rho_0/\rho_C \right)^2
+\end{eqnarray} 
+
+%%%%%%%%%%%%% figure
+\begin{figure}[htb]
+\centerline{\includegraphics[width=0.8\textwidth]{FIGS_CH_SAT/waveforms_perturbation.pdf}}
+%\vspace{3.64in}
+  \caption{The waveform is the sum of the PDF of surface elevation(in blue) shifted by their Waveform perturbation caused by a localized wave group at nadir ($b=0$) with a perturbation amplitude $a=\Delta A_0/A_e=0.3$}{} \label{fig:group_alti_perturb}
+\end{figure}
+%%%%%%%%%%%%% end of figure
+
+This non-Brown waveform can be retracked analytically, in particular by approximating the discrete sum in the cost function with a continuous integral, we get an analytical expression for the cost function $C_{LS}$, and it is relatively simple to find the minimum of this function \citep{DeCarlo&al.2023}. It gives the "analytically retracked" values, 
+ \begin{eqnarray}
+    \widehat{H}_{s}&=& H_s +  \frac{a H_s }{2}  J_H(b), \label{eq:Hsfit}\\
+    \widehat{z}_e= - c \widehat{t_0} / 2 & =& - \frac{a H_s}{16} J_z(b),\label{eq:epochfit}
+\end{eqnarray}
+with 
+ \begin{eqnarray}
+    J_H(b)&=& 2 b \left(6- 16 b^2\right) \mathrm{e}^{-4b^2},\label{eq:JH}\\
+    J_z(b)&=&   \left(2-16 b^2\right) \mathrm{e}^{-4 b^2}.\label{eq:Jz}
+\end{eqnarray}
+
+
+%%%%%%%%%%%%% figure
+\begin{figure}[h!]
+\centerline{\includegraphics[width=0.9\textwidth]{FIGS_CH_SAT/FigA3_Jfunc.pdf}}
+%\vspace{3.64in}
+  \caption{Normalized perturbation of retracked wave height and sea level caused by a localized wave group at a distance $\sqrt{b} \rho_C$ from nadir. These functions are only valid for the simple least square cost function.}{} \label{fig:alti_JLS}
+\end{figure}
+%%%%%%%%%%%%% end of figure 
+
+This result is relatively surprising: a wave group localized at nadir (as in Figure \ref{fig:group_alti_perturb}) has no impact on the estimate of wave height, but it causes an error on the sea level estimate. This is responsible for most of the "hump", the spurious  along-track variability of sea level estimates. For wave heights the highest sensitivity is at $\rho=\rho_C/2$. When mapped over the ocean surface, the sensitivity kernel $J_H$ of the altimeter retracked with the LS cost function has a "doughnut" shape, as illustrated in Figure \ref{alti_doughnut}. This theory allows to compute the value expected from altimeter retracking directly from a map of surface elevation, without the need to simulate the waveform and retrack it. 
+%%%%%%%%%%%%% figure
+\begin{figure}[h!]
+\centerline{\includegraphics[width=0.7\textwidth]{FIGS_CH_SAT/doughnut-footprint-for-altimeters.png}}
+%\vspace{3.64in}
+  \caption{Normalized perturbation of retracked wave height and sea level caused by a localized wave group at a distance $\sqrt{b} \rho_C$ from nadir. These functions are only valid for the simple least square cost function.}{} \label{fig:alti_doughnut}
+\end{figure}
+%%%%%%%%%%%%% end of figure 
+This "doughnut theory" works in the sense that it predicts most of the variability in speckle-free simulations of altimeter waveforms. It does not predict all the variance because the phase of the waves introduce some random fluctuations. That is clearly seen by combining the retraking of an ocean surface and its mirror image (adding 180 degrees to all phases): the average of the retracked wave heights and sea level for these two mirror images is very very close to the result of the doughnut theory. 
+%%%%%%%%%%%%% figure
+\begin{figure}[h!]
+\centerline{\includegraphics[width=0.7\textwidth]{FIGS_CH_SAT/verification-of-the-altimeter-doughnut-footprint-theory.png}}
+%\vspace{3.64in}
+  \caption{Verification of the doughnut theory: the retracked (a) wave height and (b) sea level is compared to the estimates using eqs. (\ref{eq:Hsfit}--(\ref{eq:epochfit}). In (c) and (d) the retracked values are averaged between the true surface and its mirror image (changing the sign of the elevation). This demonstrates that most of the residual not explained by the doughny theory is caused by the wave phases.}{} \label{fig:alti_doughnut2}
+\end{figure}
+%%%%%%%%%%%%% end of figure 
+
+A similar analysis can be done for speckle noise.  Both results can ne combined to build an uncertainty model for the altimeter measurements, and estimate the uncertainty of along-track averages. This allows a processing of the satellite data that removes the effect of wave groups in the altimeter measurements so that a truly significant wave height can be estimated from the data (and not a strangely averaged "local wave height"). For example, \cite{DeCarlo&Ardhuin2024} have revised the previous largest-ever measured wave height during storm Quirin from $\widehat{H}_s=20.1$~m \citep{Hanafin&al.2012} to $H_s=18.5 \pm 0.3$~m.
+
+\section{The quest for the better method for nadir altimeters}
+Most of the work on estimating parameters from altimeter data has focused on reducing the effect of speckle noise \citep{Challenor&Srokosz1989}. For speckle-dominated noise, it can be shown that the optimal cost functions is a  maximum likelihood (ML), which is a bit like fitting the waveform with a log scale instead of a linear scale, as illustrated on Figure \ref{fig:alti_linlog}.
+%%%%%%%%%%%%% figure
+\begin{figure}[h!]
+\centerline{\includegraphics[width=\textwidth]{FIGS_CH_SAT/waveforms_lin_log.pdf}}
+%\vspace{3.64in}
+  \caption{Verification of the doughnut theory: the retracked (a) wave height and (b) sea level is compared to the estimates using eqs. (\ref{eq:Hsfit}--(\ref{eq:epochfit}). In (c) and (d) the retracked values are averaged between the true surface and its mirror image (changing the sign of the elevation). This demonstrates that most of the residual not explained by the doughny theory is caused by the wave phases.}{} \label{fig:alti_linlog}
+\end{figure}
+%%%%%%%%%%%%% end of figure 
+Because it puts a much stronger emphasis on the early part of the waveform, the effective footprint of the ML retracker is smaller than the doughnut footprint of the LS retracker, and it has a very different shape and a maximum sensitivity at nadir.  In fact the ML retracker is not optimal for sea states with very large values of $Q_{\mathrm{kk}}$.
+
+Other interesting alternative exists: the $C_{LS}$ cost function can be modified to introduce weights. Taking weights inversely proportional to the theoretical Brown waveform is a good choice that is now further investigated. A complementary approach is to  filter the data using the series of measurements along the satellite track \citep{Quilfen&Chapron2019}.
+
+
+
 It should be noted that the main application of the altimeters was the mapping of the sea surface height (SSH) for the determination of the geoid, tides and dynamical topography. The measured
- SSH can be much more precise than $dr$, thanks to averaging. Waves play an important role in the estimation of the SSH because of a range bias induced by wave non-linearities that induce a correlation between the surface slope (and this its brightness for the radar) and the surface elevation. This is known as 
+ SSH can be much more precise than $dr$, thanks to averaging. Waves play an important role in the estimation of the SSH because of a range bias induced by wave non-linearities that induce a correlation between the local surface slope variance (and this its brightness for the radar) and the surface elevation \citep{Jackson1979,Srokosz1986}. This is known as 
  the sea state bias, and on average it is of the order of
  3~\% of Hs \citep[e.g.][]{Minster&al.1992}. 
  
  Also, because $H_s$ and SSH are estimated jointly using a parametric fit to the waveform, there are important correlated errors in the two parameters \citep[e.g.][]{Dibarboure&al.2014,DeCarlo&al.2023}. 
- As a result, without any particular editing or fitting of the waveforms, the variability of $H_s$ at scales shorter than 80~km is 
- expected to be mostly due to the error in the fitting procedure that can be associated to non-uniform radar backscatter and other effects. Recent methods have been developed to reduce that noise and filter it \citep{Passaro&al.2015,Quilfen&Chapron2019}.
  %%%%%%%%%%%%% figure
 \begin{figure}[htb]
 \centerline{\includegraphics[width=\textwidth]{FIGS_CH_SAT/altimetre_cartes2011.pdf}}
@@ -152,13 +267,9 @@ latitudes beyond 66 degrees. Also, sea ice  produces echoes that differ from tho
 \end{figure}
 %%%%%%%%%%%%% end of figure
 
-Details will vary with different instruments, and here we will use the most simple case of radar altimeters. It was shown by \cite{Chelton&al.1989} that the sea echoes that contribute to the rising part of the waveforms, as shown on Fig. \ref{waveform}, are within a radius $r_C$ of the nadir, the point on the sea surface that is vertically below the satellite, with 
-\begin{equation}
-    r_C =\sqrt{\frac{ 2 h_o H_s+ 2 \delta_R}{1+h_o/R_E}} \label{eq:rC}
-\end{equation}
-where $h_o$ is the satellite orbit height above the ground, $R_E$ is the Earth radius and $\delta_R$ is the range resolution of the altimeter.  
 
-\subsection{delay-Doppler altimetry}\label{section:delay-Doppler}
+
+\section{delay-Doppler altimetry}\label{section:delay-Doppler}
 Another principle that can be used to refine the position and/or to measure the velocity of targets along the satellite flight path is the Doppler effect: fixed targets ahead of the radar are moving towards it, and hence have a higher frequency, while fixed targets that are behind along the satellite path 
 are moving away, giving a lower radar frequency. Typical low Earth orbits give a satellite velocity around $V=7$~km/s. Hence, a Ka-band system at 36~GHz frequency will see a Doppler shift
 of the order of $V f_r/c = 840$~kHz, which is further reduced by the incidence angle $\theta_r$. For a 0.5$^\circ$  antenna aperture, $\theta_r$ will 
@@ -335,7 +446,9 @@ Compared to the SAR systems on Envisat and Sentinel-1 described above, the KaRIN
 \item the noise of the interferometric phase is related to the distribution of these distances within a resolution pixel, hence the significant wave height of the waves that are not resolved by the image. 
 \end{itemize}
 
-When trying to analyse SWOT data at small scales, it is thus really important to understand what is resolved, what is not, and how the unresolved surface elevations give spurious signals in the resolved part: indeed the imaging of the surface at near-nadir angles meas that all targets that have the same range will fall in the same pixel, even though they are not at the same $(x,y)$ position. This leads to a fairly nonlinear image-blurring or image-enhancing effect called "range-bunching": just like velocity bunching, which distorts or enhances the image in the azimuth direction, range bunching leads to distortions and blurring in range. Figure \ref{fig:SWOTswell} shows some example of wave signatures in SWOT surface elevation maps, that still have to be analyzed quantitatively.
+When trying to analyse SWOT data at small scales, it is thus really important to understand what is resolved, what is not, and how the unresolved surface elevations give spurious signals in the resolved part: indeed the imaging of the surface at near-nadir angles meas that all targets that have the same range will fall in the same pixel, even though they are not at the same $(x,y)$ position. This leads to a fairly nonlinear image-blurring or image-enhancing effect called "range-bunching": just like velocity bunching, which distorts or enhances the image in the azimuth direction, range bunching leads to distortions and blurring in range. You may look at the work by \cite{Peral&al.2015} before a more detailed summary appears in a new chapter. 
+
+Figure \ref{fig:SWOTswell} and the cover of this book shows some example of wave signatures in SWOT surface elevation maps. A quantitative analysis was done by \cite{Ardhuin&al.2024} and revealed that SWOT is capable of measuring significan wave heights as low as 3~cm for wavelengths larger than 800~m: no other instrument can do this in the open ocean.
 %%%%%%%%%%%%% figure
 \begin{figure}[htb]
 \centerline{\includegraphics[width=\textwidth]{FIGS_CH_SAT/SWOTSWELL.pdf}}
@@ -343,7 +456,7 @@ When trying to analyse SWOT data at small scales, it is thus really important to
 \label{fig:SWOTswell}
 \end{figure}
 %%%%%%%%%%%%% end of figure
-You may look at the work by \cite{Peral&al.2015} before a more detailed summary appears in this section or a new chapter. 
+
 
 \subsection{The wave spectrometer and the matching wavefront technique}
 Whereas a SAR resolves the wave patterns in an image to produce a wave spectrum, 

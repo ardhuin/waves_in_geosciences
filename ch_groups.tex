@@ -225,7 +225,7 @@ a two-dimensional spectral peakedness $Q_{kk}$ which is measured in meters,
 
 This expression gives the approximate value for the standard deviation,
 \begin{equation}
-    \mathrm{std}(H_{r},d_1) \simeq  H_s   Q_{kk}  \sqrt{ (4-\pi) \left[2/r_a^2 -  8 k_1 / r_a\right] }.\label{eq:Lambda2}
+    \mathrm{std}(H_{r},d_1) \simeq  H_s   Q_{kk}  \sqrt{ (4-\pi) \left[2/r_a^2 -  8 k_1 / r_a\right] }.\label{eq:std_Hs_from_Qkk}
 \end{equation}
 
 {This variability of $H_{r_a}$, which we have defined as the contribution of wave groups to the variability of "measured" wave heights $\widehat{H}_s$ is thus the product of three factors: the significant wave height $H_s$, the shape of the wave spectrum as quantified by $Q_{kk}$, and the effective range of spatial scales over which the variance is integrated. That last factor is a function of the smoothing effect of the altimeter, represented by the filtering scale $r_a$, and the distance $d_1=2\pi / k_1$ over which  we consider the variability.
@@ -242,7 +242,7 @@ We can use our theory to verify that in the case of narrow spectra, the expected
 
 On the contrary, for the broader wave spectrum, the effect of wave groups is much smaller than in the measurements: it is possible that the data contains true gradients of the underlying $H_s$, and we also know that measurement noise (known as speckle) is often the dominant source of variability in the measured values. This is one of the main reason for the development of Delay-Doppler altimetry which has a much lower level of speckle noise due to the averaging of different indepedent Doppler "looks" for the same measurement. 
 
-Once the expected effect of groups are removed we can study the influence on other factors on the variability of $H_s$. Figure \ref{fig:groups_global1}, shows that the relative fluctuations in significant wave height is clearly associated with regions of strong mesoscale currents, as we will see in chapter \ref{ch_current}. However, in order to be able to transpose these results to other satellites, we now have to go back to these assumptions about how altimeters actually work, and do a little bit of theory about these instruments and what they actually measure: nadir altimeter do not measure wave height or sea level, they measure waveforms from which wave height and sea level are estimated. 
+Using eq. (\ref{eq:std_Hs_from_Qkk}) we can remove the expected contribution of groups and study the influence on other factors on the variability of $H_s$. Figure \ref{fig:groups_global1}, shows that the relative fluctuations in significant wave height is clearly associated with regions of strong mesoscale currents, as we will see in chapter \ref{ch_current}. However, in order to be able to transpose these results to other satellites, we now have to go back to these assumptions about how altimeters actually work, and do a little bit of theory about these instruments and what they actually measure: nadir altimeter do not measure wave height or sea level, they measure waveforms from which wave height and sea level are estimated. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
