@@ -161,21 +161,25 @@ Because the mss is not a very common parameter in applications, many authors hav
 \section{Fitting the waveforms}
 
 The practical method for estimating the three parameters, is to find the values for the sea level $\widehat{z}_e$, wave height $\widehat{H}_s=4 \widehat{\sigma}_H= 2 c \widehat{\sigma}_t$, and $\widehat{\sigma}_0$ that minimize a cost function. The most simple case is to use a the least square cost 
-function. With a measured waveform $(y_k)$ discretized with a resolution $\delta_t$, we search for the values  $\widehat{t}_0$, $\widehat{\sigma}_t$ that minimize 
+function. With a measured waveform $(y_k)$ discretized with a resolution $\delta_t$, we search for the values  $\widehat{t}_0$, $\widehat{\sigma}_t$, $\widehat{\sigma}_0$ that minimize 
 \begin{equation} 
-    C_{\mathrm{LS}}=\sum_{k=k_{\min}}^{k_{\max}}  \left[ y_k - w_B(k \delta_t,\widehat{t}_0,\widehat{\sigma}_t,\widehat{\sigma}_0) \right]^2. \label{eq_CLS}
+    C_{\mathrm{LS}}(t_0',\sigma_t',\sigma_0')=\sum_{k=k_{\min}}^{k_{\max}}  \left[ y_k - w_B(k \delta_t,t_0',\sigma_t',\sigma_0') \right]^2. \label{eq_CLS}
 \end{equation}
 For a perfect ocean and perfect instrument we have a measured waveform that follows eq. (\ref{Brown}) and the cost function is zero (and minimum) for 
 $\widehat{t}_0=t_0$, $\widehat{\sigma}_t=\sigma_t$, $\widehat{\sigma}_0=\sigma_0$. For the real ocean, we get something that is a little different. 
 
 An interesting case is the effect of spatial variations in the local wave height. In the most simple case we imagine a local wave group with a wave height $H_s(1+\Delta)$. We will assume that this perturbed wave height is present in an area $A_0$ that is small compared to what we define as the equivalent footprint area $A_e= \pi \rho_C^2/4$, and centered around the radius $\rho_0$ corresponding to the travel time $t_\rho$. For $A_0/A_e \ll 1$, the waveform is obtained by replacing the local Gaussian distribution $G$ in the area $A_0$ by a different Gaussian distribution, giving the analytical expression 
 \begin{equation}
-    w(t,t_0,\sigma_t,\sigma_0,a,b)=  w_B(t,t_0,\sigma_t,\sigma_0) + \sigma_0 \frac{A_0}{2 \pi \rho_0} \left[ G((1+\Delta)\sigma_t,t_0,t-t_\rho)- G(\sigma_t,t_0,t-t_\rho)  \right].
+    w(t,t_0,\sigma_t,\sigma_0,\Delta, A_0,\rho_0)=  w_B(t,t_0,\sigma_t,\sigma_0) + w'(t,t_0,\sigma_t,\sigma_0,\Delta, A_0,\rho_0)
+\end{equation}
+with the perturbation 
+\begin{equation}
+    w'(t,t_0,\sigma_t,\sigma_0,\Delta, A_0,\rho_0) = \sigma_0 \frac{A_0}{2 \pi \rho_0} \left[ G((1+\Delta)\sigma_t,t_0,t-t_\rho)- G(\sigma_t,t_0,t-t_\rho)  \right].
 \end{equation}
 
 We can use a Taylor expansion to replace the difference by $\Delta$ times the derivative of $G$ with respect to $\sigma_t$, which gives, 
 \begin{equation}
-    w(t,t_0,\sigma_t,\sigma_0,a,b) \simeq  w_B(t,t_0,\sigma_t,\sigma_0) + \sigma_0 a p(t-2 b H_s/c,t_0,\sigma_t)
+   w'(t,t_0,\sigma_t,\sigma_0,\Delta, A_0,\rho_0) \simeq   \sigma_0 a p(t-2 b H_s/c,t_0,\sigma_t)
 \end{equation} 
 with 
 \begin{eqnarray}
@@ -192,7 +196,19 @@ with
 \end{figure}
 %%%%%%%%%%%%% end of figure
 
-This non-Brown waveform can be retracked analytically, in particular by approximating the discrete sum in the cost function with a continuous integral, we get an analytical expression for the cost function $C_{LS}$, and it is relatively simple to find the minimum of this function \citep{DeCarlo&al.2023}. It gives the "analytically retracked" values, 
+This non-Brown waveform can be retracked analytically, in particular by approximating the discrete sum in the cost function with a continuous integral, we get an analytical expression for the cost function. Using the notation $w_B'=w_B(t,t_0',\sigma_t',\sigma_0')$, we have, 
+\begin{eqnarray}
+   C_{\mathrm{LS}}(t_0',\sigma_t',\sigma_0')& \simeq &\int_{-\infty} ^\infty \left( w-w_B'  \right)^2 \mathrm{d} t \\
+                  & \simeq & \int_{-\infty} ^\infty \left( w_B-w_B' \right)^2  + w'^2+ 2 w'\left( w_B-w_B' \right)  \mathrm{d} t 
+\end{eqnarray} 
+It is relatively simple to find the minimum of this function \citep{DeCarlo&al.2023} by Taylor expanding $w_B-w_B"$, 
+\begin{equation}
+    w_B-w_B' \simeq  (t_0-t_0') \frac{\partial w_B}{\partial t_0} +   (\sigma_t-\sigma_t') \frac{\partial w_B}{\partial \sigma_t} +   (\sigma_0-\sigma_0') \frac{\partial w_B}{\partial \sigma_0} + (t_0-t_0')(\sigma_t-\sigma_t') \frac{\partial^2 w_B}{\partial t_0  \partial \sigma_t}  \dots 
+\end{equation}
+Plugging this into the cost function gives a second order polynomial which is minimum where each derivative is zero, 
+which are simple linear expressions as a function of $w'$. In other words, the effect of perturbations $w'$ is linear and thus the effects od the different perturbations can be summed.  Also the cost function can be interpreted as a scalar product that is projecting the perturbation $w'$ on the gradients of the waveform function $w_B$. 
+
+For our localized wave group we get the "analytically retracked" values, 
  \begin{eqnarray}
     \widehat{H}_{s}&=& H_s +  \frac{a H_s }{2}  J_H(b), \label{eq:Hsfit}\\
     \widehat{z}_e= - c \widehat{t_0} / 2 & =& - \frac{a H_s}{16} J_z(b),\label{eq:epochfit}
@@ -217,7 +233,7 @@ This result is relatively surprising: a wave group localized at nadir (as in Fig
 \begin{figure}[h!]
 \centerline{\includegraphics[width=0.7\textwidth]{FIGS_CH_SAT/doughnut-footprint-for-altimeters.png}}
 %\vspace{3.64in}
-  \caption{Normalized perturbation of retracked wave height and sea level caused by a localized wave group at a distance $\sqrt{b} \rho_C$ from nadir. These functions are only valid for the simple least square cost function.}{} \label{fig:alti_doughnut}
+  \caption{This figure shows simulated ocean surface elevation and local wave height, and the sensitivity of usual altimeter processing to the map of wave heights. The retracking of altimeter data is equivalent to smoothing the local vave heights with the filter $J_H$.}{} \label{fig:alti_doughnut}
 \end{figure}
 %%%%%%%%%%%%% end of figure 
 This "doughnut theory" works in the sense that it predicts most of the variability in speckle-free simulations of altimeter waveforms. It does not predict all the variance because the phase of the waves introduce some random fluctuations. That is clearly seen by combining the retraking of an ocean surface and its mirror image (adding 180 degrees to all phases): the average of the retracked wave heights and sea level for these two mirror images is very very close to the result of the doughnut theory. 
@@ -237,10 +253,24 @@ Most of the work on estimating parameters from altimeter data has focused on red
 \begin{figure}[h!]
 \centerline{\includegraphics[width=\textwidth]{FIGS_CH_SAT/waveforms_lin_log.pdf}}
 %\vspace{3.64in}
-  \caption{Verification of the doughnut theory: the retracked (a) wave height and (b) sea level is compared to the estimates using eqs. (\ref{eq:Hsfit}--(\ref{eq:epochfit}). In (c) and (d) the retracked values are averaged between the true surface and its mirror image (changing the sign of the elevation). This demonstrates that most of the residual not explained by the doughny theory is caused by the wave phases.}{} \label{fig:alti_linlog}
+  \caption{Perturbed Brown waveform and best fits using a Least Square (LS) cost function or a Maximum Likelihood cost function.}{} \label{fig:alti_linlog}
 \end{figure}
 %%%%%%%%%%%%% end of figure 
 Because it puts a much stronger emphasis on the early part of the waveform, the effective footprint of the ML retracker is smaller than the doughnut footprint of the LS retracker, and it has a very different shape and a maximum sensitivity at nadir.  In fact the ML retracker is not optimal for sea states with very large values of $Q_{\mathrm{kk}}$.
+
+All this could sound like unnecessary technical details, bur figure \ref{fig:alti_SWIM_fit} shows an example where these things are important: the estimates sea level fluctuations of the order of 0.5 m are spurious effects of the wave groups on the retracking procedure. They average out over large scales but gthat still leaves some strong noise at scales under 100 km. 
+%%%%%%%%%%%%% figure
+\begin{figure}[h!]
+\centerline{\includegraphics[width=\textwidth]{FIGS_CH_SAT/SWIM_data_LS_vs_ML.pdf}}
+%\vspace{3.64in}
+  \caption{Estimates of the (a) sea level $\widehat{z}_e$ and (b) wave heights $\widehat{H}_s$ for 50 consecutive waveforms of CFOSAT corresponding to the spectrum in figure 5.5.b. This uses two different cost
+functions: LS is a least squares  fit and ML is a maximum likelihood  fit to the same theoretical waveform. The“native data is shown for reference and is the operational method as described in Tourain et al. (2021). The good agreement of the ML retracking
+with the native data requires to ignore the first range gates using $k_{\min}\simeq 80$, or adapting kmin such that $w (k_{\min}) > r_{\min} \max (w)$, with $r_{\min}\simeq  0.06$.
+} \label{fig:alti_SWIM_fit}
+\end{figure}
+%%%%%%%%%%%%% end of figure 
+
+
 
 Other interesting alternative exists: the $C_{LS}$ cost function can be modified to introduce weights. Taking weights inversely proportional to the theoretical Brown waveform is a good choice that is now further investigated. A complementary approach is to  filter the data using the series of measurements along the satellite track \citep{Quilfen&Chapron2019}.
 
@@ -439,11 +469,11 @@ used for validation \citep{Collard&al.2005}.}
 
 
 
-\subsection{SAR Across-track Interferometry: SWOT and near-nadir range bunching effects}
+\subsection{SAR Across-track Interferometry: SWOT}
 Compared to the SAR systems on Envisat and Sentinel-1 described above, the KaRIN instrument on SWOT has two very different features: first it measures at incidences very close to the vertical (nadir), and second it actually has 2 SAR systems forming a cross-track interferometric baseline. This means that in addition to the usual SAR imagery (a little unusual with KaRIN due to their incidence angles) we also get interferograms from the two SAR receivers on KaRIN, which provide a wealth of information: 
 \begin{itemize}
 \item the mean phase of the interferogram is related to the distance between the radar and the reflecting target, hence the sea surface elevation, which contains the geoid, the dynamic height, tides, internal waves... but also those wind-generated waves that are longer than the SAR pixel, as shown on Fig. \ref{fig:SWOTswell}. 
-\item the noise of the interferometric phase is related to the distribution of these distances within a resolution pixel, hence the significant wave height of the waves that are not resolved by the image. 
+\item the noise of the interferometric phase is related to the distribution of these distances within a resolution pixel, hence the significant wave height of the waves that are not resolved by the surface height image. 
 \end{itemize}
 
 When trying to analyse SWOT data at small scales, it is thus really important to understand what is resolved, what is not, and how the unresolved surface elevations give spurious signals in the resolved part: indeed the imaging of the surface at near-nadir angles meas that all targets that have the same range will fall in the same pixel, even though they are not at the same $(x,y)$ position. This leads to a fairly nonlinear image-blurring or image-enhancing effect called "range-bunching": just like velocity bunching, which distorts or enhances the image in the azimuth direction, range bunching leads to distortions and blurring in range. You may look at the work by \cite{Peral&al.2015} before a more detailed summary appears in a new chapter. 
