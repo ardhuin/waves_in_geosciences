@@ -127,6 +127,23 @@ power spreads over about 35 range gates, from number 26 to number 61, i.e. a dis
  $H_{\mathrm{rms}} \approx  H_{s}/1.4$. %The power in range gates beyond 50 comes from the sea surface that is not directly 
 % under the satellite but on a circle around it, and is still illuminated by the radar beam.  
 
+\subsection{The mean square slope (mss)}
+The backscattered power $\sigma_0$ is nearly inversely proportional to the mss \citep{Vandemark&al.2002}. 
+For display purposes the waveforms shown in figure \ref{waveform} have been scaled: you can see that the noise level (power in gates 11 to 21) which should be nearly the same for 
+all sea states is scaled to lower values for lower sea states that generally have low values of both $H_s$ and mss.  
+Because the mss is not a very common parameter in applications, many authors have derived empirical estimates of peak or mean  periods from $H_s$ and $\sigma_0$. Also, the mss is a good proxy for the wind speed \citep{Cox&Munk1954}.
+
+
+
+
+\subsection{The effective footprint of nadir altimeters}
+The backscattered power $\sigma_0$ is nearly inversely proportional to the mss \citep{Vandemark&al.2002}. 
+For display purposes the waveforms shown in figure \ref{waveform} have been scaled: you can see that the noise level (power in gates 11 to 21) which should be nearly the same for 
+all sea states is scaled to lower values for lower sea states that generally have low values of both $H_s$ and mss.  
+Because the mss is not a very common parameter in applications, many authors have derived empirical estimates of peak or mean  periods from $H_s$ and $\sigma_0$. Also, the mss is a good proxy for the wind speed \citep{Cox&Munk1954}.
+
+
+
 But what region of the ocean does this correspond to? \cite{Chelton&al.1989} made a first estimate of the size of the "oceanographic footprint": he reasoned that one can neglect the probability that the sea level may be at $\zeta > H_s$ above the local mean sea level (you can check on $p(\zeta > H_s)$ assuming a Gaussian distrubution)  so that at $t=t_0$ there are no echoes coming from a distance $\rho > \rho_C$ from the nadir.  Using the Pythagorean theorem (assuming the Earth is flat), this neglects the unlikely echoes would contribute to the waveform at $t=t_0$ if their range is $h_o=\sqrt{(h_o-H_s)^2-\rho_C^2}$.  Equivalently this neglects the contribution of nadir echoes at $z< -H_s$ that could mix with echoes from $(z=0,\rho=\rho_C)$ as shown in Figure \ref{fig:group_alti}.
 %%%%%%%%%%%%% figure
 \begin{figure}[htb]
@@ -148,22 +165,14 @@ This estimate of the radius of the "oceanographic footprint" is very conservativ
 %\cite{DeCarlo&al.2023} showed that wave groups introduce fluctuations in the estimated values $\widehat{H}_s$ that are proportional to $H_s$ and the spectral peakedness parameter $Q_{kk}$, introduced in chapter \ref{ch_groups}, these fluctuations can be dominant for the largest wave heights. 
 
 
-\subsection{The mean square slope (mss)}
-The backscattered power $\sigma_0$ is nearly inversely proportional to the mss \citep{Vandemark&al.2002}. 
-For display purposes the waveforms shown in figure \ref{waveform} have been scaled: you can see that the noise level (power in gates 11 to 21) which should be nearly the same for 
-all sea states is scaled to lower values for lower sea states that generally have low values of both $H_s$ and mss.  
-Because the mss is not a very common parameter in applications, many authors have derived empirical estimates of peak or mean  periods from $H_s$ and $\sigma_0$. Also, the mss is a good proxy for the wind speed \citep{Cox&Munk1954}.
-
-
-
 
 
 \section{Fitting the waveforms}
 
 The practical method for estimating the three parameters, is to find the values for the sea level $\widehat{z}_e$, wave height $\widehat{H}_s=4 \widehat{\sigma}_H= 2 c \widehat{\sigma}_t$, and $\widehat{\sigma}_0$ that minimize a cost function. The most simple case is to use a the least square cost 
-function. With a measured waveform $(y_k)$ discretized with a resolution $\delta_t$, we search for the values  $\widehat{t}_0$, $\widehat{\sigma}_t$, $\widehat{\sigma}_0$ that minimize 
+function. With a measured waveform $(w_k)$ discretized with a resolution $\delta_t$, we search for the values  $\widehat{t}_0$, $\widehat{\sigma}_t$, $\widehat{\sigma}_0$ that minimize 
 \begin{equation} 
-    C_{\mathrm{LS}}(t_0',\sigma_t',\sigma_0')=\sum_{k=k_{\min}}^{k_{\max}}  \left[ y_k - w_B(k \delta_t,t_0',\sigma_t',\sigma_0') \right]^2. \label{eq_CLS}
+    C_{\mathrm{LS}}(t_0',\sigma_t',\sigma_0')=\sum_{k=k_{\min}}^{k_{\max}}  \left[ w_k - w_B(k \delta_t,t_0',\sigma_t',\sigma_0') \right]^2. \label{eq_CLS}
 \end{equation}
 For a perfect ocean and perfect instrument we have a measured waveform that follows eq. (\ref{Brown}) and the cost function is zero (and minimum) for 
 $\widehat{t}_0=t_0$, $\widehat{\sigma}_t=\sigma_t$, $\widehat{\sigma}_0=\sigma_0$. For the real ocean, we get something that is a little different. 
@@ -174,39 +183,50 @@ An interesting case is the effect of spatial variations in the local wave height
 \end{equation}
 with the perturbation 
 \begin{equation}
-    w'(t,t_0,\sigma_t,\sigma_0,\Delta, A_0,\rho_0) = \sigma_0 \frac{A_0}{2 \pi \rho_0} \left[ G((1+\Delta)\sigma_t,t_0,t-t_\rho)- G(\sigma_t,t_0,t-t_\rho)  \right].
+    w'(t,t_0,\sigma_t,\sigma_0,\Delta, A_0,\rho_0) = \sigma_0 \frac{A_0 }{ \pi c h_o} \left[ G((1+\Delta)\sigma_t,t_0,t-t_\rho)- G(\sigma_t,t_0,t-t_\rho)  \right].
 \end{equation}
-
-We can use a Taylor expansion to replace the difference by $\Delta$ times the derivative of $G$ with respect to $\sigma_t$, which gives, 
-\begin{equation}
-   w'(t,t_0,\sigma_t,\sigma_0,\Delta, A_0,\rho_0) \simeq   \sigma_0 a p(t-2 b H_s/c,t_0,\sigma_t)
-\end{equation} 
-with 
-\begin{eqnarray}
-        a&=&\Delta \frac{A_0}{A_{\mathrm{e}}} \label{eq:alti_a} \\ 
-    p(t,t_0,\sigma_t) &=& \frac{1}{\sqrt{2\pi}} \mathrm{e}^{-0.5 \left(\frac{t-t_0}{\sigma_t} \right)^2 } \left[\left(\frac{t-t_0}{\sigma_t} \right)^2-1\right]. \label{eq:p_alti} \\
-        b&=& \left(\rho_0/\rho_C \right)^2
-\end{eqnarray} 
-
+where the normalization factor $\pi c h_o$ is the area of a ring of unit width $2 \pi \rho_0$ multiplied by $c h_o / 2 \rho_0$ to convert the unit width to unit travel time. If that sounds strange, it is because I'm trying to avoid stepping back to the elevation PDF and adding 2 more equations to compute the waveform as a convolution of that PDF, as done  in Appendix A of \cite{DeCarlo&Ardhuin2024}.  
 %%%%%%%%%%%%% figure
-\begin{figure}[htb]
+\begin{figure}[h!]
 \centerline{\includegraphics[width=0.8\textwidth]{FIGS_CH_SAT/waveforms_perturbation.pdf}}
 %\vspace{3.64in}
   \caption{The waveform is the sum of the PDF of surface elevation(in blue) shifted by their Waveform perturbation caused by a localized wave group at nadir ($b=0$) with a perturbation amplitude $a=\Delta A_0/A_e=0.3$}{} \label{fig:group_alti_perturb}
 \end{figure}
 %%%%%%%%%%%%% end of figure
 
+We can now use a Taylor expansion to replace the difference by $\Delta$ times the derivative of $G$ with respect to $\sigma_t$, which gives, 
+\begin{equation}
+   w'(t,t_0,\sigma_t,\sigma_0,\Delta, A_0,\rho_0) \simeq   \sigma_0 a p(t- 4 b \sigma_t,t_0,\sigma_t)
+\end{equation} 
+with 
+\begin{eqnarray}
+        a&=&\Delta \frac{A_0}{A_{\mathrm{e}}}  =\Delta \frac{2 A_0}{\pi h H_s} \label{eq:alti_a} \\ 
+    p(t,t_0,\sigma_t) &=& \frac{1}{\sqrt{2\pi}} \mathrm{e}^{-0.5 \left(\frac{t-t_0}{\sigma_t} \right)^2 } \left[\left(\frac{t-t_0}{\sigma_t} \right)^2-1\right]. \label{eq:p_alti} \\
+        b&=& \left(\rho_0/\rho_C \right)^2
+\end{eqnarray} 
+
+
 This non-Brown waveform can be retracked analytically, in particular by approximating the discrete sum in the cost function with a continuous integral, we get an analytical expression for the cost function. Using the notation $w_B'=w_B(t,t_0',\sigma_t',\sigma_0')$, we have, 
 \begin{eqnarray}
-   C_{\mathrm{LS}}(t_0',\sigma_t',\sigma_0')& \simeq &\int_{-\infty} ^\infty \left( w-w_B'  \right)^2 \mathrm{d} t \\
+   C_{\mathrm{LS}}(t_0',\sigma_t',\sigma_0')& \simeq &\int_{-\infty} ^\infty \left( w-w_B'  \right)^2 \mathrm{d} t =\int_{-\infty} ^\infty \left( w_B+w'-w_B'  \right)^2 \mathrm{d} t \\
                   & \simeq & \int_{-\infty} ^\infty \left( w_B-w_B' \right)^2  + w'^2+ 2 w'\left( w_B-w_B' \right)  \mathrm{d} t 
 \end{eqnarray} 
-It is relatively simple to find the minimum of this function \citep{DeCarlo&al.2023} by Taylor expanding $w_B-w_B"$, 
+It is relatively simple to find the minimum of this function \citep{DeCarlo&al.2023} by Taylor expanding $w_B-w_B'$, 
 \begin{equation}
     w_B-w_B' \simeq  (t_0-t_0') \frac{\partial w_B}{\partial t_0} +   (\sigma_t-\sigma_t') \frac{\partial w_B}{\partial \sigma_t} +   (\sigma_0-\sigma_0') \frac{\partial w_B}{\partial \sigma_0} + (t_0-t_0')(\sigma_t-\sigma_t') \frac{\partial^2 w_B}{\partial t_0  \partial \sigma_t}  \dots 
 \end{equation}
-Plugging this into the cost function gives a second order polynomial which is minimum where each derivative is zero, 
-which are simple linear expressions as a function of $w'$. In other words, the effect of perturbations $w'$ is linear and thus the effects od the different perturbations can be summed.  Also the cost function can be interpreted as a scalar product that is projecting the perturbation $w'$ on the gradients of the waveform function $w_B$. 
+Plugging this into the cost function gives a second order polynomial 
+\begin{eqnarray}
+   C_{\mathrm{LS}}(t_0',\sigma_t',\sigma_0')& \simeq & (t_0-t_0')^2 \int_{-\infty} ^\infty \left(\frac{\partial w_B}{\partial t_0}\right)^2 \mathrm{d} t + (t_0-t_0') \int_{-\infty} ^\infty w' \frac{\partial w_B}{\partial t_0} \mathrm{d} t   +  \dots \\
+     & \simeq & (t_0-t_0')^2  I_{t_0,2} + (t_0-t_0') I_{t_0,1} +  (\sigma_t-\sigma_t')^2  I_{\sigma_t,2}  +  (\sigma_t-\sigma_t')  I_{\sigma_t,1} + \dots
+\end{eqnarray} 
+where all the integrals $I_{x,2}$ are independent of the perturbation $w'$ and   $I_{x,1}$ are analytical functions of the $w'$ perturbation parameters, here $a$ and $b$. The cost function is thus minimum where the derivatives are zero. If we neglect the second order cross derivates we get
+\begin{eqnarray}
+\partial C_{\mathrm{LS}} / \partial (t_0-t_0') &= & 2 (t_0-t_0')    I_{t_0,2} + I_{t_0,1}  \\
+\partial C_{\mathrm{LS}} / \partial (\sigma_t-\sigma_t') &=&  2 (\sigma_t-\sigma_t')    I_{\sigma_t,2} + I_{\sigma_t,1}    \\
+\partial C_{\mathrm{LS}} / \partial (\sigma_0-\sigma_0') &= & 2 (\sigma_0-\sigma_0')    I_{\sigma_0,2} + I_{\sigma_0,1}   
+\end{eqnarray} 
+Because the integrals $I$ are simple linear expressions as a function of $w'$, the effect of perturbations $w'$ is linear and thus the effects od the different perturbations can be summed.  Also the cost function can be interpreted as a scalar product that is projecting the perturbation $w'$ on the gradients of the waveform function $w_B$. 
 
 For our localized wave group we get the "analytically retracked" values, 
  \begin{eqnarray}
@@ -214,21 +234,19 @@ For our localized wave group we get the "analytically retracked" values,
     \widehat{z}_e= - c \widehat{t_0} / 2 & =& - \frac{a H_s}{16} J_z(b),\label{eq:epochfit}
 \end{eqnarray}
 with 
+%%%%%%%%%%%%% figure
+\begin{figure}[h!]
+\centerline{\includegraphics[width=0.8\textwidth]{FIGS_CH_SAT/FigA3_Jfunc.pdf}}
+%\vspace{3.64in}
+  \caption{Normalized perturbation of retracked wave height and sea level caused by a localized wave group at a distance $\sqrt{b} \rho_C$ from nadir. These functions are only valid for the simple least square cost function.}{} \label{fig:alti_JLS}
+\end{figure}
+%%%%%%%%%%%%% end of figure 
  \begin{eqnarray}
     J_H(b)&=& 2 b \left(6- 16 b^2\right) \mathrm{e}^{-4b^2},\label{eq:JH}\\
     J_z(b)&=&   \left(2-16 b^2\right) \mathrm{e}^{-4 b^2}.\label{eq:Jz}
 \end{eqnarray}
 
-
-%%%%%%%%%%%%% figure
-\begin{figure}[h!]
-\centerline{\includegraphics[width=0.9\textwidth]{FIGS_CH_SAT/FigA3_Jfunc.pdf}}
-%\vspace{3.64in}
-  \caption{Normalized perturbation of retracked wave height and sea level caused by a localized wave group at a distance $\sqrt{b} \rho_C$ from nadir. These functions are only valid for the simple least square cost function.}{} \label{fig:alti_JLS}
-\end{figure}
-%%%%%%%%%%%%% end of figure 
-
-This result is relatively surprising: a wave group localized at nadir (as in Figure \ref{fig:group_alti_perturb}) has no impact on the estimate of wave height, but it causes an error on the sea level estimate. This is responsible for most of the "hump", the spurious  along-track variability of sea level estimates. For wave heights the highest sensitivity is at $\rho=\rho_C/2$. When mapped over the ocean surface, the sensitivity kernel $J_H$ of the altimeter retracked with the LS cost function has a "doughnut" shape, as illustrated in Figure \ref{alti_doughnut}. This theory allows to compute the value expected from altimeter retracking directly from a map of surface elevation, without the need to simulate the waveform and retrack it. 
+This result is relatively surprising: a wave group localized at nadir (as in Figure \ref{fig:group_alti_perturb}) has no impact on the estimate of wave height, but it causes an error on the sea level estimate. This is responsible for most of the "hump", the spurious  along-track variability of sea level estimates. For wave heights the highest sensitivity is at $\rho=\rho_C/2$. When mapped over the ocean surface, the sensitivity kernel $J_H$ of the altimeter retracked with the LS cost function has a "doughnut" shape, as illustrated in Figure \ref{fig:alti_doughnut}. This theory allows to compute the value expected from altimeter retracking directly from a map of surface elevation, without the need to simulate the waveform and retrack it. 
 %%%%%%%%%%%%% figure
 \begin{figure}[h!]
 \centerline{\includegraphics[width=0.7\textwidth]{FIGS_CH_SAT/doughnut-footprint-for-altimeters.png}}
@@ -236,18 +254,20 @@ This result is relatively surprising: a wave group localized at nadir (as in Fig
   \caption{This figure shows simulated ocean surface elevation and local wave height, and the sensitivity of usual altimeter processing to the map of wave heights. The retracking of altimeter data is equivalent to smoothing the local vave heights with the filter $J_H$.}{} \label{fig:alti_doughnut}
 \end{figure}
 %%%%%%%%%%%%% end of figure 
-This "doughnut theory" works in the sense that it predicts most of the variability in speckle-free simulations of altimeter waveforms. It does not predict all the variance because the phase of the waves introduce some random fluctuations. That is clearly seen by combining the retraking of an ocean surface and its mirror image (adding 180 degrees to all phases): the average of the retracked wave heights and sea level for these two mirror images is very very close to the result of the doughnut theory. 
+This "doughnut theory" works in the sense that it predicts most of the variability in speckle-free simulations of altimeter waveforms. It does not predict all the variance because the phase of the waves introduce some random fluctuations. That is clearly seen by combining the retraking of an ocean surface, giving $\widehat{H}_s$,  and its mirror image (adding 180 degrees to all phases) which gives $\widehat{H}_s^-$ : the average ($\widehat{H}_s+\widehat{H}_s^-$) of the retracked wave heights for these two mirror images is even closer to the result of the doughnut theory. 
 %%%%%%%%%%%%% figure
 \begin{figure}[h!]
 \centerline{\includegraphics[width=0.7\textwidth]{FIGS_CH_SAT/verification-of-the-altimeter-doughnut-footprint-theory.png}}
 %\vspace{3.64in}
-  \caption{Verification of the doughnut theory: the retracked (a) wave height and (b) sea level is compared to the estimates using eqs. (\ref{eq:Hsfit}--(\ref{eq:epochfit}). In (c) and (d) the retracked values are averaged between the true surface and its mirror image (changing the sign of the elevation). This demonstrates that most of the residual not explained by the doughny theory is caused by the wave phases.}{} \label{fig:alti_doughnut2}
+  \caption{Verification of the doughnut theory: the retracked (a) wave height and (b) sea level is compared to the estimates using eqs. (\ref{eq:Hsfit}--(\ref{eq:epochfit}). In (c) and (d) the retracked values are averaged between the true surface and its mirror image (changing the sign of the elevation). This demonstrates that most of the residual not explained by the doughny theory is caused by the wave phases. The pixel highlighted with the dotted pink circle corresponds to Figure \ref{fig:alti_doughnut}.}{} \label{fig:alti_doughnut2}
 \end{figure}
 %%%%%%%%%%%%% end of figure 
 
-A similar analysis can be done for speckle noise.  Both results can ne combined to build an uncertainty model for the altimeter measurements, and estimate the uncertainty of along-track averages. This allows a processing of the satellite data that removes the effect of wave groups in the altimeter measurements so that a truly significant wave height can be estimated from the data (and not a strangely averaged "local wave height"). For example, \cite{DeCarlo&Ardhuin2024} have revised the previous largest-ever measured wave height during storm Quirin from $\widehat{H}_s=20.1$~m \citep{Hanafin&al.2012} to $H_s=18.5 \pm 0.3$~m.
+This  analysis of the perturbation induced by wave groups can be adapted for speckle noise which can be treated as a random noise producing a random perturbation of the retracked parameters.  Both results can ne combined to build an uncertainty model for the altimeter measurements, and estimate the uncertainty of along-track averages. This allows a processing of the satellite data that removes the effect of wave groups in the altimeter measurements so that a truly significant wave height can be estimated from the data (and not a strangely averaged "local wave height"). For example, \cite{DeCarlo&Ardhuin2024} have revised the previous largest-ever measured wave height during storm Quirin from $\widehat{H}_s=20.1$~m \citep{Hanafin&al.2012} to $H_s=18.5 \pm 0.3$~m.
 
-\section{The quest for the better method for nadir altimeters}
+We may also expand the analysis to consider non-Gaussian effects of the surface elevation perturbation. In particular we can see that introducing a skewness of the elevation is equivalent to the effect of wave groups located at nadir \citep{Hayne1980,DeCarlo&Ardhuin2024}.
+
+\section{The quest for better methods for nadir altimeters}
 Most of the work on estimating parameters from altimeter data has focused on reducing the effect of speckle noise \citep{Challenor&Srokosz1989}. For speckle-dominated noise, it can be shown that the optimal cost functions is a  maximum likelihood (ML), which is a bit like fitting the waveform with a log scale instead of a linear scale, as illustrated on Figure \ref{fig:alti_linlog}.
 %%%%%%%%%%%%% figure
 \begin{figure}[h!]
@@ -263,10 +283,12 @@ All this could sound like unnecessary technical details, bur figure \ref{fig:alt
 \begin{figure}[h!]
 \centerline{\includegraphics[width=\textwidth]{FIGS_CH_SAT/SWIM_data_LS_vs_ML.pdf}}
 %\vspace{3.64in}
-  \caption{Estimates of the (a) sea level $\widehat{z}_e$ and (b) wave heights $\widehat{H}_s$ for 50 consecutive waveforms of CFOSAT corresponding to the spectrum in figure 5.5.b. This uses two different cost
-functions: LS is a least squares  fit and ML is a maximum likelihood  fit to the same theoretical waveform. The“native data is shown for reference and is the operational method as described in Tourain et al. (2021). The good agreement of the ML retracking
-with the native data requires to ignore the first range gates using $k_{\min}\simeq 80$, or adapting kmin such that $w (k_{\min}) > r_{\min} \max (w)$, with $r_{\min}\simeq  0.06$.
-} \label{fig:alti_SWIM_fit}
+  \caption{Estimates of the (a) sea level $\widehat{z}_e$ and (b) wave heights $\widehat{H}_s$ for 50 consecutive waveforms of 
+ CFOSAT corresponding to the spectrum in figure 5.5.b. This uses two different cost
+functions: LS is a least squares fit and ML is a maximum likelihood fit to the same theoretical waveform. The native data is shown for reference and is the operational method as described in Tourain et al. (2021). The good agreement of the ML retracking
+with the native data requires to ignore the first range gates using $k_{\min}\simeq 80$, 
+or adapting kmin such that $w (k_{\min}) > r_{\min} \max (w)$,
+ with $r_{\min} \simeq 0.06$. \label{fig:alti_SWIM_fit} }
 \end{figure}
 %%%%%%%%%%%%% end of figure 
 
