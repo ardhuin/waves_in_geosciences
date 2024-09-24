@@ -1,5 +1,5 @@
 In this chapter we investigate the consequences of two nonlinear parameters which are the   \textbf{steepness} $\varepsilon_1= k a$, and the amplitude normalized by the water depth $\varepsilon_2= a/D$. 
-The linear theory of \ref{ch1b} was obtained in the limit of $\varepsilon_1=0$ and $\varepsilon_2=0$. After giving the full equations for nonlinear wave motion, this chapter focuses on the properties 
+The linear theory of Part 1 was obtained in the limit of $\varepsilon_1=0$ and $\varepsilon_2=0$. After giving the full equations for nonlinear wave motion, this chapter focuses on the properties 
 of monochromatic waves. The next chapter will consider the solution up to second order in $\varepsilon_1$ but extended to a random wave field. 
 
 
@@ -7,7 +7,7 @@ of monochromatic waves. The next chapter will consider the solution up to second
 \section{Dimensional analysis and importance of $\varepsilon_1$ and $\varepsilon_2$ }
 In order to simplify the equations, we will assume here that the mean water level is  $\overline{\zeta}=0$, so that the mean water depth is  $D=h$. 
 
-The wave equation for irrotational waves includes non-linear terms in addition to the linear term given in chapter \ref{ch1b}. These come from the 
+The wave equation for irrotational waves includes non-linear terms in addition to the linear term given in chapter 1. These come from the 
 advection in the momentum equation or $u^2$ and $w^2$ terms in the Bernoulli equation,  
 \begin{equation}
     \frac{\partial \phi}{\partial t}=
@@ -96,7 +96,7 @@ z'=\frac{a}{Z}\zeta'. \nonumber\\ \label{surface comb_scale}
 \end{eqnarray}
 
 If one chooses $Z=1/k$, then $\alpha=a/Z=\varepsilon_1$ and the linear wave equation only requires  $\varepsilon_1 \ll 1$. Choosing instead $Z=D$, will also require $\varepsilon_2=a/D \ll 1$. 
-Hence the linear wave theory requires both $\varepsilon_1 \ll 1$  and $\varepsilon_2 \ll 1$. It is easy to verify that the solution given in chapter \ref{ch1b} 
+Hence the linear wave theory requires both $\varepsilon_1 \ll 1$  and $\varepsilon_2 \ll 1$. It is easy to verify that the solution given in chapter 2 %\ref{ch1b} 
 are indeed consistent with these assumptions.
 
 
@@ -115,15 +115,15 @@ powers of $\varepsilon_1$, which is most appropriate for deep water waves,
 \end{eqnarray}
 in which each term of index $n$ is of order $\varepsilon^n$.
 \cite{Levi-Civita1925} proved that this expansion was convergent for monochromatic waves. For general random waves, 
-$\phi _{1}$ is the solution to the linear equations  (\ref{surface 1}), and thus  $\phi_1$ is a 
-linear sum of monochromatic waves as determined in chapter \ref{ch1b},
+$\phi _{1}$ is the solution to the linear equations, and thus  $\phi_1$ is a 
+linear sum of monochromatic waves as determined in chapter 2, %\ref{ch1b},
 \begin{equation}
     \phi _{1}=\sum_{\kb,s}\frac{\cosh \left( k z+k h\right) }{\cosh \left( kh\right) }
     \Phi _{1,\kb}^{s}\left(\skew4\widetilde{t} \; \right) \mathrm{e}^{\mathrm{i}
     \left(\kb\bcdot{\mathbf x} - s \sigma t\right)},
   \label{phi}
 \end{equation}
-where $\sigma$ and $\kb$ are related by the linear dispersion relation (\ref{dispersion}). 
+where $\sigma$ and $\kb$ are related by the linear dispersion relation. % (\ref{dispersion}). 
 
 Tke long term evolution of the amplitudes $\Phi
 _{1,\kb}^{s}$ on time scales
@@ -179,7 +179,7 @@ velocities are even more asymetric with much larger velocities at the crest than
 when $u_{\mathrm{max}}/C = 1$ the surface slope is discontinuous with a  $120^\circ$  angle at the crest. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htb]
-\centerline{\includegraphics[width=0.9\textwidth]{FIGURES/vagues_amplitude_finie.pdf}}
+\centerline{\includegraphics[width=0.9\textwidth]{FIGS_CH_NONLIN/vagues_amplitude_finie.pdf}}
 %\vspace{3.64in}
 \caption{Surface elevations and velocity fields at 60th order using \cite{Dalrymple1974}'s numerical method 
 for a water depth of 3 m. (a) and (b) are deep water  waves with a period of 1.5~s, so that  $kD\simeq 5$.  
@@ -262,7 +262,7 @@ figure \ref{Mwfig} shows the expected correction for the wave momentum $M_w$, as
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}
-\centerline{\includegraphics[width=0.6\textwidth]{FIGURES/MW_Mwlin.pdf}}
+\centerline{\includegraphics[width=0.6\textwidth]{FIGS_CH_NONLIN/MW_Mwlin.pdf}}
 %\vspace{3.64in}
 \caption{Ratio of the wave momentum for periodic waves of finite amplitude and linear waves with the same surface elevation variance. This was computed 
 using the streamfunction theory of Dean and \cite{Dalrymple1974} with orders 80 to 120.} \label{Mwfig}
@@ -277,7 +277,7 @@ using the streamfunction theory of Dean and \cite{Dalrymple1974} with orders 80 
 \section{Nonlinear theory for random waves}\label{ch_nonlin_alea}
 Nonlinearity of random waves has a few distinct effects on the wave spectrum. First of all, the exchange of
 energy between different spectral components is given by the  \cite{Hasselmann1960} theory, as introduced 
-in chapter \ref{ch_evol_profond}.
+in chapter 8. % \ref{ch_evol_profond}.
 
 \subsection{Dispersion relation}
 Another effect is a change in the dispersion relation. That is particularly important when measuring currents 
@@ -313,7 +313,7 @@ $F(x,\alpha)\simeq F(x,0) \cos \alpha$, with 	approximation errors under 5 \%.
 
 \subsection{Harmonics}\label{random_harmonics}
 The presence of harmonics for random waves is a generalization of the harmonics for periodic waves. 
-A first approximation, at second order, gives the harmonic corrections as a sum of interactions of the first order waves. However, to be complete in terms of spectrum, one needs to include not only the $\Phi_{2,2}^2 (\kb)$ terms that are the products of linear waves  $\Phi_1^2 (\kpb) \Phi_1^2 (\kb -\kpb)$, but also the interactions of third order with first order $\Phi_{3,1}(\kb) \Phi_{1,1} (\kb)$ avec $\Phi_{3,1}(\kb)$. These were typically note included by \cite{Weber&Barrick1977}. 
+A first approximation, at second order, gives the harmonic corrections as a sum of interactions of the first order waves. However, to be complete in terms of spectrum, one needs to include not only the $\Phi_{2}^2 (\kb)$ terms that are the products of linear waves  $\Phi_1^2 (\kpb) \Phi_1^2 (\kb -\kpb)$, but also the interactions of third order with first order $\Phi_{3,1}(\kb) \Phi_{1} (\kb)$ avec $\Phi_{3}(\kb)$. These were typically not included by \cite{Weber&Barrick1977}. 
 
 This omission is corrected in \cite{Creamer&al.1989} and \cite{Janssen2009}. That latter approach is well suited for numerical wave modelling: the wave amplitude variables are transformed following  \cite{Krasitskii1994} to remove resonances at second order: one can then compute the evolution of the transformed wave field and then the evolved field can be transformed back to "natural variables", which is a bit like adding the second order spectrum.
 This approach has been particularly used to compute forces excerted by waves on structures 
@@ -324,12 +324,12 @@ This approach has been particularly used to compute forces excerted by waves on 
 
 \section{Non-linear 4-wave interactions}
 \subsection{Deep water evolution}
-For a continuous wave spectrum, we find resonances that look like the forced oscillator solution in the case of the wind-generation in eq. (\ref{singularity}). 
+For a continuous wave spectrum, we find resonances that look like the forced oscillator solution in the case of the wind-generation. % in eq. (\ref{singularity}). 
 For evolution times much longer than the wave period, the sixth order energy term that comes from third order amplitudes 
 \begin{equation}
 E_{3,3}(\kb)=\frac{|\dr Z_3(\kb)|^2 + |\dr \Phi_3(\kb)|^2}{2 \dr \kb}
 \end{equation}
-gives an evolution equation similar to eq. (\ref{croissance_lin})
+gives an evolution equation similar to the grown of waves in the presence of wind, except that this is here for the 6th order spectrum %eq. (\ref{croissance_lin})
 \begin{equation}
 \frac{\partial E_{3,3}(\kb) \left(\kb \right)}{\partial t} = \frac{\pi}{2}  \int |B|^2 E(\kb_1) E (\kb_2) 
 E (\kb_3){\mathrm d}\kb_1{\mathrm d}\kb_2{\mathrm d}\kb_3.\label{E33}
@@ -365,7 +365,7 @@ Indeed the coupling coefficient $T$ for $k_1=k_2=k_3=k_4$ goes to zero at the de
 \ref{T2_Snl_vs_KD}). There is still much debate on how to properly represent finite depth effects on 4-wave interactions. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% figure
 \begin{figure}
-\centerline{\includegraphics[width=0.70\textwidth]{FIGURES/Tsquared_kD.pdf}}
+\centerline{\includegraphics[width=0.70\textwidth]{FIGS_CH_NONLIN/Tsquared_kD.pdf}}
 %\vspace{3.64in}
 \caption{Change of the 4-wave coupling coefficient $T$ for equal wavenumbers  $k_1=k_2=k_3=k_4$ as a function of the non-dimensional depth $kD$. The dashed line is the parameterization proposed by the WAMDI Group(1988), and the solid line is the result by Janssen and Onorato (2007).} \label{T2_Snl_vs_KD}
 \end{figure}

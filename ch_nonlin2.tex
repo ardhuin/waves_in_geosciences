@@ -24,7 +24,7 @@ and the four other terms are coming from eq. (\ref{surface comb}).
 
 
 \section{Monochromatic waves at second order}
-Plugging a single monochromatic wave solution with wavenumber ${\mathbf k}_0$, as given in chapter \ref{ch1b}, gives 
+Plugging a single monochromatic wave solution with wavenumber ${\mathbf k}_0$, as given in chapter 2, gives 
 second order Stokes solution. For a linear amplitude $a=2 Z_{1,{\mathbf k}_0}^{+}$, we have  $\Phi _{1,{\mathbf
 k}_0}^+=-\mathrm{i}a g/\left(2\sigma\right)$ and
 \begin{equation}
@@ -38,7 +38,7 @@ x}-\sigma_0 t\right)}\right),
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}
-\centerline{\includegraphics[width=0.6\textwidth]{FIGURES/stokes.pdf}}
+\centerline{\includegraphics[width=0.6\textwidth]{FIGS_CH_NONLIN2/stokes.pdf}}
 %\vspace{3.64in}
 \caption{Profiles of a linear Airy wave and a second order Stokes wave.} \label{stokes}
 \end{figure}
@@ -60,8 +60,8 @@ avec
     D\left({\mathbf k}_0,{\mathbf k}_0\right)
         \frac{\left(\Phi_{1,{\mathbf k}_0}^{+} \right)^2}
         {\sigma^2\left(2k_0\right)-4\sigma_0^2} \\
-    & =& \frac{3{\mathrm i}\sigma k\cosh\left(2kh\right)}
-        {4g\sinh^3\left(kh\right) \cosh\left(kh\right)  }
+    & =& \frac{3{\mathrm i}\sigma k\cosh\left(2kD\right)}
+        {4g\sinh^3\left(kD\right) \cosh\left(kD\right)  }
         \left(\Phi_{1,{\mathbf k}_0}^{+} \right)^2,
 \end{eqnarray}
 and
@@ -71,13 +71,13 @@ and
 giving
 \begin{equation}
     Z_{2,2{\kb}_0}^{+}
-    = a^2 \frac{k\cosh\left(kh\right)\left[2+\cosh\left(2k h\right)\right]}
-        {32 \sinh ^3 \left(kh\right)},
+    = a^2 \frac{k\cosh\left(kD\right)\left[2+\cosh\left(2kD\right)\right]}
+        {32 \sinh ^3 \left(kD\right)},
 \end{equation}
 and
 \begin{equation}
     Z_{2,{\mathbf 0}}^{+}
-    = a^2 \frac{\sigma^2}{g^2}k^2\left[\tanh^2\left(2kh\right)-1\right].
+    = a^2 \frac{\sigma^2}{g^2}k^2\left[\tanh^2\left(2kD\right)-1\right].
 \end{equation}
 
 
@@ -92,7 +92,7 @@ fields are given by \citep{Dean&Dalrymple1991},
     + \frac{3}{4} k^2 a^2 C \frac{\cosh\left(2kz+2kD\right)}
         {\sinh^4\left(kD\right)}    \cos \left[2k\left(x- C t\right) \right)]
 \end{eqnarray}
-Compared to linear waves, this orbital velocity is higher the crests, and lower 
+Compared to linear waves, this orbital velocity is higher at the crests, and lower 
 under the troughs. 
 
 
@@ -102,7 +102,7 @@ under the troughs.
 Before generalizing to a full wave spectrum, we note tha \cite{Miche1944b} provided the solution for two monochromatic wave 
 trains in opposite directions, which gives a non-zero contribution $C_2(t)$. 
 The general second-order solution, first given by \cite{Biesel1952}, comes from using a full superposition of linear waves for 
-$\phi_1$ and $\zeta_1$, which are related by  eq. (\ref{polzeta}). Here we generally follow the notations 
+$\phi_1$ and $\zeta_1$, which are related by  the linear polarization relation given in chapter 2. Here we generally follow the notations 
 used by  \cite{Hasselmann1962}.
 
 The dynamic and kinematic  boundary conditions a the free surface  $z=\zeta$ are 
@@ -111,7 +111,7 @@ The dynamic and kinematic  boundary conditions a the free surface  $z=\zeta$ are
       w&=&\frac{\partial \phi }{\partial z}= \bnabla {\mathbf \phi}\bcdot\bnabla \zeta
     + \frac{\partial \zeta }{\partial t}.
 \end{eqnarray}
-As done in chapter \ref{ch1b}, we move the boundary condition on $z=\zeta$ to an equation  on $z=0$ with a Taylor expansion 
+As done in chapter 2, we move the boundary condition on $z=\zeta$ to an equation  on $z=0$ with a Taylor expansion 
 \begin{equation}
      \frac{\partial \zeta }{\partial t} -  \frac{\partial \phi }{\partial z} \simeq 
 \bnabla {\mathbf \phi}\bcdot\bnabla \zeta    + \zeta \frac{\partial^2 \phi }{\partial^2 z} \quad \mathrm{on} \quad z=0. \label{surf_kine_Taylor}
@@ -139,8 +139,8 @@ k'}\right)$ is given by  \cite{Hasselmann1962},
 \begin{equation}
      D\left(\kb,\kpb\right) = 
     {\mathrm i} \left(s \sigma+s' \sigma'\right)
-    \left[k k' \tanh \left(k h \right)
-    \tanh \left(k' h\right)-\kb \bcdot \kpb \right]-\frac{\ir}{2} \left(s \sigma \frac{k'^2}{\cosh^2(k'h)}+s' \sigma' \frac{k^2}{\cosh^2(k h)}\right).\label{D_coupling2nd_order}
+    \left[k k' \tanh \left(kD \right)
+    \tanh \left(k' h\right)-\kb \bcdot \kpb \right]-\frac{\ir}{2} \left(s \sigma \frac{k'^2}{\cosh^2(k'h)}+s' \sigma' \frac{k^2}{\cosh^2(kD)}\right).\label{D_coupling2nd_order}
 \end{equation}
 
 
@@ -148,10 +148,10 @@ As noted by  \cite{Hasselmann1963c}, the forcing terms in the equations are equi
 $\Phi _{1,\kb}^{s}$ by $-\ir s g   Z_{1,\kb}^{s}/\sigma$ it is  
 \begin{eqnarray}
      \widehat{p}_2 &=& -\rho_w \sum_{\kb,s,\kpb,s'}     
-      \left\{ s \sigma s' \sigma' \left[1 - \frac{\kb \bcdot \kpb}{k k'  \tanh \left(k h \right)
+      \left\{ s \sigma s' \sigma' \left[1 - \frac{\kb \bcdot \kpb}{k k'  \tanh \left(kD \right)
     \tanh \left(k' h\right)} \right] \right. \nonumber\\
     & &\left. -\frac{1}{2 \left(s \sigma+s' \sigma'\right)} 
-\left(\frac{g^2 k'^2}{s' \sigma' \cosh^2(k'h)}+\frac{g^2 k^2}{s \sigma \cosh^2(k h)}\right)\right\}
+\left(\frac{g^2 k'^2}{s' \sigma' \cosh^2(k'h)}+\frac{g^2 k^2}{s \sigma \cosh^2(kD)}\right)\right\}
     Z_{1,\kb}^{s} Z_{1,\kpb}^{s'} \mathrm{e}^{\mathrm{i}
     \left[\left(\kb+\kpb\right)\bcdot{\mathbf x} - \left(s \sigma+s' \sigma'   \right) t\right]}.\label{eq:p2surf}
 \end{eqnarray}
@@ -196,7 +196,7 @@ for the velocity potentials, our coupling coefficient for the elevation amplitud
   \nonumber \\
 & =& \frac{g^2}{s \sigma s' \sigma'} \left\{  \left[\kb \bcdot \kpb - \frac{ \sigma^2 \sigma'^2}{g^2}  \right] \right. 
    +\left. \frac{0.5}{ \left(s \sigma+s' \sigma'\right)} 
-\left(\frac{s \sigma k'^2}{ \cosh^2(k'h)}+\frac{s' \sigma' k^2}{ \cosh^2(k h)}\right)\right\} \nonumber \\
+\left(\frac{s \sigma k'^2}{ \cosh^2(k'h)}+\frac{s' \sigma' k^2}{ \cosh^2(kD)}\right)\right\} \nonumber \\
 \label{Dz}
 \end{eqnarray}
 
@@ -204,7 +204,7 @@ In the bottom pressure, the additional term arising from the orbital velocity ha
 \begin{eqnarray}
  D_{pb} \left(\kb,s,\kpb,s',z\right)  = 
     g^2 \frac{k k' \sinh[k(z+h)]\sinh[k'(z+h)] -  \kb \bcdot \kpb  \cosh[k(z+h)]\cosh[k'(z+h)]}
-{2 s \sigma s' \sigma' \cosh(kh) \cosh(k'h)}. \nonumber \\  \label{Dpb}
+{2 s \sigma s' \sigma' \cosh(kD) \cosh(k'h)}. \nonumber \\  \label{Dpb}
 \end{eqnarray}
 
 The relationship with the coupling coefficient $C$ given by \citet[][their eq. 4]{Herbers&Guza1991} for the bottom pressure,
@@ -218,15 +218,15 @@ is given by solving eq. (\ref{surface_2c}) for $\phi_2$, and then rewriting Bern
 \end{equation}
 This gives, for $z=-h$,  
  \begin{eqnarray}
- C=-\frac{D_z(s\sigma + s' \sigma')^2 }{g \left[ g K \tanh(Kh) - (s \sigma + s' \sigma')^2 \right]} +  \frac{D_{pb}(z=-h)}{g}. 
+ C=-\frac{D_z(s\sigma + s' \sigma')^2 }{g \left[ g K \tanh(KD) - (s \sigma + s' \sigma')^2 \right]} +  \frac{D_{pb}(z=-h)}{g}. 
  \end{eqnarray}
 
 $\phi_2$ is a solution to  Laplace equation and the bottom boundary condition, and its Fourier component $\Phi _{2,\kb}$ for the wavenumber $\mathbf{k}$ 
-thus has a vertical structure that is the same as that of  $\phi_1$, namely it is proportional to $\cosh\left(kz+kh\right)$. The Fourier 
+thus has a vertical structure that is the same as that of  $\phi_1$, namely it is proportional to $\cosh\left(kz+kD\right)$. The Fourier 
 transform of eq. (\ref{surface_2c}) thus gives for each ${\mathbf k}$
 \begin{equation}
 \frac{\partial ^{2}\Phi _{2,\kb}}{\partial t^{2}}
-    +gk\tanh\left(kh\right) \Phi _{2,\kb}
+    +gk\tanh\left(kD\right) \Phi _{2,\kb}
     =\sum_{{\mathbf k_1}+{\mathbf k_2}=\kb,s_1,s_2}
      D\left({\mathbf k_1},{\mathbf k_2}\right)
     \Phi _{1,\kb_1}^{s_1}\Phi _{1,\kb_2}^{s_2} \mathrm{e}^{\mathrm{i}
@@ -256,7 +256,7 @@ The forced oscillation equation (\ref{surface 2c}) has no resonant forcing term 
 gives
 $\sigma\left({\mathbf k_1}+{\mathbf k_2}\right)
     \neq \sigma\left({\mathbf k_1}\right)+\sigma\left({\mathbf k_2}\right)$ except in the limit of shallow 
-water  $kh \rightarrow 0$, or in the case of gravity-capillary waves. Except for these two cases, the second order waves have bound amplitudes given as a double-sum of first order - first order interactions. This bound 
+water  $kD \rightarrow 0$, or in the case of gravity-capillary waves. Except for these two cases, the second order waves have bound amplitudes given as a double-sum of first order - first order interactions. This bound 
 second order solution can lead to oscillations of the amplitudes in time, known as "recurrences" \citep{Fermi&al.1955}.
 
 
