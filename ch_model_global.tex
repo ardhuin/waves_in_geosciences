@@ -313,7 +313,7 @@ As a result, even at frequencies $f < f_d$, a limiter is used for spectral evolu
 
 \subsection{Spatial propagation}
 The early wave models such as WAM \citep{WAMDI1988} have chosen the cheap but robust first order 'upwind' scheme. 
-In only one dimension, the wave propagation direction is given by a sign $s$, going towards $x>0$ if $s=1$ and in the opposite direciton if $s=-1$. The 
+In only one dimension, the wave propagation direction is given by a sign $s$, going towards $x>0$ if $s=1$ and in the opposite direction if $s=-1$. The 
 upwind advection scheme is thus 
 \begin{eqnarray}
  N(x,t+\Delta_t) & =&  N(x,t) - \frac{\Delta_t}{\Delta_x} \left[ C_g(x) N(x) - C_g(x-\Delta_x) N(x-\Delta_x,t) \right] \quad \mathrm{if} \quad s =1 \\
@@ -340,8 +340,7 @@ in the ice-free part of the Arctic, in February 2007. The two biggest storm of t
 sending swell to the Arctic. This swell is modeled to arrive on 13 and 14 February off the East coast of Greenland at (74$^\circ$N,13$^\circ$W), 
 and the two peaks are less separated with the first order than with the third order scheme. Things are worse as waves propagate further, and the 
 two peaks are almost indistinguishable north of Siberia on February 16 and 17, at (78$^\circ$N,83$^\circ$E). As a result, the investigation of the potential diffusion 
-effect of sea ice on these swells \citep{Ardhuin&al.2016} would not be possible with a first order scheme. That first order scheme is still used 
-at ECMWF. 
+effect of sea ice on these swells \citep{Ardhuin&al.2016} is more difficult with a first order scheme. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% figure
 \begin{figure}[htb]
@@ -369,8 +368,7 @@ propagate away from the source as discrete blobs of energy, instead of a smooth 
 discretization in frequency and direction. The solution to correct this GSE is to introduce some explicit diffusion \citep{Tolman2002a}.
 
 Such differences are much less visible for fast moving storms, such as the more powerful cyclone Gamede which struck La Reunion island 
-on February 25. 
-
+on February 25. That first order scheme is used  at ECMWF while most centers using WAVEWATCH III are using some form of higher order scheme. 
 
 \section{Parameterizations of physical processes}
 Because of the complexity of wave evolution processes that were briefly described in chapter \ref{ch_sourceterms}, and further discussed Part 3, there is no generally agreed upon parameterization for wave generation and dissipation. Also, the non-linear 

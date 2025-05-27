@@ -41,7 +41,7 @@ X &  9.6 GHz & 3.1 cm & & TerraSAR-X  \\
 C & 6 GHz   & 5 cm & Poseidon 3 or ASCAT & Jason 3 or MetOp \\
 S & 3 GHz   & 12 cm & S-SAR &  NISAR \\
 L & 1.5 GHz  & 24 cm & SMAP  & SMAP \\
-P & 435 MHz  & 70 cm & P-SAR & Biomass (launch  in 2024 or 2025) \\
+P & 435 MHz  & 70 cm & P-SAR & Biomass \\
 \hline
 \end{tabular}
 \caption{Typical average frequencies and wavelengths used for ocean remote sensing in the different radar microwave bands. The actual frequency usually varies during a radar pulse with a bandwidth $B$ that defines 
@@ -155,9 +155,9 @@ But what region of the ocean does this correspond to? \cite{Chelton&al.1989} mad
 \begin{equation}
     \rho_C =\sqrt{h_o^2- (h_o-H_s)^2} \simeq \sqrt{ 2 h_o H_s} \label{eq:rC} 
 \end{equation}
-For a more realistic spherical Earth, there is a $1/(1+h_o/R_E)$ correction factor inside the square root, with $R_E$ is the Earth radius, given by simple geometry considerations  \citep{Chelton&al.1989}.
+For a more realistic spherical Earth, there is a $1/(1+h_o/R_E)$ correction factor inside the square root, where $R_E$ is the Earth radius  \citep{Chelton&al.1989}.
 
-This estimate of the radius of the "oceanographic footprint" is very conservative. In practice it is not important if the parameters to be estimated are uniform at scales greater than $\rho_C$. But as are trying to squeeze out more and more information from satellite measurements, can we be more precise in the spatial resolution of these measurements?  On Figure \ref{fig:group_alti}.b, the fitting of the simulated waveforms ranges from 0.1 $H_s$ to 1.6 $H_s$: an altimeter measures a local wave height that can only gives the significant wave height when averaged over the wave groups. If we assume the local wave height is a properly scaled average of the envelope of the wave groups (you can check that $H_l=4\sqrt{2/\pi} \eta$ gives the proper average), then 0.1  $H_s$  is an average over about 0.25 $\rho_C$. How can we define this exact number? Is it also true for shorter wave groups? 
+This estimate of the radius of the "oceanographic footprint" is very conservative. In practice it is not important if the parameters to be estimated are uniform at scales greater than $\rho_C$. But as we are trying to squeeze out more and more information from satellite measurements, can we be more precise in the spatial resolution of these measurements?  On Figure \ref{fig:group_alti}.b, the fitting of the simulated waveforms ranges from 0.1 $H_s$ to 1.6 $H_s$: an altimeter measures a local wave height that can only gives the significant wave height when averaged over the wave groups. If we assume the local wave height is a properly scaled average of the envelope of the wave groups (you can check that $H_l=4\sqrt{2/\pi} \eta$ gives the proper average), then 0.1  $H_s$  is an average over about 0.25 $\rho_C$. How can we define this exact number? Is it also true for shorter wave groups? 
 
 
 
@@ -263,7 +263,7 @@ This "doughnut theory" works in the sense that it predicts most of the variabili
 \end{figure}
 %%%%%%%%%%%%% end of figure 
 
-This  analysis of the perturbation induced by wave groups can be adapted for speckle noise which can be treated as a random noise producing a random perturbation of the retracked parameters.  Both results can ne combined to build an uncertainty model for the altimeter measurements, and estimate the uncertainty of along-track averages. This allows a processing of the satellite data that removes the effect of wave groups in the altimeter measurements so that a truly significant wave height can be estimated from the data (and not a strangely averaged "local wave height"). For example, \cite{DeCarlo&Ardhuin2024} have revised the previous largest-ever measured wave height during storm Quirin from $\widehat{H}_s=20.1$~m \citep{Hanafin&al.2012} to $H_s=18.5 \pm 0.3$~m.
+This  analysis of the perturbation induced by wave groups can be adapted for speckle noise which can be treated as a random noise producing a random perturbation of the retracked parameters.  Both results can be combined to build an uncertainty model for the altimeter measurements, and estimate the uncertainty of along-track averages. This allows a processing of the satellite data that removes the effect of wave groups in the altimeter measurements so that a truly significant wave height can be estimated from the data (and not a strangely averaged "local wave height"). For example, \cite{DeCarlo&Ardhuin2024} have revised the previous largest-ever measured wave height during storm Quirin from $\widehat{H}_s=20.1$~m \citep{Hanafin&al.2012} to $H_s=18.5 \pm 0.3$~m.
 
 We may also expand the analysis to consider non-Gaussian effects of the surface elevation perturbation. In particular we can see that introducing a skewness of the elevation is equivalent to the effect of wave groups located at nadir \citep{Hayne1980,DeCarlo&Ardhuin2024}.
 
@@ -278,7 +278,7 @@ Most of the work on estimating parameters from altimeter data has focused on red
 %%%%%%%%%%%%% end of figure 
 Because it puts a much stronger emphasis on the early part of the waveform, the effective footprint of the ML retracker is smaller than the doughnut footprint of the LS retracker, and it has a very different shape and a maximum sensitivity at nadir.  In fact the ML retracker is not optimal for sea states with very large values of $Q_{\mathrm{kk}}$.
 
-All this could sound like unnecessary technical details, bur figure \ref{fig:alti_SWIM_fit} shows an example where these things are important: the estimates sea level fluctuations of the order of 0.5 m are spurious effects of the wave groups on the retracking procedure. They average out over large scales but gthat still leaves some strong noise at scales under 100 km. 
+All this could sound like unnecessary technical details, bur figure \ref{fig:alti_SWIM_fit} shows an example where these things are important: the estimates sea level fluctuations of the order of 0.5 m are spurious effects of the wave groups on the retracking procedure. They average out over large scales but g that still leaves some strong noise at scales under 100~km. 
 %%%%%%%%%%%%% figure
 \begin{figure}[h!]
 \centerline{\includegraphics[width=\textwidth]{FIGS_CH_SAT/SWIM_data_LS_vs_ML.pdf}}

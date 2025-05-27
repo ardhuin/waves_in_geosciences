@@ -42,8 +42,7 @@ the along-surface shear stress with the along-surface orbital velocity. The work
 The first hypotheses on wave generation followed the theory of hydrodynamic instabilities. The air flow over a water surface is a particular case of a sheared flow in a stratified 
 medium that may lead to the Kelvin-Helmholtz (KH) instability. This may indeed be important for very high winds speeds \citep{Soloviev&al.2014}, but it cannot explain the 
 initial growth of waves under moderate winds. In particular, KH theory predicts instabilities for an air-water interface for wind speeds above 6.5 m~s$^{-1}$ (Jeffreys 1925), 
-but ripples already appear on the water surface for winds as low as  $U= 1.1$~m~s$^{-1}$
-(Kahma et Donelan 1988\nocite{Kahma&Donelan1988}). 
+but ripples already appear on the water surface for winds as low as  $U= 1.1$~m~s$^{-1}$ \citep{Kahma&Donelan1988}. 
 
 This initial growth of ripples is rather well explained by the effect of turbulence in the air advected by the wind \cite{Phillips1957}. 
 That process is very soon overtaken by the feedback caused by the wave-induced pressure oscillations in the air, as the airflow is modified by the presence of waves. 
@@ -149,7 +148,7 @@ wind speeds are summarized by a growth rate
 \end{equation}
 where $C$ is the phase speed $\rho_a$ and $\rho_w$ are the densities of air and water, and $u_\star=\left<u'w'\right>^{1/2}=\sqrt{\tau_a / \rho_a}$ where $\tau_a$ is the 
 air-sea momentum flux per unit horizontal surface, usually called `wind stress'. 
-This parameterization is used in the `Cycle 3' of the WAM model \citep{WAMDI1988}. 
+This parameterization part of the  `WAM Cycle 3'  parameterizations \citep{WAMDI1988}. 
 
 The measurements by \cite{Snyder&al.1981} have been confirmed by other experiments, for example in the North Sea by \cite{Hasselmann&Bosenberg1991}. 
 Unfortunately these measurements at sea are made only with moderate wave heights and wind speed, and only for waves around the spectral peak. 
@@ -260,7 +259,7 @@ At second order this gives the following forced harmonic oscillator equation
 \begin{equation}
 \left[ \frac{\partial }{\partial t^2} - g k \tanh(kD) \right]\zeta_2  = g \bnabla \zeta_1 \bcdot \bnabla \zeta_1.
 \end{equation}
-If there are components $(\kb,\sigma)$ such that $\kb=\kb_1+\kb_2$ et $\sigma=\sigma_1+\sigma_2$ then the solution contain resonances. \cite{Phillips1960} showed
+If there are components $(\kb,\sigma)$ such that $\kb=\kb_1+\kb_2$ and $\sigma=\sigma_1+\sigma_2$ then the solution contain resonances. \cite{Phillips1960} showed
 that such components do not exist because the dispersion relation of gravity waves does not have an inflexion point, hence there is no resonance at second order 
 and the solution is bounded with a simple expression of the second order amplitudes as a function of the first order amplitudes, 
 \begin{equation}
@@ -272,9 +271,9 @@ with $A (\kb_1,\kb_2,s_1,s_2)$ a constant coefficient given by
  A=\frac{\kb_1 \bcdot \kb_2 }{s_1 \sigma_1 s_2 \sigma_2 - g k \tanh(kD)}\label{eq:nl_A_simple}.
 \end{equation}
 
-The actual Euler equation (see Part 3) has a few extra terms but it is the same principle with a similar result, only expression for  $A$ is more complex. 
+The actual Euler equation (see Part 3) has a few extra terms but it is the same principle with a similar result, with the only difference that $A$ is more complex. 
 This second order elevation is the generalization of the first harmonic of a monochromatic waves: if the first order only contains waves of frequency $f$, 
-the the second order has components with frequency $2f$ and 0. 
+the second order has components with frequency $2f$ and 0. 
 
 Things get more exciting when resonances exist. Resonances at second order exist for 
 dispersion relation with an inflexion point, which is the case of gravity-capillarity waves or in the presence of sea ice, 
@@ -427,13 +426,13 @@ except for large scale coarse models, due to the three-dimensional integral need
 source terms are evaluated. Such calculations are thus confined to research applications. Operational wave models use some form of approximation, and the Discrete 
 Interaction Approximation by \cite{Hasselmann&al.1985} is the most common. That approximation preserves the conservation properties of the full integral 
 by using only a subset of the resonant quadruplets  $\kb_1$,  $\kb_2$, ${\mathbf
-k}_3$, et $\kb_4$. 
+k}_3$, and $\kb_4$. 
 The resonance conditions $\kb_4=\kb_1+\kb_2-\kb_3$ and $\sigma\left(k_4\right)=\sigma_1+\sigma_2-\sigma_3$ 
 mean that for a given $\kb_1+\kb_2$, $\kb_3$ must be on the curve where $\kb_1$ lies: each curve corresponds to a fixed value of $\sigma_1 + \sigma_2$.
 The DIA parameterization uses a single configuration  ${\mathbf
 k}_1=\kb_2=\kb$, $k_3 = (1+\lambda)^2 k$ and
 $\sigma_1+\sigma_2=\gamma \sigma$, which imposes $k_4 =
-(1-\lambda)^2 k$. This DIA, as adjusted by \cite{Hasselmann&al.1985b}, uses  $\lambda=0.25$ et $\gamma
+(1-\lambda)^2 k$. This DIA, as adjusted by \cite{Hasselmann&al.1985b}, uses  $\lambda=0.25$ and $\gamma
 = \sqrt{2}$. 
 The angle of the $\infty$-shaped curve near the origin with the $x$-axis, when $\kb_3 \simeq \kb_1$ is the same 35$^{\circ}$ angle as in figure \ref{fig_Snl_dir}. Each 
 curve corresponds to a different value of $\gamma$.
