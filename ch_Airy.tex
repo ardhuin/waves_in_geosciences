@@ -33,7 +33,7 @@ are of the order of $\rho_w g \zeta$, with $\rho_w$ the water density and $g$ th
 this is not just Newton's general gravitation but it also includes the centrifuge acceleration due to the Earth rotation, giving 
 $g \simeq 9.81$m s$^{-2}$.} acceleration of gravity. With a 1~m difference in height from crest to trough, 
 we get a pressure difference of 10 kPa. What is important for the motion is the pressure \emph{gradient}. With a wavelength 
-of 200~m, this gives a crest-to-trough pressure gradient of the order of 100 Pa/m at the same level $z$, 
+of 200~m, this gives a horizontal pressure gradient of the order of 100 Pa/m, 
 which drives a horizontal acceleration of 0.1~m/s$^2$. 
 
 The water set in motion flows in an orderly way, following several principles. 
@@ -97,7 +97,7 @@ true for the ocean within a few parts per thousand, and incompressible flow.
 The horizontal position is defined by the two-component vector 
 ${\mathbf x}=\left(x,y\right)$ and the vertical is $z$. The corresponding velocities are 
 ${\mathbf u}=\left(u,v\right)$ and $w$. Considering sea water as a perfect fluid, 
-we apply the Navier-Stokes equations, 
+the motion must be a solution of the Navier-Stokes equations, 
 \begin{equation}
     \frac{\partial {\mathbf u}}{\partial t}+{\mathbf u}\bcdot\bnabla{\mathbf u}
     + w \frac{\partial {\mathbf u}}{\partial z}
@@ -123,7 +123,7 @@ velocity and or stresses (pressure and shear stresses) and initial conditions. A
 w=-{\mathbf u} \bcdot \bnabla h \quad \mbox{at} \quad
 z=-h\left({\mathbf x}\right)
 \end{equation}
-which simplifies to $w=0$ because we chose $h$ to be constant
+which simplifies to $w=0$ because we chose $h$ to be constant.
 
 At the surface, we make the further hypothesis that for any horizontal position $\mathbf{x}$ there is only one value $z=\zeta$ 
 of the free surface position (this excludes an overturning of the surface, as found in plunging breakers). 
@@ -410,7 +410,7 @@ by the theories of Airy and Stokes
 \citep[see for example ][]{Thornton&Kraphol1974,Herbers&al.1992}. The general solution can be expressed as a 
 series in powers of 
 $\varepsilon_1=ka$, which was shown to converge by \cite{Levi-Civita1925}. Many methods have been developed to 
-obtain various numerical approximations of the exact solution.
+obtain various numerical approximations of the exact solution \citep{Dalrymple1974}.
 
 \subsection{Physical interpretation}
 The wave motion is maintained by the restoring force of gravity, which acts in quadrature to the velocity field, 
@@ -476,7 +476,7 @@ The changes in kinematics and dispersion from deep to shallow water are related 
 and $\tanh$, which are plotted in figure \ref{coshsinh}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}
-\centerline{\includegraphics[width=0.5\textwidth]{FIGS_CH_AIRY/coshsinh_en.pdf}}
+\centerline{\includegraphics[width=0.7\textwidth]{FIGS_CH_AIRY/coshsinh_en.pdf}}
 %\vspace{3.64in}
   \caption{The main hyperbolic functions, used again and again in ocean wave theory.}
 \label{coshsinh}
@@ -531,7 +531,7 @@ bottom.
 In that range there is no asymptotic expression for the dispersion relation and one may use Table \ref{table_dispersion}. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}
+\begin{table}[h]
   \centering
   \begin{tabular}{|cc  | cc | cc|}
 \hline
@@ -561,7 +561,7 @@ In that range there is no asymptotic expression for the dispersion relation and 
 \end{tabular}
   \caption{Table of the inverse function of $X \tanh X$. Defining $Y=\sigma^2 D/g$ it gives $k=X/D$, 
 which allows to invert the dispersion relation in the absence of current. 
-For $Y< 0.05$ one should use $X=\sqrt{Y}$, and for $Y >3$ one should use $X=Y$. A more practical alternative is the Padé approxim}\label{table_dispersion}
+For $Y< 0.05$ one should use $X=\sqrt{Y}$, and for $Y >3$ one should use $X=Y$. A more practical alternative is the Pad{\'e} approximation by \cite{Wu&Thornton1986}.}\label{table_dispersion}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -629,14 +629,14 @@ otherwise \citep{Perignon&al.2014}, probably leading to an important dissipation
 discussed in Part 3.
 
 \subsection{Dispersion}
-The velocity at which the wave crests or trough propagate 
+The velocity at which the wave crests or troughs propagate 
 is called the phase speed and is given by $C=\sigma/k$ which is also equal to the ratio $L/T$. 
 Using the dispersion relation (\ref{dispersion}), we can eliminate $\sigma$
 \begin{equation}
     C= \frac{\sigma}{k}=\left[ \frac{g}{k}\tanh \left( kD\right)\right]^{1/2}.
 \end{equation}
-The phase speed is clearly a function of the wavelength, and thus waves are 
-dispersive, meaning that wave packets that contain different components will 
+The phase speed is clearly a function of the wavelength: we say that waves are 
+dispersive. Hence wave packets that contain different components will 
 spread over a larger space as they propagate, with the long waves traveling 
 faster than the shorter waves. As a result, the waves arriving from a distant storm will 
 always have a long period at the beginning and the average period will become shorter over time. 
@@ -655,7 +655,7 @@ absence of currents.}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 We also note that, for a fixed period, the phase speed decreases 
-with the water depth. This property is also true for a slowly varying water, 
+with the water depth. This property is also true for a slowly varying water depth, 
 in which case one can consider that the water depth is 'locally constant'. 
 This variation of $C$ is the cause of refraction (see chapters \ref{ch_current} and \ref{ch5}). 
 
@@ -722,6 +722,23 @@ which defines the group speed.
 
 The full expression for the energy flux should also include the advective flux  $u \left[\rho_w g z + 0.5\left(u^2 +
 w^2\right) \right]$, but that part is negligible in the absence of currents. 
+
+$C_g$ is called 'group speed' because it is indeed the speed at which a group of waves travels, because $C_g=\partial
+\sigma/\partial k$. Indeed, the superposition of two monochromatic waves of equal amplitude and similar frequencies gives a surface elevation 
+\begin{equation}
+    \zeta=a  \cos \left[ \left(k - \Delta k \right) x - \left(\sigma-\Delta \sigma \right) t \right]
+        + a  \cos \left[ \left(k + \Delta k \right) x - \left(\sigma+\Delta \sigma \right) t\right]  ,
+\end{equation}
+which writes
+\begin{equation}
+    \zeta=2 a \cos \left(\Delta k x -\Delta \sigma t\right)
+    \cos \left( k x - \sigma t\right).
+\end{equation}
+The first factor is the envelope of the group, with a length  $2 \pi /
+\Delta k $ and period $2\pi / \Delta \sigma$, that propagates at the speed 
+$c'=\Delta \sigma /\Delta k $. This speed is, in the limit  $\Delta k \rightarrow 0$, equal to 
+$C_g=\partial \sigma/\partial k$. Two examples are shown in figure 
+\ref{groupes}.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htb]
 \centerline{\includegraphics[width=0.7\textwidth]{FIGS_CH_AIRY/groups_5_10_en.pdf}}
@@ -739,23 +756,6 @@ w^2\right) \right]$, but that part is negligible in the absence of currents.
 \label{Cgplot}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-$C_g$ is called 'group speed' because it is indeed the speed at which a group of waves travels, because $C_g=\partial
-\sigma/\partial k$. Indeed, the superposition of two monochromatic waves of equal amplitude and similar frequencies gives a surface elevation 
-\begin{equation}
-    \zeta=a  \cos \left[ \left(k - \Delta k \right) x - \left(\sigma-\Delta \sigma \right) t \right]
-        + a  \cos \left[ \left(k + \Delta k \right) x - \left(\sigma+\Delta \sigma \right) t\right]  ,
-\end{equation}
-which writes
-\begin{equation}
-    \zeta=2 a \cos \left(\Delta k x -\Delta \sigma t\right)
-    \cos \left( k x - \sigma t\right).
-\end{equation}
-The first factor is the envelope of the group, with a length  $2 \pi /
-\Delta k $ and period $2\pi / \Delta \sigma$, that propagates at the speed 
-$c'=\Delta \sigma /\Delta k $. This speed is, in the limit  $\Delta k \rightarrow 0$, equal to 
-$C_g=\partial \sigma/\partial k$. Two examples are shown in figure 
-\ref{groupes}.
-
 
 We note that for $kD\rightarrow\infty$, equation (\ref{Cg}) gives
 $C_g={\sigma}/({2k})=C/2$. Thus, in deep water the groups of waves travel at a speed that is half of the phase speed. 
@@ -775,13 +775,9 @@ shows the strong concentration of power in water waves. Unfortunately, this powe
 
 \subsection{Summary}
 We have obtained the main properties of regular linear waves,  summarized in table 
-(\ref{table_theory}). Because these Airy waves are solutions of the linearized equations of motion, 
-they can be combined to obtain the general solution. Hence the surface elevation, velocities and pressure 
-are given by the sum of monochromatic waves, each proportional to their amplitude $a$. We will see in the next chapter that it is also possible to add up the quadratic properties 
-that are the energy and Stokes drift, which are  proportional to the surface elevation variance
-$E=a^2/2$.
+(\ref{table_theory}). 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\begin{table}
+\begin{table}[htb]
   \centering
   \begin{tabular}{lccc}
 \hline
@@ -813,8 +809,15 @@ k}\bcdot{\mathbf x}-\sigma t+ \Theta_0$.
 }\label{table_theory}
 \end{table}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-These properties come from a series of assumptions, listed in table \ref{table_H} and that will be discussed or removed in 
-the following chapters that extend Airy theory, giving access to all sorts of corrections and allowing to determine the 
+
+Because these Airy waves are solutions of the linearized equations of motion, 
+they can be combined to obtain the general solution. Hence the surface elevation, velocities and pressure 
+are given by the sum of monochromatic waves, each proportional to their amplitude $a$. We will see in the next chapter that it is also possible to add up the quadratic properties 
+that are the energy and Stokes drift, which are  proportional to the surface elevation variance
+$E=a^2/2$.
+
+These properties come from a series of assumptions, listed in table \ref{table_H}. We will further discuss or removed these assumptions in 
+the following chapters, extending Airy theory and giving access to all sorts of corrections and allowing to determine the 
 evolution of Airy waves caused by different forcing and dissipation processes. Indeed, we have determined here the 
 eigenvectors of the linearized equations of motion: these are free waves that can exist without forcing. In practice, the forcing 
 is necessary to generate these waves in the first place, and this forcing is balanced by dissipation when long time scales and large 
