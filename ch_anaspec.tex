@@ -11,20 +11,20 @@ representing a cosine wave with only 4 points is already relatively coarse. As a
 
 
 Assuming we have such a series of discrete surface elevations
-$\zeta(n)$ with $1\leq n\leq M$. The duration of the recording is 
+$\zeta(n)$ with $0\leq n\le M$. The duration of the recording is 
 $(M-1)/f_s$. All data processing softwares have a discrete Fourier transformation routine that will provide 
 \begin{equation}
-    Z_m= \frac{1}{M}\sum_{n=1}^{M} \zeta(n)  \mathrm{e}^{-2\mathrm{i}\pi
-    (m-1)(n-1)/M}.\label{eq:Zm_def}
+    Z_m= \frac{1}{M}\sum_{n=0}^{M-1} \zeta(n)  \mathrm{e}^{-2\mathrm{i}\pi
+    m  n/M}.\label{eq:Zm_def}
 \end{equation}
 \subsection{Spectral resolution}
-For any frequency index $m$, the complex amplitude $Z_m$ is large when the signal $\zeta$ actually contains fluctuations at the frequency $f_m =(m-1)/M f_s$. The complex amplitudes contain both amplitude and phase information, i.e. $Z_m=|Z_m| \exp[\mathrm{i} \arg({Z_m})]$. The Fourier transform is simply a projection of the signal onto the elementary functions that are the complex exponentials, or if you prefer sines and cosines, with all frequencies $f_m =(m-1)/M f_s$ where $m$ goes from 1 to M. We note that the difference between frequencies $f_m$ and $f_{m+1}$ is the spectral resolution $df = f_s / M$. Because $f_s$ is the inverse of the sampling interval $dt$, we have $df = 1/(M dt)$, which is the inverse of the record duration. Namely, the frequency resolution is the same as the lowest frequency which is at $m=2$, and it such that the lowest period equals the record duration.  We recall that $m=1$ gives the average value of the signal. 
+For any frequency index $m$, the complex amplitude $Z_m$ is large when the signal $\zeta$ actually contains fluctuations at the frequency $f_m =m/M f_s$. The complex amplitudes contain both amplitude and phase information, i.e. $Z_m=|Z_m| \exp[\mathrm{i} \arg({Z_m})]$. The Fourier transform is simply a projection of the signal onto the elementary functions that are the complex exponentials, or if you prefer sines and cosines, with all frequencies $f_m =m/M f_s$ where $m$ goes from 0 to M-1. We note that the difference between frequencies $f_m$ and $f_{m+1}$ is the spectral resolution $df = f_s / M$. Because $f_s$ is the inverse of the sampling interval $dt$, we have $df = 1/(M dt)$, which is the inverse of the record duration. Namely, the frequency resolution is the same as the lowest frequency which is at $m=1$, and it such that the lowest period equals the record duration.  We recall that $m=0$ gives the average value of the signal. 
 
 
 
 
 \subsection{Nyquist frequency}
-The decomposition of a discretized real signal with $M$ pieces of information into $M$ frequencies cannot produce $M$ amplitudes and frequencies that are independent, that would be $2M$ pieces of information. Indeed, the frequencies from $M/2 f_s$ to $M f_s$ do contain the same information as those between $0$ $(M/2-1) f_s$, as shown in figure \ref{fig:anaspec:spectreDFT}.
+The decomposition of a discretized real signal with $M$ pieces of information into $M$ frequencies cannot produce $M$ amplitudes and frequencies that are independent, that would be $2M$ pieces of information. Indeed, the frequencies from $M/2 f_s$ to $M f_s$ do contain the same information as those between $0$ and $(M/2-1) f_s$, as shown in figure \ref{fig:anaspec:spectreDFT}. One has just to be careful if $M$ is an even or odd number.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}
 \centerline{\includegraphics[width=0.9\textwidth]{FIGS_CH_ANASPEC/spectra_DFT.pdf}}
@@ -34,18 +34,14 @@ The decomposition of a discretized real signal with $M$ pieces of information in
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 With the definition given by eq. (\ref{eq:Zm_def}),  $Z_m=
-\overline{Z_{M+2-m}}$, where the overbar is the complex conjugate, so that the modululs of the spectrum is symmetric around  $m=M/2$. This index $M/2$ corresponds to the Nyquist frequency 
+\overline{Z_{M-m}}$, where the overbar is the complex conjugate, so that the modulus of the spectrum is symmetric around  $m=M/2$. This index $M/2$ corresponds to the Nyquist frequency 
 $f_N=f_s/2 = M/2 df$. The symmetry means that above $f_N$ there is no new information. In other words, $f_N$ is the highest resolvable frequency. At this Nyquist frequency, a cosine wave is only represented by 2 points over a period. 
 
-%We note that for stationary random variables that are quadratically integrable, i.e. all practical physical signals, the ratio $dZ(m) \overline{dZ(m)} / df$ goes to %$F(f)$ when $M$ goes 
-%to infinity, i.e.  $f_s$ goes to zero, provided that  we keep constant 
-%$f=(m-1)f_s/N$.  The increment
-%$df=f_s/(N-1)$ is the spectral resolution, namely the frequency difference that can be resolved. The inverse of this resolution 
-%$1/df$ is equal to the length of the recorded signal.
+
 
 The continuous spectral density   $F(f)$ is obtained in the limit when the spectral resolution $df$ goes to zero of the following expression
 \begin{equation}
-    F(f=(m-1)f_s/M)  = 2  \frac{Z_m \overline{Z_m}}{df}.
+    F(f=m f_s/M)  = 2  \frac{Z_m \overline{Z_m}}{df}.
 \end{equation}
 The factor 2 comes from the combination of positive and negative frequencies in the interval  $[0,  f_N]$. That definition is 
 called the  single-sided spectrum. For some applications it may be convenient to keep the double-sided spectrum defined without this factor 2, 
@@ -55,9 +51,9 @@ spectral resolutions $df$, and thus a discrete spectrum sampled at $df$, corresp
 
 
 \subsection{Co-spectra}
-In the same manner, we can  define the co-spectrum of two variables $a$ and $b$ having Fourier transforms $dA$ and $dB$, 
+In the same manner, we can  define the co-spectrum of two variables $a$ and $b$ having Fourier transforms $A$ and $B$, 
 \begin{equation}
-    C_{ab}(f=(m-1)f_s/M)  = \frac{A_m \overline{B_m}}{df} = P(f) +\mathrm{i}Q(f),
+    C_{ab}(f=m f_s/M)  = \frac{A_m \overline{B_m}}{df} = P(f) +\mathrm{i}Q(f),
 \end{equation}
 where $P$ and $Q$ are real numbers, the co-spectra in phase and quadrature. 
 
@@ -68,15 +64,10 @@ is the Fourier transform of the correlation function.
 \section{Spectra from time series}
 \subsection{Filtering of data and aliasing}
 For any physical
-parameter, the complex amplitude at a frequency above $f_N$ is the complex conjugate of the amplitude at a frequency below $f_N$: $dZ(N-m)=\overline{dZ(m)}$. 
+parameter, the complex amplitude at a frequency above $f_N$ is the complex conjugate of the amplitude at a frequency below $f_N$: $Z(N-m)=\overline{Z(m)}$. 
 In other words, the energy above the Nyquist frequency is aliased at  lower frequencies. This is one reason for applying a low-pass filter before the Fourier transform, in order to remove signals that would otherwise be aliased. 
 
 
-%Il faut toujours bien réfléchir à la manière dont les données sont filtrées avant leur 
-%échantillonnage. Quand on mesure des vitesses toutes les dix minutes, est-ce une mesure instantanée 
-%une moyenne sur une, deux ou dix minutes? En effet les vitesses mesurées contiendront alors 
-%le courant moyen (par exemple causé par la marée) mais aussi, si aucune moyenne n'est faite, les 
-%fluctuations associées aux vagues et qu'il peut être très délicat de supprimer a postériori. 
 
 For example, a signal of period 1~s sampled every second ($f_s = 1$~Hz) is constant.  In general, any signal with frequency higher 
 than the Nyquist frequency gives an apparent frequency in the range 
@@ -86,7 +77,7 @@ This is well known problem in oceanography in the case of the measurement of tid
 In the case of ocean waves, it is really necessary to measure waves with a sampling frequency that is at least 4 times the dominant frequency.  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htb]
-\centerline{\includegraphics[width=0.5\textwidth]{FIGS_CH_ANASPEC/AliasingSines.pdf}}
+\centerline{\includegraphics[width=0.5\textwidth]{FIGS_CH_ANASPEC/AliasingSines.png}}
 %\vspace{3.64in}
 \caption{Example of spectral aliasing. A signal with period 10/9, in red, and sampled with a step of 1 (black dots) 
 gives an apparent period of  10, in blue. (Moxfyre, wikimedia commons).} \label{aliasing}
@@ -108,15 +99,15 @@ The worst filter is clearly the boxcar (or moving average) filter with equal wei
 
 
 \subsection{Windows, Gibbs phenomenon and averaging}
-The discrete Fourier transform of signal $\zeta$ that takes values at locations 1 to N, corresponds to the Fourier transform of a periodic signal that would 
+The discrete Fourier transform of signal $\zeta$ that takes values at locations 0 to $M-1$, corresponds to the Fourier transform of a periodic signal that would 
 repeat itself with $\zeta(n+m M) = \zeta (n)$ for any $n$ and $m$. If 
-$\zeta(1)\neq \zeta(M)$, then this periodic function has a sharp jump from $\zeta(M)$ to $\zeta(M+1)$. Such a jump 
+$\zeta(0)\neq \zeta(M-1)$, then this periodic function has a sharp jump from $\zeta(M-1)$ to $\zeta(M)$. Such a jump 
 can give a strong spectral signature, all across the spectrum. 
 
 
 This artifact is known as the Gibbs phenomenon, and it 
 is generally removed by multiplying the signal  $\zeta(n)$ by a window function $W(n)$ which goes to zero or very small values for both 
-$n=1$ and $n=N$. Obviously the spectrum of $\zeta(n) \times W(n)$ is different from the spectrum of $\zeta(n)$. The first obvious effect is that 
+$n=0$ and $n=M-1$. Obviously the spectrum of $\zeta(n) \times W(n)$ is different from the spectrum of $\zeta(n)$. The first obvious effect is that 
 the variance of the signal has been reduced by a factor that is the average of $W^2$. That is easily corrected for.
 
 
@@ -134,7 +125,7 @@ Indeed waves are random and the surface elevation is nearly-Gaussian. As a resul
 (b) Resulting spectra (c) Average spectra using Welch's method with 21 independent windows and thus 42 degrees of freedom.} \label{fig:anaspec:spectre1}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- Using figure \ref{table_chi2}, we find that the expected ratio of the lower and upper bound of a 95$\%$ confidence interval is 146. This number is the ratio of  $\chi^2_{2,0.975}$ and  $\chi^2_{2,0.025}$, that give the probabilities that $\chi^2_{n} > \chi^2_{n,\alpha}$ is equal to the acceptance threshold $\alpha$. 
+ Using figure \ref{table_chi2}, we find that the expected ratio of the lower and upper bound of a 95$\%$ confidence interval is 146. This number is the ratio of  $\chi^2_{2,0.975}$ and  $\chi^2_{2,0.025}$, that give the probabilities that $\chi^2_{n} > \chi^2_{n,\alpha}$ is equal to the acceptance threshold $\alpha$. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}
 \centerline{\includegraphics[width=\textwidth]{FIGS_CH_ANASPEC/table_chi2.png}}
@@ -148,7 +139,7 @@ $n=2 N$ degrees of freedom, where $N$ is the number of independent spectra used.
 
 For an expected value  $\widehat{E}$, the  Gaussian statistics theory predicts a 95\% probability that the estimate of $E(f)$ is in the range $[E_1, E_2]$ with $E_1=\widehat{E} \times 0.0506/2 $ and  $E_2=\widehat{E} \times 7.38/2$, where 0.0506 and 7.38 are the values for which the $\chi^2$ cumulative probability function for 2 degrees of freedom is $\alpha=0.975$ and $\alpha=0.025$, respectively as given \ref{table_chi2}. In other words, the random fluctuations of the spectrum estimated by a single Fourier transform spans more than two orders of magnitude. 
 
-That is fairly annoying. There are two ways to reduce this uncertainty: the first, which is most easily done in the laboratory is to run more experiments, repeating the same conditions, with random wave phases, and average the results. For measurements in the field, this is the same as processing a longer time series, but it only makes sense if the conditions are stationary: same wind, same wave age, same current, etc. In practice, this stationarity constraints limits the length of records from half an hour to a few hours. As we average $N$ spectra together, the number of degrees of freedom increases to $2N$. Here we have used 21 independent spectra, and we get an uncertainty that narrows like $1/\sqrt{N}$ for large $N$. For 20 spectra, the ratio $E_2/E_1$ is $59.34/34.43\simeq 1.7$. As $N$ increases, the spectral resolution becomes coarser.
+That is fairly annoying. There are two ways to reduce this uncertainty: the first, which is most easily done in the laboratory is to run more experiments, repeating the same conditions, with random wave phases, and average the results. For measurements in the field, this is the same as processing a longer time series, but it only makes sense if the conditions are stationary: same wind, same wave age, same current, etc. In practice this only holds for half an hour to a few hours. As we average $N$ spectra together, the number of degrees of freedom increases to $2N$. Here we have used 21 independent spectra, and we get an uncertainty that narrows like $1/\sqrt{N}$ for large $N$. For 20 spectra, the ratio $E_2/E_1$ is $59.34/34.43\simeq 1.7$. As $N$ increases, the spectral resolution becomes coarser.
 
 Because the Hann window practically removes part of the data, \cite{Welch1967} has defined a method in which the windows are shifted by half their length, as shown in figure \ref{fig:anaspec:spectre31}.a. The lower panel shows the 21+20 spectra estimated, and the average result.  
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -156,7 +147,7 @@ Because the Hann window practically removes part of the data, \cite{Welch1967} h
 \centerline{\includegraphics[width=0.9\textwidth]{FIGS_CH_ANASPEC/spectra_31.pdf}}
 %\vspace{3.64in}
 \caption{(a) Succession of the Hann windows applied to the data, with 21 independent windows and 20 overlapping windows, from number 22 to 41. The solid line is the mean spectrum and the dotted and dashed line show the expected 95\% confidence intervals for 2 and 42 degrees of freedom. 
-à 95\%.} \label{fig:anaspec:spectre31}
+Ã  95\%.} \label{fig:anaspec:spectre31}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -178,12 +169,7 @@ is given from the surface elevation spectrum multiplied by a transfer function,
     E_{Ux} \left( f,\theta \right)  = \frac{\sigma^2 \cos^2 \theta}{\sinh^2 (kD)} E\left( f,\theta
     \right)\label{EUX }.
 \end{equation}
-%et le module moyen de la vitesse (en moyenne quadratique) près du fond vaut,
-%\begin{equation}
-%    U_{\mathrm{b,rms}} = \left[\int_0^{\infty} \int_0^{2 \upi} \frac{\sigma^2}{\sinh^2
-%    (kD)} E\left( f,\theta \right){\mathrm d}\theta
-%    {\mathrm d}f \right]^{1/2}
-%\end{equation}
+
 
 The same method applies to spectra of displacements, velocity and slopes at the sea surface. 
 For a water particle at the surface, the spectra of displacement in the three directions are given by  (\ref{xi3}),

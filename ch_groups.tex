@@ -35,7 +35,7 @@ where $\Psi_2$ is the spectrum of the envelope squared and is obtain by convolvi
 
 We will now use this envelope spectrum to compute the expected fluctuations of wave measurements when estimated from a short record or a small area: here "short" or "small" is relative to the size of a few wave groups in time and space. The concept is the same when working with time series or two-dimensional maps, so we will treat both situations, starting with time series. 
 
-\subsection{Time series}
+\section{Time series}
 From a time series $\zeta(t)$, the envelope can also be defined using the  Hilbert transform $\cal{H}(\zeta)$ of the time series, 
 \begin{equation}
    \eta  = \left| \zeta + \cal{H}(\zeta) \right|.
@@ -74,7 +74,7 @@ surface elevation spectrum $E(f)$ by itself,
  In practice people have rather studied the variations of $H_s$ and not that of $H_s^2$, 
  Although the details of the theory are more complex, the important result is that, for low frequencies, the spectrum of the envelope $\Psi(f)$ has the same shape as the spectrum of the envelope squared $\Psi_2(f)$ \citep{Rice1944}. More specifically, \cite{Tayfun&Lo1989} have showed that a good approximation for $\Psi$ is given by eq. (\ref{eq:TayfunetLo}). 
 
-If $\tau$ is large enough, then the frequency $1/(2 \tau)$ will fall in the region where $\Psi(f) \simeq \Psi(f=0)$. For the case shown in Fig. \ref{fig:groups1D}, that cand be up to 0.02 or even 0.04~Hz. We can use this approximation to estimate the  variance of $\widehat{H}_\tau$ as
+If $\tau$ is large enough, then the frequency $1/(2 \tau)$ will fall in the region where $\Psi(f) \simeq \Psi(f=0)$. For the case shown in Fig. \ref{fig:groups1D}, that can be up to 0.02 or even 0.04~Hz. We can use this approximation to estimate the  variance of $\widehat{H}_\tau$ as
 \begin{equation}
    \mathrm{var}(H_\tau)\simeq \frac{32}{\pi} \frac{\Psi (f=0)}{4 \tau} \simeq \frac{16(16 - 4 \pi) }{4 \pi \tau H_s^2} 8 \int_0^\infty (E(f))^2 {\mathrm d}f =  \frac{4 -  \pi }{ 2 \pi  \tau }  H_s^2 Q_f^2 
    \label{eq:groups_var_1D}
@@ -124,7 +124,7 @@ Figure \ref{fig:groupsQf}.a shows that the predicted variability is not exactly 
 It is always possible to average over longer times but at some point one loses the time resolution that may be needed to investigate how the wave height varies during the tidal cycle or due to other fast evolving phenomena. We also note that quantities that involve higher frequency moments of order $n$ such as the orbital velocity with $n=2$ are less "groupy", their spectrum shape given by $E(f)f^n$ are broader than $E(f)$,  and we can compute a similar $Q_f$ for these parameters that will be lower, as shown in  \ref{fig:groupsQf}.c, using the bottom orbital velocity data from the Nortek Vector instrument. I used pressure and velocity at the ocean bottom in Figure \ref{fig:groupsQf}.a and \ref{fig:groupsQf}.c, and these are already filtered by the water depth, so that the difference between these  $Q_f$  and  $Q_{f,u}$ is not as large as it would be if one used surface elevation and surface velocity.  
 
 
-\subsection{Spatial maps}
+\section{Spatial maps}
 Following the same steps we took for time series, we may imagine that an instrument provides a wave height  $H_{L}$ from a spatial average over a 
 square of side $L$ \citep{Lenain&al.2023,Ardhuin&al.2024}. The wave height estimate $H_L$ is  again a $\chi$-distributed random variable with its variance and mean given by  functions of the number of 
 degrees of freedom, and their ratio given by eq. (\ref{eq:groups_var_nu}). The only difference is that now  $\nu_{f,H}$ is replaced by 
@@ -132,7 +132,7 @@ degrees of freedom, and their ratio given by eq. (\ref{eq:groups_var_nu}). The o
 \nu_{\mathrm{kk},H}=1/ Q_{\mathrm{kk},H}^2 dk_x dk_y \label{eq:nukk}
 \end{equation}
 
- where $dk_x dk_y$ is the spectral resolution of the spectral analysis, corresponding to $dk_x dk_y=(2 \pi)^2/(2 L)^2$, with 
+ where $dk_x dk_y$ is the spectral resolution, corresponding to $dk_x dk_y=(2 \pi)^2/(2 L)^2$, with 
 \begin{equation} 
    Q_{\mathrm{kk}}^2 = \frac{  \int_{-\infty}^\infty \int_{-\infty}^\infty E^2(k_x,k_y)\mathrm{d}k_x \mathrm{d}k_y }{\left( \int_{-\infty}^\infty \int_{-\infty}^\infty E(k_x,k_y)\mathrm{d}k_x \mathrm{d}k_y  \right)^2} \label{eq:Qkk},
 \end{equation}
@@ -146,7 +146,7 @@ This expression is easily verified by taking a wave spectrum $E(k_x,k_y)$, simul
 which a good approximation in cases where $L$ is much larger than the dominant wavelength. 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htb]
-\centerline{\includegraphics[width=0.9\textwidth]{FIGS_CH_GROUPS/std_maps.pdf}}
+\centerline{\includegraphics[width=\textwidth]{FIGS_CH_GROUPS/std_maps.pdf}}
 %\vspace{3.64in}
   \caption{Variability of $H_L$ in simulated surfaces from 2 different wave spectra, one with $Q_{\mathrm{kk}}=43$~m and the other with $Q_{\mathrm{kk}}=15$~m. These two spectra are shown below in Fig. \ref{figure:groups_storm2}. for each spectrum, 10 surface realisations were generated using random phases, and the average standard deviation is compared to the 
   theoretical value from eq. (\ref{eq:groups_var_2DY}). The notebook that generated this figure is available on \href{https://github.com/ardhuin/waves_in_geosciences/blob/main/NOTEBOOKS/chapter_groups_figure_Qkk_stdH_2D_maps.ipynb}{github}.}
@@ -154,9 +154,41 @@ which a good approximation in cases where $L$ is much larger than the dominant w
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+% Note: : std / mean = 1/sqrt(2 k)  for chi. For chi 2: var / mean :  ...  sqrt( 1/2 k).= Qkk * 2*pi / L / sqrt(2).    OK. Now, with H^2 : var (H**2°/mean(H**2) = 2  ... std / mean  = sqrt(2/k) = Qkk * sqrt(2) *2*pi / L
 
-\subsection{Along-track variability in altimeter data}
-A practical important application of the result for spatial maps is the interpretation of the most common measurement of wave heights from space, usinbg satellite altimeters. Looking at data from storm Dennis in the North Atlantic in 2020, as illustrated in Fig. \ref{figure:groups_storm1}, \cite{DeCarlo&al.2023} were surprised to find that for the same mean wave height of 9.3~m, the CFOSAT altimeter beam gave a very small variability on the north side, and a twice larger variability on the south side. What is this variability telling us about the sea state? 
+These fluctuations in the estimate of wave heights are now easy to see with SWOT maps of wave heights, derived from the "volumetric decorrelation" in the KaRIN interferometer. 
+They are most pronounced when very long swell is present. In the example shown in Fig. \ref{fig:groups_SWOT}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h!]
+\centerline{\includegraphics[width=0.9\textwidth]{FIGS_CH_GROUPS/SWOT_groups_resolved.pdf}}
+%\vspace{3.64in}
+  \caption{Variability of "SWH" (in colour) around 0.7$^\circ$ N on track 26 of cyclz 26 (24 December 2024). Here SWH is estimated from two instruments on board the SWOT satellite: KaRIN  and Poseidon-3C with two different method \citep{Bohe&al.2025}. KaRIN also provides a map of the sea surface elevation, shown in grey scale, that resolves swells with periods longer than 18 s. The large values in the very patchy map of SWH correspond to groups of long waves. These long waves were generated by storm Eddie \citep{Ardhuin&al.2025}. More of this data can be viewed using the Ocean Virtual Laboratory, \href{https://odl.bzh/2GsA5tZQ}. }
+\label{fig:groups_SWOT}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+This shows local wave heights in colors with values given on a 2 km resolution grid, and estimated from the interferometric coherence over squares regions of 4.2 km. These estimates of $H_L$ that range from about 2 to 4 m.  Not only KaRIN is uniquely capable of measuring maps of wave heights \citep{Bohe&al.2025}, it is also capable of resolving the longest waves in its sea level measurement \citep{Ardhuin&al.2024}. We can thus directly verify the impact of the long wave groups on the measurement of wave height. 
+
+Breaking up the wave spectrum in long waves, with periods longer than 18 s, and short waves, the SWH estimated from KaRIN is the root square sum of the short and long wave heights, 
+\begin{equation}
+H_L^2 = H_{L,T > 18 s}^2 + H_{L,T < 18 s}^2. \label{eq:HLsum}
+\end{equation}
+Fig. \ref{fig:groups_SWOT2} shows a wider region of the same data, on 24 December 2024, in the equatorial Pacific. 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[h!]
+\centerline{\includegraphics[width=\textwidth]{FIGS_CH_GROUPS/std_H2_maps.png}}
+%\vspace{3.64in}
+  \caption{ left: Variability of  the total $H_{L=4.2\mathrm{km}}$  on track 26 of cyclz 26 (24 December 2024) provided by in the Level 2 SWOT data using the method of \cite{Bohe&al.2025}. Center:  values of wave heights $H_{L=5\mathrm{km},T > 18 s}$ for the long waves using the method of \cite{Ardhuin&al.2024}, showing maxima at the same location as those in the total wave height. Right: estimate of the heights of the "short" waves  $H_{L=4.2\mathrm{km},T < 18 s}$ using  eq. (\ref{eq:HLsum}) with $L=4.2\mathrm{km}$. These long waves were generated by storm Eddie \citep{Ardhuin&al.2025}.}
+\label{fig:groups_SWOT2}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+The first result is that the variability of $H^2_{L=5\mathrm{km},T > 18 s}$ is of the order of 50\% of $H^2_{T > 18 s}$ because the spectra for the long waves are very narrow with a corresponding $Q_{kk,T > 18 s}$ around 250~m. Using the number of degrees of freedom $\nu_{kk,H}$ 
+given by eq. (\ref{eq:nukk}) and the fact that  $H^2_{L}$ follows a $\chi^2$ distribution, gives an expected ratio $ 2 \pi  \sqrt{2}  Q_{kk,T > 18 s}  /L$  of the standard deviation of $H^2$ and the mean of $H^2$. This ratio is equal to 0.44 for $L=5$~km and 
+$Q_{kk,T > 18 s} = 250$~m. The associated variance of $H^2_{L=5\mathrm{km},T > 18 s}$  when multiplied by the ratio of the grid resolutions $5^2/4.2^2$ is of the order 80\% of the variance of $H_{L=4.2\mathrm{km}}$  for latitudes in the range 
+-2 to +2 degrees around the equator: in this example the strong fluctuations in SWH is thus explained by the presence of very long wave groups. This property could also be used to constrain the shape of the wave spectrum using fluctuations in SWH estimates. 
+
+
+\section{Example of application: Along-track variability in altimeter data}
+A practical important application of the result for spatial maps is the interpretation of the most common measurement of wave heights from space, using satellite altimeters. Looking at data from storm Dennis in the North Atlantic in 2020, as illustrated in Fig. \ref{figure:groups_storm1}, \cite{DeCarlo&al.2023} were surprised to find that for the same mean wave height of 9.3~m, the CFOSAT altimeter beam gave a very small variability on the north side, and a twice larger variability on the south side. What is this variability telling us about the sea state? 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[h!]
 \centerline{\includegraphics[width=\textwidth]{FIGS_CH_GROUPS/DeCarlo_fig1.pdf}}
@@ -215,12 +247,8 @@ Here again, if the filter $G_{r}$ is zero outside of a very small range of waven
     &\simeq&  \frac{32}{\pi} \frac{8 - 2\pi}{H_s^2}   \Psi_2(0,0)   \pi  \left(1 / {r_a}^2 - 4 k_1/ r_a \right) \nonumber\\
     &\simeq&   Q_{kk}^2 H_s^2(8 - 2 \pi) \left(1 / {r_a}^2 - 4 k_1/ r_a \right)  , 
 \end{eqnarray}
-where we have defined 
-a two-dimensional spectral peakedness $Q_{kk}$ which is measured in meters,
-\begin{equation}
-    Q_{kk}^2 = \frac{\iint_{} E^2(k_x,k_y)\mathrm{d}k_x\mathrm{d}k_y}{\left(\iint_{}E(k_x,k_y) \mathrm{d}k_x\mathrm{d}k_y\right)^2} = \frac{32 \Psi_2(k_x=0,k_y=0)}{H_s^4}.
-\label{eq:bandwith_2D}
-\end{equation}
+with the peakedness $Q_{kk}$ given by eq. (\ref{eq:Qkk}). 
+
 
 
 This expression gives the approximate value for the standard deviation,
